@@ -54,8 +54,8 @@ public class testArc {
     @Test
     public void loadConfig() throws Exception{
         ArcConfig config = ArcConfigSerialization.parseArcConfig(new File(this.getClass().getResource("./arc.sql.config.json").getFile()));
-        //System.out.println(config.getOptions().length);
-        //System.out.println(ArcConfigSerialization.toJSONString(config));
+        System.out.println(config.getOptions().length);
+        System.out.println(ArcConfigSerialization.toJSONString(config));
         ArcConfigSerialization.toJSONFile(config,"c:/test/arc_xc_10.json");
     }
 
