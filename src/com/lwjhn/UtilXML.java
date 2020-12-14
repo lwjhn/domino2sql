@@ -1,11 +1,13 @@
 package com.lwjhn;
 
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.charset.Charset;
+import java.util.Properties;
 
 /**
  * @Author: lwjhn
@@ -15,20 +17,30 @@ import java.nio.charset.Charset;
  */
 public class UtilXML {
     private static TransformerFactory factory = TransformerFactory.newInstance();
+    public final static Charset DefultEncoding = Charset.forName("UTF-8");
 
     public static void transformer(InputStream xslSource, InputStream xmlSource, OutputStream htmlResult) throws Exception {
         Transformer transformer = factory.newTransformer(new StreamSource(xslSource));
+        Properties properties = transformer.getOutputProperties();
+        properties.setProperty(OutputKeys.ENCODING, DefultEncoding.displayName());
+        transformer.transform(new StreamSource(xmlSource), new StreamResult(htmlResult));
+    }
+
+    public static void transformer(InputStream xslSource, InputStream xmlSource, OutputStream htmlResult, Charset charset) throws Exception {
+        Transformer transformer = factory.newTransformer(new StreamSource(xslSource));
+        Properties properties = transformer.getOutputProperties();
+        properties.setProperty(OutputKeys.ENCODING, charset.displayName());
         transformer.transform(new StreamSource(xmlSource), new StreamResult(htmlResult));
     }
 
     public static void transformer(InputStream xslSource, String xmlSource, OutputStream htmlResult) throws Exception {
-        transformer(xslSource, xmlSource, htmlResult,Charset.forName("UTF-8"));
+        transformer(xslSource, xmlSource, htmlResult, DefultEncoding);
     }
 
     public static void transformer(InputStream xslSource, String xmlSource, OutputStream htmlResult, Charset charset) throws Exception {
         ByteArrayInputStream binput = null;
         try {
-            transformer(xslSource, binput = new ByteArrayInputStream(xmlSource.getBytes(charset)), htmlResult);
+            transformer(xslSource, binput = new ByteArrayInputStream(xmlSource.getBytes(charset)), htmlResult, charset);
         } catch (Exception e) {
             throw e;
         } finally {
@@ -42,7 +54,7 @@ public class UtilXML {
     public static void transformer(InputStream xslSource, String xmlSource, File output, Charset charset) throws Exception {
         FileOutputStream htmlResult = null;
         try {
-            transformer(xslSource, xmlSource, htmlResult = new FileOutputStream(output) , charset);
+            transformer(xslSource, xmlSource, htmlResult = new FileOutputStream(output), charset);
         } catch (Exception e) {
             throw e;
         } finally {
