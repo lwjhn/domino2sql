@@ -2,8 +2,8 @@ package com.lwjhn.domino2sql;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.lwjhn.FileOperator;
 import com.lwjhn.domino2sql.config.ArcConfig;
+import com.lwjhn.util.FileOperator;
 
 import java.io.File;
 import java.io.FileInputStream;

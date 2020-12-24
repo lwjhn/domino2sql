@@ -1,4 +1,4 @@
-package com.lwjhn;
+package com.lwjhn.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -13,53 +13,54 @@ import java.text.SimpleDateFormat;
  * @Version: 1.0
  */
 public class Common {
-    public static void printXML(java.io.PrintWriter pw,String strXML){
-        try{
+    public static void printXML(java.io.PrintWriter pw, String strXML) {
+        try {
             pw.println("content-type:text/xml; charset=UTF-8");
             pw.println("<?xml version='1.0' encoding='UTF-8'?>");
             pw.println("<center><![CDATA[" + strXML + "]]></center>");
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
     }
 
-    public static String getXMLParaValue(String para_name,String query_string){
-        String query=query_string+"&";
-        para_name="&"+para_name+"=";
-        int start=query.indexOf(para_name);
+    public static String getXMLParaValue(String para_name, String query_string) {
+        String query = query_string + "&";
+        para_name = "&" + para_name + "=";
+        int start = query.indexOf(para_name);
 
-        if(start<0 || (start+para_name.length())>query.length()){
+        if (start < 0 || (start + para_name.length()) > query.length()) {
             return "";
         }
-        start=start+para_name.length();
+        start = start + para_name.length();
 
-        String para_value=query.substring(start, query.indexOf("&",start));
+        String para_value = query.substring(start, query.indexOf("&", start));
         return para_value;
     }
 
-    public static String getTimeStamp(){
-        SimpleDateFormat formatter=new SimpleDateFormat("yyyyMMddHHmmssSSSS");
+    public static String getTimeStamp() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
         return formatter.format(new java.util.Date());
     }
 
-    public static String getDate(java.util.Date date,String format){
-        if("".equals(format)){
-            format="yyyy-MM-dd";
+    public static String getDate(java.util.Date date, String format) {
+        if ("".equals(format)) {
+            format = "yyyy-MM-dd";
         }
-        SimpleDateFormat formatter=new SimpleDateFormat(format);
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
         return formatter.format(date);
     }
 
-    public static String getDate(java.util.Date date){
-        return getDate(date,"yyyy-MM-dd");
+    public static String getDate(java.util.Date date) {
+        return getDate(date, "yyyy-MM-dd");
     }
 
-    public static String substring(String src, int len,String charset){
-        if(charset.equals("")){
-            charset="GBK";
+    public static String substring(String src, int len, String charset) {
+        if (charset.equals("")) {
+            charset = "GBK";
         }
         byte bt[] = null;
-        try{
-            bt=src.getBytes(charset);
-        }catch(Exception e){
+        try {
+            bt = src.getBytes(charset);
+        } catch (Exception e) {
             e.printStackTrace();
             return "";
         }
@@ -70,22 +71,23 @@ public class Common {
 
         return new String(bt, 0, len);
     }
-    public static String substring(String src, int len){
-        return substring(src, len,"GBK");
+
+    public static String substring(String src, int len) {
+        return substring(src, len, "GBK");
     }
 
-    public static String substr(String src, int len,String charset){
-        if(charset.equals("")){
-            charset="GBK";
+    public static String substr(String src, int len, String charset) {
+        if (charset.equals("")) {
+            charset = "GBK";
         }
         StringBuffer buff = new StringBuffer();
-        int s_len=src.length();
+        int s_len = src.length();
         for (int i = 0; i < s_len; i++) {
-            try{
-                len-=String.valueOf(src.charAt(i)).getBytes(charset).length;
-                if(len<0) break;
+            try {
+                len -= String.valueOf(src.charAt(i)).getBytes(charset).length;
+                if (len < 0) break;
                 buff.append(src.charAt(i));
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -93,12 +95,12 @@ public class Common {
         return buff.toString();
     }
 
-    public static String substr(String src, int len){
-        return substr(src, len,"GBK");
+    public static String substr(String src, int len) {
+        return substr(src, len, "GBK");
     }
 
-    public static String joinstr(String[] src,String deli){
-        if(src.length<1){
+    public static String joinstr(String[] src, String deli) {
+        if (src.length < 1) {
             return "";
         }
         StringBuffer buff = new StringBuffer();
@@ -110,15 +112,15 @@ public class Common {
         return buff.toString();
     }
 
-    public static InputStream byte2InputStream(byte[] buf){
+    public static InputStream byte2InputStream(byte[] buf) {
         return new ByteArrayInputStream(buf);
     }
 
-    public static byte[] inputStream2Byte(InputStream input) throws IOException{
-        ByteArrayOutputStream swapStream=new ByteArrayOutputStream();
-        byte[] buff=new byte[1024];
-        int rc=0;
-        while((rc=input.read(buff, 0, 1024))>0){
+    public static byte[] inputStream2Byte(InputStream input) throws IOException {
+        ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
+        byte[] buff = new byte[1024];
+        int rc = 0;
+        while ((rc = input.read(buff, 0, 1024)) > 0) {
             swapStream.write(buff, 0, rc);
         }
         return swapStream.toByteArray();
@@ -146,6 +148,7 @@ public class Common {
         }
         return tmp.toString();
     }
+
     public static String unescape(String src) {
         StringBuffer tmp = new StringBuffer();
         tmp.ensureCapacity(src.length());

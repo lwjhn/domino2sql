@@ -1,7 +1,7 @@
 import com.alibaba.fastjson.JSON;
-import com.lwjhn.FileOperator;
 import com.lwjhn.domino2sql.ArcConfigSerialization;
 import com.lwjhn.domino2sql.config.*;
+import com.lwjhn.util.FileOperator;
 import org.junit.Test;
 
 

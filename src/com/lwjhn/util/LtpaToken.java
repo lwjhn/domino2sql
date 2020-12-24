@@ -1,4 +1,4 @@
-package com.lwjhn;
+package com.lwjhn.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

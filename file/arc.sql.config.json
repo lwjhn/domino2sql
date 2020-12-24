@@ -1,0 +1,390 @@
+{
+  "sql_url": "jdbc:dm://192.168.244.73:5236",
+  "sql_username": "******",
+  "sql_password": "******",
+  "sql_driver": "dm.jdbc.driver.DmDriver",
+  "options": [
+    {
+      "enable": true,
+      "vesion": "1.2.1",
+      "ftppath": "/FTP_XC/",
+      "domino_server": "OA2/SRV/XIANGYANG",
+      "domino_dbpath": "sxzspjoa/dispatch.nsf",
+      "domino_query": "Form=\"FlowForm\" & MSSDatabase!=\"\" & DraftDate > [2020-01-01] & DraftDate < [2020-09-30]",
+      "domino_before_prepared_driver": "com.lwjhn.archive.prepared.BeforeArchive",
+      "sql_table": "XYSOA.EGOV_DISPATCH_HISTORY",
+      "sql_field_attachment": {
+        "sql_name": "OA_HISTORY_FILE_JSON",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINO_ID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "Subject",
+          "domino_name": "Subject",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_WORD",
+          "domino_name": "DocWord",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_TYPE",
+          "domino_name": "DocType",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "URGENT_LEVEL",
+          "domino_name": "UrgentLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_DEPT",
+          "domino_name": "DraftDept",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SEC_LEVEL",
+          "domino_name": "SecLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_CATE",
+          "domino_name": "FileType",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "CB_Send",
+          "domino_name": "BlindSend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "PUBLIC_FLAG",
+          "domino_name": "IsPublic",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MAIN_SEND",
+          "domino_name": "MainSend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "IS_NORM",
+          "domino_name": "gfgs",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "COPY_SEND",
+          "domino_name": "CopySend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "ISSUED_DATE",
+          "domino_name": "PrintTerm",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "BLIND_SEND",
+          "domino_name": "DispartSend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "Remark",
+          "domino_name": "Remark",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SIGN_USER_NAME",
+          "domino_name": "SignUserTitle",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SIGN_DATE",
+          "domino_name": "SignDate",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_DATE",
+          "domino_name": "DraftDate",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "PRINT_NUM",
+          "jdbc_type": "INTEGER",
+          "domino_formula": "1",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "HISTORY_READERS",
+          "domino_formula": "@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_AdminReader:C_USEDDEPTREADER:C_UserDeptREADER:DraftDept_Reader:C_QueryDeptReader:C_UserSecretReade)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_UNIT",
+          "domino_name": "xwdw",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_USER_NAME",
+          "domino_name": "Drafter",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "LINKER_MOBILE",
+          "domino_name": "DrafterTel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "IS_HISTORY_FILE",
+          "domino_formula": "\"domino\"",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SYSTEM_NO",
+          "domino_formula": "\"SXZSPJ\"",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      ]
+    },
+    {
+      "enable": true,
+      "vesion": "1.2.1",
+      "ftppath": "/FTP_XC/",
+      "domino_server": "OA2/SRV/XIANGYANG",
+      "domino_dbpath": "sxzspjoa/receival.nsf",
+      "domino_query": "Form=\"FlowForm\" & MSSDatabase!=\"\" & RegDate > [2020-01-01] & RegDate < [2020-09-30]",
+      "domino_before_prepared_driver": "com.lwjhn.archive.prepared.BeforeArchive",
+      "sql_table": "XYSOA.EGOV_RECEIVAL_HISTORY",
+      "sql_field_attachment": {
+        "sql_name": "OA_HISTORY_FILE_JSON",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINO_ID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SUBJECT",
+          "domino_name": "Subject",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_MARK",
+          "domino_name": "DocMark",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "FILE_SOURCE_TYPE",
+          "domino_name": "FileSourceType",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_DATE",
+          "domino_name": "RegDate",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "URGEN_LEVEL",
+          "domino_name": "UrgentLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SEC_LEVEL",
+          "domino_name": "SecLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DISPATCH_RANGE",
+          "domino_name": "DISPATCH_RANGE",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_TRACK",
+          "domino_name": "FileTrack",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "FLOW_DONE_USER",
+          "domino_name": "C_UnitUser",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SELECT_LEVEL",
+          "domino_name": "QueryLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "COPY_NUM",
+          "domino_name": "CopyNum",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_TYPE",
+          "domino_name": "DocType",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "HANDLE_OR_VIEW",
+          "domino_name": "HandleOrView",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SOURCE_UNIT",
+          "domino_name": "SourceUnit",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_SEQUENCE",
+          "domino_name": "DocNum",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_USER",
+          "domino_name": "RegPerson",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "Remark",
+          "domino_name": "Remark",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "KSCBR",
+          "domino_name": "KSCBR",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "KSFZR",
+          "domino_name": "KSFZR",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "IS_DU_BAN",
+          "domino_name": "IsDuBan",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DU_BAN_DATE",
+          "domino_name": "DuBan_Date",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DU_BAN_REMARK",
+          "domino_name": "DuBan_Remark",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "JBKS",
+          "domino_name": "JBKS",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "TRANS_TYPE",
+          "domino_name": "TransType",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "PHONE",
+          "domino_name": "Phone",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "BRIEF_INFO",
+          "domino_name": "BriefInfo",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "HISTORY_READERS",
+          "domino_formula": "@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_USEDDEPTREADER:C_UserDeptREADER:DraftDept_Reader:C_QueryDeptReader:C_UserSecretReade)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "IS_HISTORY_FILE",
+          "domino_formula": "\"domino\"",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SYSTEM_NO",
+          "domino_formula": "\"SXZSPJ\"",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      ]
+    }
+  ]
+}

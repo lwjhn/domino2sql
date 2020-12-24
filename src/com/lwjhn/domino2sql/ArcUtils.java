@@ -17,6 +17,6 @@ public class ArcUtils {
     public static String getUUID16() {
         int first = new Random(10).nextInt(8) + 1,
                 hashCodeV = UUID.randomUUID().toString().hashCode();
-        return first + String.format("%015d", new Integer[]{Integer.valueOf(hashCodeV < 0 ? -hashCodeV : hashCodeV)});
+        return first + String.format("%015d", hashCodeV < 0 ? -hashCodeV : hashCodeV);
     }
 }

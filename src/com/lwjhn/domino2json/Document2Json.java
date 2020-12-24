@@ -2,9 +2,9 @@ package com.lwjhn.domino2json;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lwjhn.FileOperator;
 import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino2sql.config.DefaultConfig;
+import com.lwjhn.util.FileOperator;
 import lotus.domino.Document;
 import lotus.domino.DocumentCollection;
 import lotus.domino.Item;

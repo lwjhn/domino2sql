@@ -1,4 +1,4 @@
-package com.lwjhn;
+package com.lwjhn.util;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -34,13 +34,13 @@ public class UtilXML {
     }
 
     public static void transformer(InputStream xslSource, String xmlSource, OutputStream htmlResult) throws Exception {
-        transformer(xslSource, xmlSource, htmlResult, DefultEncoding);
+        transformer(xslSource, xmlSource, htmlResult, Charset.forName("UTF-8"));
     }
 
     public static void transformer(InputStream xslSource, String xmlSource, OutputStream htmlResult, Charset charset) throws Exception {
         ByteArrayInputStream binput = null;
         try {
-            transformer(xslSource, binput = new ByteArrayInputStream(xmlSource.getBytes(charset)), htmlResult, charset);
+            transformer(xslSource, binput = new ByteArrayInputStream(xmlSource.getBytes(charset)), htmlResult);
         } catch (Exception e) {
             throw e;
         } finally {

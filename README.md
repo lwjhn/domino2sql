@@ -9,8 +9,8 @@ import lotus.domino.*;
 import java.io.File;
 
 public class ArcAgent extends AgentBase {
-    final String configpath = "D:/EX_NPXC/arc.sql.config.json";
-    final String output = "D:/EX_NPXC/arc.sql.output.json";
+    final String configpath = "/EX_NPXC/arc.sql.config.json";
+    final String output = "/EX_NPXC/arc.sql.output.json";
     Session session = null;
     ArcConfig config = null;
     Action action = null;

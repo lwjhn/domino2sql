@@ -1,7 +1,10 @@
-package com.lwjhn;
+package com.lwjhn.util;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.util.StringJoiner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Author: lwjhn
@@ -197,11 +200,11 @@ public class FileOperator {
     }
 
     public static boolean newFile(String filename, InputStream is) throws Exception {
-        return newFile(new File(filename),is);
+        return newFile(new File(filename), is);
     }
 
     public static boolean newFile(String filename, byte[] buff) throws Exception {
-        return newFile(new File(filename),buff);
+        return newFile(new File(filename), buff);
     }
 
     public static boolean newFile(File file, byte[] buff) throws Exception {
@@ -252,18 +255,53 @@ public class FileOperator {
         }
     }
 
-    public static String getAvilableFileName(String base){
-        return base==null ? "" : base.replaceAll("[`~!@#$%^&*<>?:'\"{},.;/|\\\\]","");
+    public static final String FileDeliRegex = "[/\\\\]+";
+    public static final Pattern FileRootPattern = Pattern.compile("^([A-Za-z]:)?([/\\\\].*)");
+    public static final String FileFolderPathRegex = "(^|[/\\\\])[^/\\\\]+$";
+    public static final String FileNameRegex = ".*[/\\\\]";
+    public static final String FileAliasRegex = "(.*[/\\\\])|(\\.[0-9a-z]+$)";
+
+    public static String getAvilableFileName(String base) {
+        return base == null ? "" : base.replaceAll("[`~!@#$%^&*<>?:'\"{},;/|\\\\]", "");
+    }
+
+    public static String getAvilableFilePath(String base) {
+        return base == null ? "" : base.replaceAll("[`~!@#$%^&*<>?:'\"{},;|]", "").replaceAll(FileDeliRegex, "/");
     }
 
     public static String getAvailablePath(String... base) {
-        if(base.length<1) return "";
-        String path = matchFilePath(base[0]) ? base[0] : getAvilableFileName(base[0]);
-        base[0] = null;
-        for (String b : base) {
-            path += "/" + getAvilableFileName(b);
+        return getAvailablePath(false, base);
+    }
+
+    public static String getAvailablePath(boolean filterDiagonal, String... elements) {
+        StringJoiner joiner = new StringJoiner("/");
+        String buf;
+        Matcher matcher = FileRootPattern.matcher(buf = elements[0].replaceAll(FileDeliRegex, "/"));
+        if (matcher.find()) {
+            if (matcher.group(1) != null) joiner.add(matcher.group(1));
+            buf = matcher.group(2);
         }
-        return path.replaceAll("[/\\\\]+", "/");
+        joiner.add((filterDiagonal ? "/" + getAvilableFileName(buf) : getAvilableFilePath(buf))
+                .replaceAll("[/\\\\]+$", ""));
+        for (int index = 1; index < elements.length; index++) {
+            buf = (filterDiagonal ? getAvilableFileName(elements[index]) : getAvilableFilePath(elements[index]))
+                    .replaceAll("^[/\\\\]+|[/\\\\]+$", "");
+            if ("".equals(buf)) continue;
+            joiner.add(buf);
+        }
+        return joiner.toString();
+    }
+
+    public static String getFileFolderByRegex(String path) {
+        return path.replaceAll(FileFolderPathRegex, "").replaceAll(FileDeliRegex, "/");
+    }
+
+    public static String getFileNameByRegex(String path) {
+        return getAvilableFileName(path.replaceAll(FileNameRegex, ""));
+    }
+
+    public static String getFileAliasByRegex(String path) {
+        return getAvilableFileName(path.replaceAll(FileAliasRegex, ""));
     }
 }
 

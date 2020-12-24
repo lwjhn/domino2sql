@@ -1,4 +1,4 @@
-package com.lwjhn;
+package com.lwjhn.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +25,7 @@ public class ZipUtils {
             File sourceFile = new File(srcDir);
             compress(sourceFile, zos, sourceFile.getName(), KeepDirStructure);
         } catch (Exception e) {
-            throw new RuntimeException("zip error from com.lwjhn.ZipUtils", e);
+            throw new RuntimeException("zip error from com.lwjhn.util.ZipUtils", e);
         } finally {
             if (zos != null) {
                 try {
@@ -46,7 +46,7 @@ public class ZipUtils {
                 compress(file, zos, file.getName(), true);
             }
         } catch (Exception e) {
-            throw new RuntimeException("zip error from com.lwjhn.ZipUtils", e);
+            throw new RuntimeException("zip error from com.lwjhn.util.ZipUtils", e);
         } finally {
             if (zos != null) {
                 try {

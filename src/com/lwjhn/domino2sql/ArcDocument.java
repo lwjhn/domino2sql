@@ -2,12 +2,12 @@ package com.lwjhn.domino2sql;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.lwjhn.FileOperator;
 import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.domino2sql.config.ItemConfig;
+import com.lwjhn.util.FileOperator;
 import lotus.domino.*;
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -178,10 +178,10 @@ public class ArcDocument extends ArcBase {
             names.add(name);
             values.add("?");
             if (itemConfig.getJdbc_type() == null)
-                throw new Exception("prepareSql:: itemConfig jdbc_type is null or non-standard ! " + (name == null ? "" : name));
+                throw new Exception("prepareSql:: itemConfig jdbc_type is null or non-standard ! " + (name));
             if (itemConfig.getScale_length() < 1) itemConfig.setScale_length(0);
             if ((name = itemConfig.getDomino_name()) != null && !DefaultConfig.PATTERN_NAME.matcher(name).matches())
-                throw new Exception("prepareSql:: itemConfig domino_name is null or non-standard ! " + (name == null ? "" : name));
+                throw new Exception("prepareSql:: itemConfig domino_name is null or non-standard ! " + (name));
         }
         item_config_attachment = dbConfig.getSql_field_attachment();
         if (item_config_attachment != null && item_config_attachment.getSql_name() != null) {

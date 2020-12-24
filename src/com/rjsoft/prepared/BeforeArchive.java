@@ -1,13 +1,13 @@
 package com.rjsoft.prepared;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lwjhn.FileOperator;
 import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino2json.Document2Json;
 import com.lwjhn.domino2sql.PreparedDocument;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
+import com.lwjhn.util.FileOperator;
 import lotus.domino.*;
 
 import java.io.File;
@@ -34,7 +34,7 @@ public class BeforeArchive implements PreparedDocument {
 
             if ((srv = srcdoc.getItemValueString("MSSSERVER")) == null || "".equals(srv))
                 srv = srcdoc.getParentDatabase().getServer();
-            if (srv == null || (dbpath = srcdoc.getItemValueString("MSSDATABASE")) == null)
+            if (srv == null || (dbpath = srcdoc.getItemValueString("MSSDATABASE")) == null || "".equals(dbpath))
                 throw new Exception("can not find item of mssdatabase from document . " + srcdoc.getUniversalID());
             mssdb = mssdbc.getDatabase(srv, dbpath);
             if (mssdb == null || !mssdb.isOpen())
@@ -67,7 +67,7 @@ public class BeforeArchive implements PreparedDocument {
         RichTextItem item = null;
         JSONObject res = new JSONObject();
         try {
-            if (srv == null || dbpath == null || unid == null)
+            if (srv == null || dbpath == null || unid == null || "".equals(dbpath) || "".equals(unid))
                 return this;
             mssdb = mssdbc.getDatabase(srv, dbpath);
             if (mssdb == null || !mssdb.isOpen())
@@ -100,7 +100,7 @@ public class BeforeArchive implements PreparedDocument {
             mssdoc = attachdb.createDocument();
             mssdoc.replaceItemValue("form", form);
             mssdoc.replaceItemValue("AttachFile", file.getName());
-            mssdoc.replaceItemValue("AttachTitle", filename);
+            mssdoc.replaceItemValue("AttachTitle", FileOperator.getFileAliasByRegex(filename));
             mssdoc.replaceItemValue("DOCUNID", unid);
             mssdoc.replaceItemValue("UNID", mssdoc.getUniversalID());
             (item = mssdoc.createRichTextItem("tempbody"))
@@ -132,7 +132,7 @@ public class BeforeArchive implements PreparedDocument {
         this.version = version;
     }
 
-    public void recycle() throws Exception{
+    public void recycle() throws Exception {
 
     }
 }
