@@ -56,7 +56,7 @@ public class Action extends ArcBase {
 
     public ArcConfig archive() {
         for (DbConfig dbConfig : arcConfig.getOptions()) {
-            arcdoc.processing(dbConfig, connection, databaseCollection, mssdbc).recycle();
+            if(dbConfig.isEnable()) arcdoc.processing(dbConfig, connection, databaseCollection, mssdbc).recycle();
         }
         return arcConfig;
     }
