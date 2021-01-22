@@ -1,21 +1,16 @@
 package com.lwjhn.domino2sql;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.domino2sql.config.ItemConfig;
-import com.lwjhn.util.FileOperator;
 import lotus.domino.*;
-import org.apache.commons.text.StringEscapeUtils;
 
-import java.io.File;
-import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.regex.Matcher;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author: lwjhn

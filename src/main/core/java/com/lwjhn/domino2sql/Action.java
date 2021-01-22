@@ -8,8 +8,6 @@ import lotus.domino.Session;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.util.concurrent.Executors;
 
 /**
  * @Author: lwjhn

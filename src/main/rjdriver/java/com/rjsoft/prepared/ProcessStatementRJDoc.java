@@ -10,7 +10,6 @@ import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.domino2sql.config.ItemConfig;
 import com.lwjhn.util.FileOperator;
 import lotus.domino.*;
-import org.apache.commons.text.StringEscapeUtils;
 
 import java.io.File;
 import java.sql.Connection;
