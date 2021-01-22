@@ -54,8 +54,9 @@ public class Domino2SqlHelp {
     }
 
     public static String join(Iterable elements, CharSequence delimiter, SimpleDateFormat dateFormat) throws Exception {
-        Objects.requireNonNull(delimiter);
         Objects.requireNonNull(elements);
+        /*Objects.requireNonNull(delimiter);
+        Objects.requireNonNull(elements);*/
         StringJoiner joiner = new StringJoiner(delimiter == null ? DefaultConfig.String_Join_Delimiter : delimiter);
         for (Object cs : elements) {
             if (cs == null) {

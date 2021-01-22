@@ -40,6 +40,7 @@ public class Action extends ArcBase {
         databaseCollection = new DatabaseCollection(session, dbPoolSize);
         mssdbc = new DatabaseCollection(session, mssdbPoolSize);
         arcdoc = new ArcDocument();
+        this.setDebug(arcConfig.getDebugger());
     }
 
     public void checkArcConfig() throws Exception {

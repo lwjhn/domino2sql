@@ -53,7 +53,7 @@ public class testArc {
 
     @Test
     public void loadConfig() throws Exception{
-        ArcConfig config = ArcConfigSerialization.parseArcConfig(new File("D:\\Workspaces\\IDEA\\domino2sql\\src\\test\\file\\arc.sql.config.rj.json"));
+        ArcConfig config = ArcConfigSerialization.parseArcConfig(new File("D:\\Workspaces\\IDEA\\domino2sql\\src\\test\\file\\arc.sql.config.rjsoft.json"));
         if(config.getOptions()[0].getExtended_options()!=null) {
             ItemConfig attachment_config = config.getOptions()[0].getExtended_options().getObject("sql_field_attachment", ItemConfig.class);
             if(attachment_config!=null) {
@@ -67,9 +67,10 @@ public class testArc {
 
     @Test
     public void test2() throws Exception {
-        DriverManager.setLogWriter(new PrintWriter(System.out));
+        System.out.println(String[].class.getCanonicalName());
+/*        DriverManager.setLogWriter(new PrintWriter(System.out));
         Connection connection = createConnection("com.oscar.Driver", "jdbc:mysql://192.168.210.134:2003/OSCARDB?connectTimeout=1000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC", "FZSWOA", "FZSWOA");// createConnection("dm.jdbc.driver.DmDriver", "jdbc:dm://192.168.210.134:5236", "EX_NPXC", "EX_NPXCEX_NPXC");
-        System.out.println(">>>----> 1111");
+        System.out.println(">>>----> 1111");*/
     }
 
     @Test

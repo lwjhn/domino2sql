@@ -21,4 +21,6 @@ public class DefaultConfig {
     public static final Pattern PATTERN_EXT = Pattern.compile("\\.[0-9a-z]+$", Pattern.CASE_INSENSITIVE);
     public static final Pattern PATTERN_NAME = Pattern.compile("^(_|[a-zA-Z])(_|[a-zA-Z0-9])*$");
     public static final Pattern PATTERN_TABLE = Pattern.compile("^(_|[a-zA-Z])(_|[a-zA-Z0-9])*((\\.(_|[a-zA-Z])(_|[a-zA-Z0-9])*)$|$)");
+    public static final boolean DEBUGGER = true;
+    public static final boolean ENABLE = true;
 }

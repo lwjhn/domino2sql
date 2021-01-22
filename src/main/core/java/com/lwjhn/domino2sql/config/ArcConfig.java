@@ -16,6 +16,7 @@ public class ArcConfig {
     private DbConfig[] options = null;
     private String error_log = null;
     private JSONObject extended_options = null;
+    private boolean debugger = DefaultConfig.DEBUGGER;
     private boolean driver_manager_log = false;
 
     public ArcConfig() {
@@ -90,5 +91,13 @@ public class ArcConfig {
 
     public void setDriver_manager_log(boolean driver_manager_log) {
         this.driver_manager_log = driver_manager_log;
+    }
+
+    public boolean getDebugger() {
+        return debugger;
+    }
+
+    public void setDebugger(boolean debugger) {
+        this.debugger = debugger;
     }
 }

@@ -31,6 +31,7 @@ public class ProcessStatementRJDoc implements ProcessStatement {
     private JSONObject extended_options = null;
     private ItemConfig item_config_attachment = null;
     private int index = -1;
+
     @Override
     public void action(PreparedStatement preparedStatement, Document srcdoc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) throws NotesException, Exception {
         initConfig(dbConfig, databaseCollection);
@@ -38,13 +39,13 @@ public class ProcessStatementRJDoc implements ProcessStatement {
         preparedStatement.setObject(index, arcMssFiles(srcdoc, mssdbc).toJSONString(), item_config_attachment.getJdbc_type().getVendorTypeNumber(), item_config_attachment.getScale_length());
     }
 
-    private void initConfig(DbConfig dbConfig, DatabaseCollection databaseCollection) throws Exception{
-        if(dbConfig == this.dbConfig) return;
+    private void initConfig(DbConfig dbConfig, DatabaseCollection databaseCollection) throws Exception {
+        if (dbConfig == this.dbConfig) return;
         session = databaseCollection.getSession();
         index = dbConfig.getSql_field_others().length + 1;
         if ((ftppath = dbConfig.getFtppath()) == null)
             ftppath = DefaultConfig.FTPPATH;
-        if((extended_options = dbConfig.getExtended_options()) == null ) return;
+        if ((extended_options = dbConfig.getExtended_options()) == null) return;
         item_config_attachment = extended_options.getObject("sql_field_attachment", ItemConfig.class);
     }
 
@@ -88,7 +89,7 @@ public class ProcessStatementRJDoc implements ProcessStatement {
     }
 
     public void arcMssDoc(Document mssdoc, JSONObject resObject) throws Exception {
-        String srv = null, dbpath = null, key = null, url = null, dir = null, form = null;
+        String key = null, dir = null, form = null;
         int i;
         EmbeddedObject eo = null;
         JSONArray res = null;
@@ -97,12 +98,11 @@ public class ProcessStatementRJDoc implements ProcessStatement {
         try {
             if (mssdoc == null || (form = mssdoc.getItemValueString("form")) == null) return;
             form = form.toLowerCase();
-            url = "&Server=" + (srv = mssdoc.getParentDatabase().getServer()) + "&DbName=" + (dbpath = mssdoc.getParentDatabase().getFilePath()) + "&UNID=" + mssdoc.getUniversalID() + "&FileName=";
             if (ftppath != null)
                 new File(dir = FileOperator.getAvailablePath(
                         ftppath,
-                        srv.replaceAll("(/[^/]*)|([^/]*=)", ""),
-                        dbpath.replaceAll("[/\\\\.]", "-"),
+                        mssdoc.getParentDatabase().getServer().replaceAll("(/[^/]*)|([^/]*=)", ""),
+                        mssdoc.getParentDatabase().getFilePath().replaceAll("[/\\\\.]", "-"),
                         (key = mssdoc.getItemValueString("DOCUNID")) != null ? key : mssdoc.getUniversalID(), mssdoc.getItemValueString("form")
                 ).toLowerCase()).mkdirs();
 
@@ -115,20 +115,19 @@ public class ProcessStatementRJDoc implements ProcessStatement {
             for (String file : all) {
                 i = files.indexOf(file);
                 obj = new JSONObject();
-                obj.put("unid", mssdoc.getUniversalID());
+                //obj.put("unid", mssdoc.getUniversalID());
                 obj.put("name", file);
-                obj.put("url", DefaultConfig.DownloadPrefix + url + StringEscapeUtils.escapeJava(file));
-                if (i < 0 || vAlias.size() < i || "".equals(dbpath = String.valueOf(vAlias.get(i)))) {
+                if (i < 0 || vAlias.size() < i || "".equals(key = String.valueOf(vAlias.get(i)))) {
                     obj.put("alias", file);
                 } else {
                     matcher = DefaultConfig.PATTERN_EXT.matcher(file);
-                    obj.put("alias", dbpath + (matcher.find() ? matcher.group() : ""));
+                    obj.put("alias", key + (matcher.find() ? matcher.group() : ""));
                 }
                 if (dir != null) {
                     BaseUtils.recycle(eo);
                     if ((eo = mssdoc.getAttachment(file)) == null) continue;
-                    eo.extractFile(dbpath = dir + "/" + file);
-                    obj.put("local", dbpath);
+                    eo.extractFile(key = dir + "/" + file);
+                    obj.put("local", key);
                 }
                 res.add(obj);
             }

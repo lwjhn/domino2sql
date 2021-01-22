@@ -17,8 +17,8 @@ export default {
       "domino_after_prepared_driver": "com.lwjhn.test.AfterPrepareDocument",
       "domino_prepared_sqlquery_driver" : "com.rjsoft.prepared.PrepareSqlQueryRJDoc",
       "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDoc",
-      "extended_options": { //配置则导出MssDatabase相关文件附件，不配置则不导出附件，可以结合domino_before_prepared_driver设置导出内容
-        "sql_field_attachment": {
+      "extended_options": {
+        "sql_field_attachment": { //配置则导出MssDatabase相关文件附件，不配置则不导出附件，可以结合domino_before_prepared_driver设置导出内容
           "sql_name": "JSONATT",
           "jdbc_type": "VARCHAR",
           "scale_length": 0

@@ -41,6 +41,7 @@ public class ArcDocument extends ArcBase {
 
     public ArcDocument processing(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
         try {
+            this.setDebug(dbConfig.getDebugger());
             dbgMsg("start to archive database : " + dbConfig.getDomino_server() + " !! " + dbConfig.getDomino_dbpath());
             prepareSql(dbConfig, connection, databaseCollection, mssdbc);
             searchDb(dbConfig, databaseCollection);

@@ -11,12 +11,16 @@
     "domino_server": "PUBLIC/SRV/RJSOFT",
     "domino_dbpath": "egov/dispatch.nsf",
     "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2020-07-25]",
-    "domino_before_prepared_driver": "com.rjsoft.archive.BeforePreparedRJDoc",
+    "domino_before_prepared_driver": "com.lwjhn.test.BeforePrepareDocument",
     "domino_after_prepared_driver": "com.lwjhn.test.AfterPrepareDocument",
-    "sql_field_attachment": {
-      "sql_name": "JSONATT",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
+    "domino_prepared_sqlquery_driver" : "com.lwjhn.test.PrepareSqlQueryForMss",
+    "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDoc",
+    "extended_options": {
+      "sql_field_attachment": {
+        "sql_name": "JSONATT",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      }
     },
     "sql_table": "XC_DEMO.EGOV_DISPATCH_HISTORY",
     "sql_field_others": [{

@@ -12,7 +12,7 @@
     "domino_dbpath": "egov/dispatch.nsf",
     "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2020-07-25]",
     "domino_before_prepared_driver": "com.rjsoft.prepared.BeforePreparedRJDoc",
-    "domino_after_prepared_driver": "com.lwjhn.test.AfterPrepareDocument",
+    "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
     "domino_prepared_sqlquery_driver" : "com.rjsoft.prepared.PrepareSqlQueryRJDoc",
     "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDoc",
     "extended_options": {

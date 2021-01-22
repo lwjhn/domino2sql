@@ -1,4 +1,4 @@
-package com.lwjhn.test;
+package com.lwjhn.domino2sql.driver;
 
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino2sql.PreparedDocument;

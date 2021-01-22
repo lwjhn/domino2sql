@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSONObject;
 public class DbConfig {
     private String vesion = DefaultConfig.VERSION;
     private String ftppath = DefaultConfig.FTPPATH;
-    private boolean enable = true;
+    private boolean enable = DefaultConfig.ENABLE;
     private String domino_server = null;
     private String domino_dbpath = null;
     private String domino_query = null;
@@ -28,6 +28,7 @@ public class DbConfig {
     private String domino_prepared_sqlquery_driver = null;
     private String domino_process_statement_driver = null;
     private JSONObject extended_options = null;
+    private boolean debugger = DefaultConfig.DEBUGGER;
 
     public DbConfig(String domino_server, String domino_dbpath, String domino_query) {
         this.domino_server = domino_server;
@@ -188,5 +189,13 @@ public class DbConfig {
 
     public void setExtended_options(JSONObject extended_options) {
         this.extended_options = extended_options;
+    }
+
+    public boolean getDebugger() {
+        return debugger;
+    }
+
+    public void setDebugger(boolean debugger) {
+        this.debugger = debugger;
     }
 }
