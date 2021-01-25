@@ -6,21 +6,116 @@
   "driver_manager_log": false,
   "options": [{
     "enable": true,
-    "vesion": "1.6.4",
-    "ftppath": "/FTP_XC/",
-    "domino_server": "PUBLIC/SRV/RJSOFT",
-    "domino_dbpath": "egov/dispatch.nsf",
-    "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2020-07-25]",
-    "domino_before_prepared_driver": "com.lwjhn.test.BeforePrepareDocument",
-    "domino_after_prepared_driver": "com.lwjhn.test.AfterPrepareDocument",
-    "domino_prepared_sqlquery_driver" : "com.lwjhn.test.PrepareSqlQueryForMss",
-    "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDoc",
+    "vesion": "1.1.1",
+    "domino_server": "hzjtxxserver/湖州交通学校/浙江交通",
+    "domino_dbpath": "ZLOA/FwBGS.nsf",
+    "domino_query": "Form=\"SendDocument\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2021-07-25]",
+    "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
+    "domino_process_statement_driver": "com.lwjhn.domino2sql.driver.ProcessExtensionDocuments",
     "extended_options": {
-      "sql_field_attachment": {
-        "sql_name": "JSONATT",
-        "jdbc_type": "VARCHAR",
-        "scale_length": 0
-      }
+      "show_log": true,
+      "throws_error": true,
+      "children": [{
+        "enable": true,
+        "debugger" : true,
+        "vesion": "1.1.1",
+        "ftppath": "/FTP_XC/",
+        "domino_server": "@ServerName",
+        "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/fj.nsf\"",
+        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\"+@Text(@DocumentUniqueID)",
+        "domino_prepared_sqlquery_driver": "com.lwjhn.domino2sql.driver.PrepareSqlQueryForMss",
+        "domino_process_statement_driver": "com.lwjhn.domino2sql.driver.ProcessExtractFile",
+        "extended_options": {
+          "show_log": true,
+          "throws_error": true,
+          "sql_field_attachment": {
+            "sql_name": "JSONATT",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          }
+        },
+        "sql_table": "XC_DEMO.EGOV_ATTACHMENT",
+        "sql_field_others": [{
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+          {
+            "sql_name": "DOMINOID",
+            "domino_formula": "@Text(@DocumentUniqueID)",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          },
+          {
+            "sql_name": "DOCUNID",
+            "domino_name": "LINKTO",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          },
+          {
+            "sql_name": "FORM",
+            "domino_name": "FORM",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          },
+          {
+            "sql_name": "AttachFile",
+            "domino_name": "NAME",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          }
+        ]
+      },{
+        "enable": true,
+        "debugger" : true,
+        "vesion": "1.1.1",
+        "ftppath": "/FTP_XC/",
+        "domino_server": "@ServerName",
+        "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/yjs.nsf\"",
+        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\"+@Text(@DocumentUniqueID)",
+        "extended_options": {
+          "show_log": true,
+          "throws_error": true,
+          "sql_field_attachment": {
+            "sql_name": "JSONATT",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          }
+        },
+        "sql_table": "XC_DEMO.EGOV_OPINION",
+        "sql_field_others": [{
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+          {
+            "sql_name": "DOMINOID",
+            "domino_formula": "@Text(@DocumentUniqueID)",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          },
+          {
+            "sql_name": "PARENTID",
+            "domino_name": "PARENTID",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          },
+          {
+            "sql_name": "FORM",
+            "domino_name": "FORM",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          },
+          {
+            "sql_name": "AllSuggest",
+            "domino_name": "AllSuggest",
+            "jdbc_type": "VARCHAR",
+            "scale_length": 0
+          }
+        ]
+      }]
     },
     "sql_table": "XC_DEMO.EGOV_DISPATCH_HISTORY",
     "sql_field_others": [{
@@ -28,92 +123,23 @@
       "domino_name": "ArcXC_UUID_16",
       "jdbc_type": "VARCHAR",
       "scale_length": 0
-    }, {
-      "sql_name": "DOMINOID",
-      "domino_formula": "@Text(@DocumentUniqueID)",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "Subject",
-      "domino_name": "Subject",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "DocWord",
-      "domino_name": "DocWord",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "DocType",
-      "domino_name": "DocType",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "UrgentLevel",
-      "domino_name": "UrgentLevel",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "DraftDept",
-      "domino_name": "DraftDept",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "SecLevel",
-      "domino_name": "SecLevel",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "FileType",
-      "domino_name": "FileType",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "IsPublic",
-      "domino_name": "IsPublic",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "MainSend",
-      "domino_name": "MainSend",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "CopySend",
-      "domino_name": "CopySend",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "PrintTerm",
-      "domino_name": "PrintTerm",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "Remark",
-      "domino_name": "Remark",
-      "jdbc_type": "VARCHAR",
-      "scale_length": 0
-    }, {
-      "sql_name": "SignDateTime",
-      "domino_name": "SignDateTime",
-      "jdbc_type": "TIMESTAMP",
-      "scale_length": 0
-    }, {
-      "sql_name": "DraftDate",
-      "domino_name": "DraftDate",
-      "jdbc_type": "TIMESTAMP",
-      "scale_length": 0
     },
       {
-        "sql_name": "PrintNum",
-        "jdbc_type": "INTEGER",
-        "domino_formula": "1",
+        "sql_name": "DOMINOID",
+        "domino_formula": "@Text(@DocumentUniqueID)",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      {
+        "sql_name": "Subject",
+        "domino_name": "TT",
+        "jdbc_type": "VARCHAR",
         "scale_length": 0
       },
       {
         "sql_name": "OTHER",
         "jdbc_type": "VARCHAR",
-        "domino_formula": "\"測試公式\"",
+        "domino_formula": "\"哈哈\"",
         "scale_length": 0
       }
     ]
