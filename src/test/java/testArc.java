@@ -67,7 +67,8 @@ public class testArc {
 
     @Test
     public void test2() throws Exception {
-        System.out.println(String[].class.getCanonicalName());
+        System.out.println(Integer.toHexString(-1));
+        System.out.println(String.format("%08X",-2));
 /*        DriverManager.setLogWriter(new PrintWriter(System.out));
         Connection connection = createConnection("com.oscar.Driver", "jdbc:mysql://192.168.210.134:2003/OSCARDB?connectTimeout=1000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC", "FZSWOA", "FZSWOA");// createConnection("dm.jdbc.driver.DmDriver", "jdbc:dm://192.168.210.134:5236", "EX_NPXC", "EX_NPXCEX_NPXC");
         System.out.println(">>>----> 1111");*/

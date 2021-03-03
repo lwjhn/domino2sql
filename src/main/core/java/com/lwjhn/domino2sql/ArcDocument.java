@@ -83,6 +83,7 @@ public class ArcDocument extends ArcBase {
         Item item = null;
         int index = 0;
         try {
+            doc.replaceItemValue(DefaultConfig.Domino_UUID_Prefix + "8", ArcUtils.getUUID8());
             doc.replaceItemValue(DefaultConfig.Domino_UUID_Prefix + "16", ArcUtils.getUUID16());
             doc.replaceItemValue(DefaultConfig.Domino_UUID_Prefix + "32", ArcUtils.getUUID32());
             for (ItemConfig itemConfig : dbConfig.getSql_field_others()) {
@@ -94,7 +95,13 @@ public class ArcDocument extends ArcBase {
                 } else {
                     value = null;
                 }
-                preparedStatement.setObject(++index, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
+                try {
+                    preparedStatement.setObject(++index, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
+                } catch (Exception setError) {
+                    throw itemConfig != null && itemConfig.getSql_name() != null
+                            ? new Exception("at sql_name of " + itemConfig.getSql_name() + System.lineSeparator() + setError.getMessage(), setError.getCause())
+                            : setError;
+                }
             }
 
             if (processStatement != null)
@@ -140,14 +147,14 @@ public class ArcDocument extends ArcBase {
         List<String> names = new ArrayList<>(), values = new ArrayList<>();
         for (ItemConfig itemConfig : itemConfigs) {
             if ((name = itemConfig.getSql_name()) == null || !DefaultConfig.PATTERN_NAME.matcher(name).matches())
-                throw new Exception("prepareSql:: itemConfig sql_name is null or non-standard ! " + (name == null ? "" : name));
+                throw new Exception("prepareSql:: itemConfig [sql_name] is null or non-standard ! " + (name == null ? "" : name));
             names.add(name);
             values.add("?");
             if (itemConfig.getJdbc_type() == null)
-                throw new Exception("prepareSql:: itemConfig jdbc_type is null or non-standard ! " + (name));
+                throw new Exception("prepareSql:: itemConfig [jdbc_type] is null or non-standard ! " + (name));
             if (itemConfig.getScale_length() < 1) itemConfig.setScale_length(0);
             if ((name = itemConfig.getDomino_name()) != null && !DefaultConfig.PATTERN_NAME.matcher(name).matches())
-                throw new Exception("prepareSql:: itemConfig domino_name is null or non-standard ! " + (name));
+                throw new Exception("prepareSql:: itemConfig [domino_name] is non-standard ! " + (name));
         }
 
         preparedSqlQuery = (name = dbConfig.getDomino_prepared_sqlquery_driver()) == null || "".equals(name) ?
@@ -182,6 +189,7 @@ public class ArcDocument extends ArcBase {
         if (doc == null) return;
         try {
             doc.replaceItemValue(error_flag_field, msg);
+            doc.save(true, false);
         } catch (Exception e) {
         }
     }

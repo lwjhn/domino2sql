@@ -22,7 +22,7 @@
         "ftppath": "/FTP_XC/",
         "domino_server": "@ServerName",
         "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/fj.nsf\"",
-        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\"+@Text(@DocumentUniqueID)",
+        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\\\"\"+@Text(@DocumentUniqueID)+ \"\\\"\"",
         "domino_prepared_sqlquery_driver": "com.lwjhn.domino2sql.driver.PrepareSqlQueryForMss",
         "domino_process_statement_driver": "com.lwjhn.domino2sql.driver.ProcessExtractFile",
         "extended_options": {
@@ -73,7 +73,7 @@
         "ftppath": "/FTP_XC/",
         "domino_server": "@ServerName",
         "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/yjs.nsf\"",
-        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\"+@Text(@DocumentUniqueID)",
+        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\\\"\"+@Text(@DocumentUniqueID)+ \"\\\"\"",
         "extended_options": {
           "show_log": true,
           "throws_error": true,

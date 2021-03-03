@@ -44,6 +44,32 @@ public class XmlBase {
         }
     }
 
+    public static String write(Charset charset, org.dom4j.Document document) throws Exception {
+        ByteArrayOutputStream swapStream = null;
+        try {
+            swapStream = new ByteArrayOutputStream();    //swapStream.reset();
+            write(document, swapStream, charset);
+            return new String(swapStream.toByteArray(), charset);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+
+        }
+    }
+
+    public static InputStream write(org.dom4j.Document document, Charset charset) throws Exception {
+        ByteArrayOutputStream swapStream = null;
+        try {
+            swapStream = new ByteArrayOutputStream();    //swapStream.reset();
+            write(document, swapStream, charset);
+            return new ByteArrayInputStream(swapStream.toByteArray());
+        } catch (Exception e) {
+            throw e;
+        } finally {
+
+        }
+    }
+
     public static void write(org.dom4j.Document document, OutputStream output, Charset charset) throws Exception {
         OutputStreamWriter outputStreamWriter = null;
         try {

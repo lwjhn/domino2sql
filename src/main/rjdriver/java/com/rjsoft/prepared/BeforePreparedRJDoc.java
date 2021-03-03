@@ -30,6 +30,7 @@ public class BeforePreparedRJDoc extends BeforeArchive {
         RichTextItem item = null;
         try {
             attachdb = mssdbc.getDatabase(srv=srcdoc.getItemValueString("MSSSERVER"), dbpath=srcdoc.getItemValueString("MSSDATABASE"));
+            if(attachdb == null || !attachdb.isOpen()) throw new Exception("mssdatabase is nothing , or can't open . master docid " + unid);
             mssdc = attachdb.search("Form=\"" + form + "\" & DOCUNID = \"" + unid + "\"", null, 1);
             if (mssdc.getCount() == 1) {
                 mssdoc = mssdc.getFirstDocument();

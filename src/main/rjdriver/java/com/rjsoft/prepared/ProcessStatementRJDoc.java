@@ -116,7 +116,7 @@ public class ProcessStatementRJDoc implements ProcessStatement {
                 obj = new JSONObject();
                 //obj.put("unid", mssdoc.getUniversalID());
                 obj.put("name", file);
-                if (i < 0 || vAlias.size() < i || "".equals(key = String.valueOf(vAlias.get(i)))) {
+                if (i < 0 || vAlias.size() <= i || "".equals(key = String.valueOf(vAlias.get(i)))) {
                     obj.put("alias", file);
                 } else {
                     matcher = DefaultConfig.PATTERN_EXT.matcher(file);

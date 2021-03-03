@@ -35,6 +35,7 @@ public class ProcessExtensionDocuments extends Message implements ProcessStateme
         initConfig(dbConfig);
         if (childDbConfig == null) return;
         for (DbConfig dbcfg : childDbConfig) {
+            if(!dbcfg.isEnable()) continue;
             dbcfg.setDomino_server(formula = evaluate(dbcfg.getDomino_server(), srcdoc, databaseCollection.getSession()));
             if (formula == null) {
                 throwsError("processing children : parameter server is null !");

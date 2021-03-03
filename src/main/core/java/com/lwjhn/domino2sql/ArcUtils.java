@@ -1,6 +1,5 @@
 package com.lwjhn.domino2sql;
 
-import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -14,9 +13,11 @@ public class ArcUtils {
         return UUID.randomUUID().toString().replaceAll("-","");
     }
 
+    public static String getUUID8() {
+        return String.format("%08X",UUID.randomUUID().hashCode());
+    }
+
     public static String getUUID16() {
-        int first = new Random(10).nextInt(8) + 1,
-                hashCodeV = UUID.randomUUID().toString().hashCode();
-        return first + String.format("%015d", hashCodeV < 0 ? -hashCodeV : hashCodeV);
+        return getUUID8() + getUUID8();
     }
 }
