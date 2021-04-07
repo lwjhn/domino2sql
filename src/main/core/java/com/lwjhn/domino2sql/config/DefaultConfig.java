@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 public class DefaultConfig {
     public static final String VERSION = "1";
     public static final String FTPPATH = "/FTP_XC/";
+    public static final String FTPPATH_REGEX = "^[a-zA-Z]:";
     public static final String Domino_Error_Flag_Field = "ArcXC_Error_FLAG";
     public static final String Domino_Succ_Flag_Field = "ArcXC_Succ_FLAG";
     public static final String String_Join_Delimiter ="; ";

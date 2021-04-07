@@ -67,6 +67,7 @@ public class testArc {
 
     @Test
     public void test2() throws Exception {
+        System.out.println(new File("C:/temp/dispatch.xml").getCanonicalPath().replaceAll("^[a-zA-Z]:",""));
         System.out.println(Integer.toHexString(-1));
         System.out.println(String.format("%08X",-2));
 /*        DriverManager.setLogWriter(new PrintWriter(System.out));

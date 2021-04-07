@@ -8,15 +8,14 @@ import com.alibaba.fastjson.JSONObject;
  * @Description: com.lwjhn.domino2sql
  * @Version: 1.0
  */
-public class DbConfig {
+public class DbConfig extends DominoQuery {
     private String vesion = DefaultConfig.VERSION;
     private String ftppath = DefaultConfig.FTPPATH;
+    private String ftppath_regex = DefaultConfig.FTPPATH_REGEX;
     private boolean enable = DefaultConfig.ENABLE;
-    private String domino_server = null;
-    private String domino_dbpath = null;
-    private String domino_query = null;
     private String domino_error_flag_field = DefaultConfig.Domino_Error_Flag_Field;
     private String domino_succ_flag_field = DefaultConfig.Domino_Succ_Flag_Field;
+    private DominoQuery[] domino_queries = null;
     private String sql_table = null;
     private ItemConfig[] sql_field_others = null;
     private String action_error_log = null;
@@ -30,13 +29,23 @@ public class DbConfig {
     private JSONObject extended_options = null;
     private boolean debugger = DefaultConfig.DEBUGGER;
 
+    public boolean isDebugger() {
+        return debugger;
+    }
+
     public DbConfig(String domino_server, String domino_dbpath, String domino_query) {
-        this.domino_server = domino_server;
-        this.domino_dbpath = domino_dbpath;
-        this.domino_query = domino_query;
+        super(domino_server, domino_dbpath, domino_query);
     }
 
     public DbConfig() {
+    }
+
+    public DominoQuery[] getDomino_queries() {
+        return domino_queries;
+    }
+
+    public void setDomino_queries(DominoQuery[] domino_queries) {
+        this.domino_queries = domino_queries;
     }
 
     public String getAction_error_log() {
@@ -95,36 +104,20 @@ public class DbConfig {
         this.ftppath = ftppath;
     }
 
+    public String getFtppath_regex() {
+        return ftppath_regex;
+    }
+
+    public void setFtppath_regex(String ftppath_regex) {
+        this.ftppath_regex = ftppath_regex;
+    }
+
     public boolean isEnable() {
         return enable;
     }
 
     public void setEnable(boolean enable) {
         this.enable = enable;
-    }
-
-    public String getDomino_server() {
-        return domino_server;
-    }
-
-    public void setDomino_server(String domino_server) {
-        this.domino_server = domino_server;
-    }
-
-    public String getDomino_dbpath() {
-        return domino_dbpath;
-    }
-
-    public void setDomino_dbpath(String domino_dbpath) {
-        this.domino_dbpath = domino_dbpath;
-    }
-
-    public String getDomino_query() {
-        return domino_query;
-    }
-
-    public void setDomino_query(String domino_query) {
-        this.domino_query = domino_query;
     }
 
     public String getDomino_error_flag_field() {

@@ -1,5 +1,7 @@
 package com.lwjhn.util;
 
+import java.io.Closeable;
+
 /**
  * @Author: lwjhn
  * @Date: 2020-11-20
@@ -10,10 +12,14 @@ public class AutoCloseableBase {
     public static void close(AutoCloseable... args) {
         if (args == null) return;
         for (AutoCloseable arg : args) {
-            try {
-                if (arg != null) arg.close();
-            } catch (Exception e) {
-            }
+            close(arg);
+        }
+    }
+
+    public static void close(AutoCloseable arg) {
+        try {
+            if (arg != null) arg.close();
+        } catch (Exception e) {
         }
     }
 }

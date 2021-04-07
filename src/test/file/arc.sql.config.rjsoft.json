@@ -115,6 +115,12 @@
         "jdbc_type": "VARCHAR",
         "domino_formula": "\"測試公式\"",
         "scale_length": 0
+      },
+      {
+        "sql_name" : "PASS_PEOPLE",
+        "jdbc_type": "VARCHAR",
+        "domino_formula": "UNID:=@Text(@DocumentUniqueID);\nret:=@DbLookup(\"\":\"Nocache\";MSSServer:MSSPass;\"MessageBySource\"; UNID; \"ReadedUser\");\nret:=@If(@IsError(ret);@Text(ret);ret);\nret1:=@DbLookup(\"\":\"Nocache\";MSSServer:MSSPass;\"MessageBySource\"; UNID; \"TOUSER\");\nret1:=@If(@IsError(ret1);\"Error_TOUSER\";ret1);\n@Name([CN];@Unique(ret:ret1))",
+        "scale_length": 0
       }
     ]
   }]

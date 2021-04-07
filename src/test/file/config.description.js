@@ -8,6 +8,7 @@ export default {
       "enable": true, //是否执行
       "version": "1.1", //版本号，导出文件路径含版本号，及domino文件将保持版本号，当迁移中断后，可以排除错误文档后继续归档。
       "ftppath": "/FTP_XC/", //导出本地附件路径
+      "ftppath_regex": "", //导出路径替换特定字符
       "domino_server": "", //迁移数据库所属服务器
       "domino_dbpath": "", //迁移数据库路径
       "domino_query": "Form=\"Document\" & Published=\"1\"", //迁移文档dbsearch查询公式
