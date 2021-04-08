@@ -53,6 +53,8 @@ public class ArcDocument extends ArcBase {
             if (dominoQueries == null) return this;
 
             for (DominoQuery dominoQuery : dominoQueries) {
+                if(!domigitnoQuery.isEnable()) continue;
+
                 System.out.println((server = dominoQuery.getDomino_server() == null ? dbConfig.getDomino_server() : dominoQuery.getDomino_server()) == null);
                 System.out.println((dbpath = dominoQuery.getDomino_dbpath() == null ? dbConfig.getDomino_dbpath() : dominoQuery.getDomino_dbpath()) == null);
                 System.out.println((query = dominoQuery.getDomino_query() == null ? dbConfig.getDomino_query() : dominoQuery.getDomino_query()) == null);
@@ -135,10 +137,12 @@ public class ArcDocument extends ArcBase {
                     value = null;
                 }
                 try {
+                    if(value!=null && value instanceof String && itemConfig.getScale_length()>0 && ((String) value).length()>itemConfig.getScale_length())
+                        throw new Exception("value too long . string length is " + ((String) value).length() + " , scale length is " + itemConfig.getScale_length() + ".");
                     preparedStatement.setObject(++index, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
                 } catch (Exception setError) {
                     throw itemConfig != null && itemConfig.getSql_name() != null
-                            ? new Exception("at sql_name of " + itemConfig.getSql_name() + System.lineSeparator() + setError.getMessage(), setError.getCause())
+                            ? new Exception("at sql_name of " + itemConfig.getSql_name() + System.lineSeparator() + " error: " + setError.getMessage(), setError.getCause())
                             : setError;
                 }
             }

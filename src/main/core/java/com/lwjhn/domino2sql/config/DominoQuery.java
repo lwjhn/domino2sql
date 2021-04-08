@@ -10,6 +10,7 @@ public class DominoQuery {
     private String domino_server = null;
     private String domino_dbpath = null;
     private String domino_query = null;
+    private boolean enable = DefaultConfig.ENABLE;
 
     public String getDomino_server() {
         return domino_server;
@@ -17,6 +18,14 @@ public class DominoQuery {
 
     public void setDomino_server(String domino_server) {
         this.domino_server = domino_server;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 
     public String getDomino_dbpath() {
