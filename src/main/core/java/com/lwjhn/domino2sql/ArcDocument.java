@@ -7,6 +7,7 @@ import com.lwjhn.domino2sql.config.DominoQuery;
 import com.lwjhn.domino2sql.config.ItemConfig;
 import lotus.domino.*;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,37 +38,41 @@ public class ArcDocument extends ArcBase {
 
     public ArcDocument processing(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
         try {
-            this.setDebug(dbConfig.getDebugger());
+            this.setDebug(dbConfig.isDebugger());
             prepareSql(dbConfig, connection, databaseCollection, mssdbc);
             session = databaseCollection.getSession();  //using lotus formula .
-            String server, dbpath, query;
-
-            if ((server = dbConfig.getDomino_server()) != null && (dbpath = dbConfig.getDomino_dbpath()) != null && (query = dbConfig.getDomino_query()) != null) {
-                dbgMsg("start to archive default database : " + server + " !! " + dbpath);
-                searchDb(server, dbpath, query, databaseCollection);
-                processLoop(dbConfig, connection, databaseCollection, mssdbc, query);
-                dbgMsg("end to archive default database : " + server + " !! " + dbpath);
-            }
 
             DominoQuery[] dominoQueries = dbConfig.getDomino_queries();
+            if (dbConfig.getDomino_server() != null && dbConfig.getDomino_dbpath() != null && dbConfig.getDomino_query() != null) {
+                if (dominoQueries == null || dominoQueries.length < 1) {
+                    if (dbConfig.isEnable()) processLoop(dbConfig, connection, databaseCollection, mssdbc);
+                    return this;
+                }
+            }
             if (dominoQueries == null) return this;
 
+            DominoQuery defaultQuery = dbConfig.clone(), initQuery = new DominoQuery();
+            Object val;
             for (DominoQuery dominoQuery : dominoQueries) {
-                if(!domigitnoQuery.isEnable()) continue;
+                if (!dominoQuery.isEnable()) continue;
+                for (Field field : DominoQuery.class.getDeclaredFields()) {
+                    field.setAccessible(true);
+                    if ((val = field.get(dominoQuery)) == field.get(initQuery))
+                        val = field.get(defaultQuery);
+                    field.set(dbConfig, val);
+                }
 
-                System.out.println((server = dominoQuery.getDomino_server() == null ? dbConfig.getDomino_server() : dominoQuery.getDomino_server()) == null);
-                System.out.println((dbpath = dominoQuery.getDomino_dbpath() == null ? dbConfig.getDomino_dbpath() : dominoQuery.getDomino_dbpath()) == null);
-                System.out.println((query = dominoQuery.getDomino_query() == null ? dbConfig.getDomino_query() : dominoQuery.getDomino_query()) == null);
-                if ((server = dominoQuery.getDomino_server() == null ? dbConfig.getDomino_server() : dominoQuery.getDomino_server()) == null
-                        || (dbpath = dominoQuery.getDomino_dbpath() == null ? dbConfig.getDomino_dbpath() : dominoQuery.getDomino_dbpath()) == null
-                        || (query = dominoQuery.getDomino_query() == null ? dbConfig.getDomino_query() : dominoQuery.getDomino_query()) == null
-                )
-                    continue;
+                processLoop(dbConfig, connection, databaseCollection, mssdbc);
 
-                dbgMsg("start to archive database : " + server + " !! " + dbpath);
-                searchDb(server, dbpath, query, databaseCollection);
-                processLoop(dbConfig, connection, databaseCollection, mssdbc, query);
-                dbgMsg("end to archive database : " + server + " !! " + dbpath);
+                for (Field field : DominoQuery.class.getDeclaredFields()) {
+                    field.setAccessible(true);
+                    field.set(dominoQuery, field.get(dbConfig));
+                }
+            }
+
+            for (Field field : DominoQuery.class.getDeclaredFields()) {
+                field.setAccessible(true);
+                field.set(dbConfig, field.get(defaultQuery));
             }
         } catch (Exception e) {
             dbConfig.setAction_error_log(dbgMsg(getStackMsg(e)));
@@ -81,35 +86,55 @@ public class ArcDocument extends ArcBase {
         return this;
     }
 
-    private ArcDocument processLoop(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc, String query) {
+    private ArcDocument processLoop(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
+        String server = null, dbpath = null, query = null;
         try {
+            this.setDebug(dbConfig.isDebugger());
+            if ((server = dbConfig.getDomino_server()) == null || (dbpath = dbConfig.getDomino_dbpath()) == null || (query = dbConfig.getDomino_query()) == null)
+                return this;
+            dbgMsg("start to archive default database : " + server + " !! " + dbpath);
+            searchDb(server, dbpath, query, databaseCollection);
             if (dc == null)
                 throw new Exception("the document colllection is null , not initialization !");
-            dbgMsg("search database return document count : " + dc.getCount() + " ! " + dbConfig.getDomino_server() + " !! " + dbConfig.getDomino_dbpath() + (query != null ? "\n formula: " + query : ""));
-            dbConfig.setAction_all_count(dc.getCount());
+
+            dbgMsg("search database return document count : " + dc.getCount() + " ! " + dbConfig.getDomino_server() + " !! " + dbConfig.getDomino_dbpath() + "\n formula: " + dbConfig.getDomino_query());
             dbConfig.setAction_err_count(err_ct = 0);
             dbConfig.setAction_succ_count(succ_ct = 0);
+            dbConfig.setAction_all_count(dc.getCount());
             doc = dc.getFirstDocument();
             while (doc != null) {
                 if (beforePreparedMethod != null) {
                     beforePreparedMethod.action(doc, dbConfig, connection, databaseCollection, mssdbc);
                     beforePreparedMethod.recycle();
                 }
-                archive(doc, dbConfig, connection, databaseCollection, mssdbc);
-                if (afterPreparedMethod != null) {
-                    afterPreparedMethod.action(doc, dbConfig, connection, databaseCollection, mssdbc);
-                    afterPreparedMethod.recycle();
+                if (archive(doc, dbConfig, connection, databaseCollection, mssdbc)) {
+                    if (afterPreparedMethod != null) {
+                        afterPreparedMethod.action(doc, dbConfig, connection, databaseCollection, mssdbc);
+                        afterPreparedMethod.recycle();
+                    }
+                    succ_ct++;
+                } else {
+                    err_ct++;
+                    if(!dbConfig.isError_continue())
+                        return this;
                 }
                 doc = dc.getNextDocument(tdoc = doc);
                 recycle(tdoc);
                 tdoc = null;
             }
-            dbConfig.setAction_err_count(err_ct);
-            dbConfig.setAction_succ_count(succ_ct);
             dbConfig.setAction_error_log(null);
         } catch (Exception e) {
             dbConfig.setAction_error_log(dbgMsg(getStackMsg(e)));
         } finally {
+            if (server != null && dbpath != null && query != null) {
+                dbConfig.setAction_err_count(err_ct);
+                dbConfig.setAction_succ_count(succ_ct);
+                dbgMsg(
+                        "end to archive default database : " + server + " !! " + dbpath + "!!  formula : " + query + (dc != null ?
+                                "all count is " + dbConfig.getAction_all_count() + ", " + "success count is " + succ_ct + ", " + "error count is " + err_ct : ""
+                        )
+                );
+            }
             recycle(tdoc, doc, dc);
             tdoc = null;
             doc = null;
@@ -118,7 +143,7 @@ public class ArcDocument extends ArcBase {
         return this;
     }
 
-    private void archive(Document doc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
+    private boolean archive(Document doc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
         String formula;
         Object value;
         Item item = null;
@@ -137,7 +162,7 @@ public class ArcDocument extends ArcBase {
                     value = null;
                 }
                 try {
-                    if(value!=null && value instanceof String && itemConfig.getScale_length()>0 && ((String) value).length()>itemConfig.getScale_length())
+                    if (value != null && value instanceof String && itemConfig.getScale_length() > 0 && ((String) value).length() > itemConfig.getScale_length())
                         throw new Exception("value too long . string length is " + ((String) value).length() + " , scale length is " + itemConfig.getScale_length() + ".");
                     preparedStatement.setObject(++index, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
                 } catch (Exception setError) {
@@ -155,9 +180,11 @@ public class ArcDocument extends ArcBase {
             doc.removeItem(error_flag_field);
             doc.replaceItemValue(succ_flag_field, version);
             doc.save(true, false);
+            return true;
         } catch (Exception e) {
             dbConfig.setAction_error_log(dbgMsg(getStackMsg(e)));
             setDocErrLog(doc, dbConfig.getAction_error_log());
+            return false;
         } finally {
             recycle(item);
         }

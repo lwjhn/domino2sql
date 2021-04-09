@@ -6,11 +6,103 @@ package com.lwjhn.domino2sql.config;
  * @Description: com.lwjhn.domino2sql.config
  * @Version: 1.0
  */
-public class DominoQuery {
+public class DominoQuery implements Cloneable {
+    private String vesion = DefaultConfig.VERSION;
+    private String ftppath = DefaultConfig.FTPPATH;
+    private String ftppath_regex = DefaultConfig.FTPPATH_REGEX;
     private String domino_server = null;
     private String domino_dbpath = null;
     private String domino_query = null;
     private boolean enable = DefaultConfig.ENABLE;
+    private boolean error_continue = DefaultConfig.PROCESS_ERROR_CONTINUNE;
+
+    private String domino_error_flag_field = DefaultConfig.Domino_Error_Flag_Field;
+    private String domino_succ_flag_field = DefaultConfig.Domino_Succ_Flag_Field;
+    private String action_error_log = null;
+    private int action_all_count = 0;
+    private int action_succ_count = 0;
+    private int action_err_count = 0;
+    private boolean debugger = DefaultConfig.DEBUGGER;
+
+    public String getVesion() {
+        return vesion;
+    }
+
+    public void setVesion(String vesion) {
+        this.vesion = vesion;
+    }
+
+    public String getFtppath() {
+        return ftppath;
+    }
+
+    public void setFtppath(String ftppath) {
+        this.ftppath = ftppath;
+    }
+
+    public String getFtppath_regex() {
+        return ftppath_regex;
+    }
+
+    public void setFtppath_regex(String ftppath_regex) {
+        this.ftppath_regex = ftppath_regex;
+    }
+
+    public String getDomino_error_flag_field() {
+        return domino_error_flag_field;
+    }
+
+    public void setDomino_error_flag_field(String domino_error_flag_field) {
+        this.domino_error_flag_field = domino_error_flag_field;
+    }
+
+    public String getDomino_succ_flag_field() {
+        return domino_succ_flag_field;
+    }
+
+    public void setDomino_succ_flag_field(String domino_succ_flag_field) {
+        this.domino_succ_flag_field = domino_succ_flag_field;
+    }
+
+    public String getAction_error_log() {
+        return action_error_log;
+    }
+
+    public void setAction_error_log(String action_error_log) {
+        this.action_error_log = action_error_log;
+    }
+
+    public int getAction_all_count() {
+        return action_all_count;
+    }
+
+    public void setAction_all_count(int action_all_count) {
+        this.action_all_count = action_all_count;
+    }
+
+    public int getAction_succ_count() {
+        return action_succ_count;
+    }
+
+    public void setAction_succ_count(int action_succ_count) {
+        this.action_succ_count = action_succ_count;
+    }
+
+    public int getAction_err_count() {
+        return action_err_count;
+    }
+
+    public void setAction_err_count(int action_err_count) {
+        this.action_err_count = action_err_count;
+    }
+
+    public boolean isDebugger() {
+        return debugger;
+    }
+
+    public void setDebugger(boolean debugger) {
+        this.debugger = debugger;
+    }
 
     public String getDomino_server() {
         return domino_server;
@@ -44,6 +136,14 @@ public class DominoQuery {
         this.domino_query = domino_query;
     }
 
+    public boolean isError_continue() {
+        return error_continue;
+    }
+
+    public void setError_continue(boolean error_continue) {
+        this.error_continue = error_continue;
+    }
+
     public DominoQuery() {
     }
 
@@ -53,4 +153,7 @@ public class DominoQuery {
         this.domino_query = domino_query;
     }
 
+    public DominoQuery clone() throws CloneNotSupportedException {
+        return (DominoQuery) super.clone();
+    }
 }
