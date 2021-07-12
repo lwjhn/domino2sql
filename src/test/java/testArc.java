@@ -67,6 +67,8 @@ public class testArc {
 
     @Test
     public void test2() throws Exception {
+        List<String > names= Arrays.asList(new String[]{"f1","f2","f3"});
+        System.out.println("UPDATE T_TABLE SET " + String.join("=? , ", names) + "=? WHERE ID=?");
         System.out.println(new File("C:/temp/dispatch.xml").getCanonicalPath().replaceAll("^[a-zA-Z]:",""));
         System.out.println(Integer.toHexString(-1));
         System.out.println(String.format("%08X",-2));
@@ -76,7 +78,7 @@ public class testArc {
     }
 
     @Test
-    public void test1() throws Exception {
+    public void test12() throws Exception {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -87,7 +89,7 @@ public class testArc {
 
             preparedStatement = connection.prepareStatement(
                     "INSERT INTO EGOV_EX_DOC_HISTORY (ID , SUBJECT , DOC_TYPE , DOC_MARK)"
-                        + " VALUES (?, ?, ?, ?)"
+                            + " VALUES (?, ?, ?, ?)"
             );
             preparedStatement.setObject(1, getUUID16(), JDBCType.VARCHAR.getVendorTypeNumber(), 0);
             preparedStatement.setObject(2, "标题-" + getUUID16(), JDBCType.VARCHAR.getVendorTypeNumber(), 0);
@@ -126,6 +128,61 @@ public class testArc {
             }
         }
     }
+
+    @Test
+    public void test13(){
+        /*
+
+         */
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            System.out.println(System.getProperty("user.dir"));
+            DriverManager.setLogWriter(new PrintWriter(System.out));
+            connection = createConnection("com.oscar.Driver", "jdbc:oscar://192.168.210.134:2003/OSRDB", "FJSZF", "FJSZF");
+
+            preparedStatement = connection.prepareStatement(
+                    "SELECT elt(INTERVAL(INJURED_P_NUMBER, ?, ?, ?, ?), ?, ?, ?, ?) as P_LEVEL, EVENT_TYPE, INJURED_P_NUMBER FROM EGOV_DUTY_SUBMIT_REPORT"
+            );
+
+            preparedStatement.setObject(1, 1);
+            preparedStatement.setObject(2, 3);
+            preparedStatement.setObject(3, 5);
+            preparedStatement.setObject(4, 10);
+            preparedStatement.setObject(5, "1-3");
+            preparedStatement.setObject(6, "3-5");
+            preparedStatement.setObject(7, "5-10");
+            preparedStatement.setObject(8, ">=10");
+
+            resultSet = preparedStatement.executeQuery();
+            int count = resultSet.getMetaData().getColumnCount();
+            System.out.println("column:" + count);
+            while (resultSet.next()) {
+                for (int i = 1; i <= count; i++) {
+                    System.out.print(resultSet.getString(i) + " , ");
+                }
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+            } catch (Exception e) {
+            }
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+            } catch (Exception e) {
+            }
+            try {
+                if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     public static String getUUID(int len) {
         int first = new Random(10).nextInt(8) + 1,

@@ -1,0 +1,1509 @@
+[
+  {
+    "unid": [
+      "DF2C700E7E512625482583D900095629"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "unitstarttime": [
+      "2019-04-11 09:41:58"
+    ],
+    "c_username": [
+      "王艳"
+    ],
+    "c_unitname": [
+      "拟稿人拟稿"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 09:43:46"
+    ],
+    "l_unitindex": [
+      "-1"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人顺序"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "1"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59225/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "l_unitname": [
+      "开始"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 01:41:58 GMT",
+      "localTime": "2019-04-11 09:41:58 ZE8",
+      "replicaID": "482583D900095629",
+      "timeOnly": "09:41:58",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 09:41:58 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitbutton": [
+      "起草正文:查看正文:附件管理:查看附件:修改基本信息:作废:收回:公开意见(拟稿)|DraftPublic"
+    ],
+    "unittodocunid": [
+      "00071995F52C0443482583D90009805F"
+    ],
+    "unithandler": [
+      "U59225/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "DF2C700E7E512625482583D900095629"
+    ],
+    "unid": [
+      "00071995F52C0443482583D90009805F"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "unitstarttime": [
+      "2019-04-11 09:43:46"
+    ],
+    "c_username": [
+      "吴应超"
+    ],
+    "c_unitname": [
+      "处室核稿"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 09:54:26"
+    ],
+    "l_unitindex": [
+      "1"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "2"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59222/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "拟稿人拟稿"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 01:43:46 GMT",
+      "localTime": "2019-04-11 09:43:46 ZE8",
+      "replicaID": "482583D90009805F",
+      "timeOnly": "09:43:46",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 09:43:46 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:修改基本信息:退回:撤办:催办:核稿意见(拟稿处)|Examine"
+    ],
+    "unittodocunid": [
+      "8395ACC28DAE72D4482583D9000A7A03"
+    ],
+    "unithandler": [
+      "U59222/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "00071995F52C0443482583D90009805F"
+    ],
+    "unid": [
+      "8395ACC28DAE72D4482583D9000A7A03"
+    ],
+    "l_userid": [
+      "U59222/LISHUI"
+    ],
+    "l_username": [
+      "吴应超"
+    ],
+    "unitstarttime": [
+      "2019-04-11 09:54:26"
+    ],
+    "c_username": [
+      "胡春辉"
+    ],
+    "c_unitname": [
+      "复核"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 10:10:46"
+    ],
+    "l_unitindex": [
+      "2"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "13"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59196/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "处室核稿"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 01:54:25 GMT",
+      "localTime": "2019-04-11 09:54:25 ZE8",
+      "replicaID": "482583D9000A7A03",
+      "timeOnly": "09:54:25",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 09:54:25 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:意见管理:修改基本信息:退回:撤办:复核意见|ConfirmCheck"
+    ],
+    "unittodocunid": [
+      "97105EB0353B3057482583D9000BF923"
+    ],
+    "unithandler": [
+      "U59196/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "8395ACC28DAE72D4482583D9000A7A03"
+    ],
+    "unid": [
+      "97105EB0353B3057482583D9000BF923"
+    ],
+    "l_userid": [
+      "U59196/LISHUI"
+    ],
+    "l_username": [
+      "胡春辉"
+    ],
+    "unitstarttime": [
+      "2019-04-11 10:10:46"
+    ],
+    "c_username": [
+      "吴志林"
+    ],
+    "c_unitname": [
+      "分管领导审核"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 10:28:01"
+    ],
+    "l_unitindex": [
+      "13"
+    ],
+    "l_userdeptname": [
+      "中心领导"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "11"
+    ],
+    "unitaction": [
+      "退回"
+    ],
+    "c_userid": [
+      "U59195/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "复核"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 02:10:46 GMT",
+      "localTime": "2019-04-11 10:10:46 ZE8",
+      "replicaID": "482583D9000BF923",
+      "timeOnly": "10:10:46",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 10:10:46 ZE8"
+    },
+    "l_userdeptid": [
+      "D07363"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:退回:撤办:审核意见|Verify"
+    ],
+    "unithandler": [
+      "U59195/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "00071995F52C0443482583D90009805F"
+    ],
+    "unid": [
+      "1F8E1B6996618093482583D9000D8D47"
+    ],
+    "l_userid": [
+      "U59222/LISHUI"
+    ],
+    "l_username": [
+      "吴应超"
+    ],
+    "unitstarttime": [
+      "2019-04-11 10:28:01"
+    ],
+    "c_username": [
+      "胡春辉"
+    ],
+    "c_unitname": [
+      "复核"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 14:13:10"
+    ],
+    "l_unitindex": [
+      "2"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "fromunituserunid": [
+      "97105EB0353B3057482583D9000BF923"
+    ],
+    "c_unitindex": [
+      "13"
+    ],
+    "unitaction": [
+      "退回"
+    ],
+    "c_userid": [
+      "U59196/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "处室核稿"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 02:28:01 GMT",
+      "localTime": "2019-04-11 10:28:01 ZE8",
+      "replicaID": "482583D9000D8D47",
+      "timeOnly": "10:28:01",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 10:28:01 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:意见管理:修改基本信息:退回:撤办:复核意见|ConfirmCheck"
+    ],
+    "unittodocunid": [
+      "97105EB0353B3057482583D9000BF923"
+    ],
+    "unithandler": [
+      "U59196/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "DF2C700E7E512625482583D900095629"
+    ],
+    "unid": [
+      "AF98466DC6F5CE32482583D900222A42"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "unitstarttime": [
+      "2019-04-11 14:13:10"
+    ],
+    "c_username": [
+      "吴应超"
+    ],
+    "c_unitname": [
+      "处室核稿"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 14:19:11"
+    ],
+    "l_unitindex": [
+      "1"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "fromunituserunid": [
+      "1F8E1B6996618093482583D9000D8D47"
+    ],
+    "c_unitindex": [
+      "2"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59222/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "拟稿人拟稿"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 06:13:10 GMT",
+      "localTime": "2019-04-11 14:13:10 ZE8",
+      "replicaID": "482583D900222A42",
+      "timeOnly": "14:13:10",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 14:13:10 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:修改基本信息:退回:撤办:催办:核稿意见(拟稿处)|Examine"
+    ],
+    "unittodocunid": [
+      "8395ACC28DAE72D4482583D9000A7A03",
+      "AAE13491A562AAC5482583D90022B759"
+    ],
+    "unithandler": [
+      "U59222/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "AF98466DC6F5CE32482583D900222A42"
+    ],
+    "unid": [
+      "AAE13491A562AAC5482583D90022B759"
+    ],
+    "l_userid": [
+      "U59222/LISHUI"
+    ],
+    "l_username": [
+      "吴应超"
+    ],
+    "unitstarttime": [
+      "2019-04-11 14:19:11"
+    ],
+    "c_username": [
+      "吴志林"
+    ],
+    "c_unitname": [
+      "分管领导审核"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 14:47:30"
+    ],
+    "l_unitindex": [
+      "2"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "11"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59195/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "处室核稿"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 06:19:11 GMT",
+      "localTime": "2019-04-11 14:19:11 ZE8",
+      "replicaID": "482583D90022B759",
+      "timeOnly": "14:19:11",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 14:19:11 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:退回:撤办:审核意见|Verify"
+    ],
+    "unittodocunid": [
+      "1FF83A0F0FF1BA57482583D900254F0A"
+    ],
+    "unithandler": [
+      "U59195/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "AAE13491A562AAC5482583D90022B759"
+    ],
+    "unid": [
+      "1FF83A0F0FF1BA57482583D900254F0A"
+    ],
+    "l_userid": [
+      "U59195/LISHUI"
+    ],
+    "l_username": [
+      "吴志林"
+    ],
+    "unitstarttime": [
+      "2019-04-11 14:47:30"
+    ],
+    "c_username": [
+      "陈建广"
+    ],
+    "c_unitname": [
+      "领导签发"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 14:53:21"
+    ],
+    "l_unitindex": [
+      "11"
+    ],
+    "l_userdeptname": [
+      "中心领导"
+    ],
+    "c_userdeptid": [
+      "D07183"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57738/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "局领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "分管领导审核"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 06:47:30 GMT",
+      "localTime": "2019-04-11 14:47:30 ZE8",
+      "replicaID": "482583D900254F0A",
+      "timeOnly": "14:47:30",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 14:47:30 ZE8"
+    },
+    "l_userdeptid": [
+      "D07363"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:签发:退回:催办:签发意见|Sign"
+    ],
+    "unittodocunid": [
+      "290BE3E20F2E441B482583D90025D7EB"
+    ],
+    "unithandler": [
+      "U57738/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "1FF83A0F0FF1BA57482583D900254F0A"
+    ],
+    "unid": [
+      "290BE3E20F2E441B482583D90025D7EB"
+    ],
+    "l_userid": [
+      "U57738/LISHUI"
+    ],
+    "l_username": [
+      "陈建广"
+    ],
+    "unitstarttime": [
+      "2019-04-11 14:53:21"
+    ],
+    "c_username": [
+      "李玫"
+    ],
+    "c_unitname": [
+      "编号排版"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 14:57:46"
+    ],
+    "l_unitindex": [
+      "4"
+    ],
+    "l_userdeptname": [
+      "局领导"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "6"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "领导签发"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 06:53:21 GMT",
+      "localTime": "2019-04-11 14:53:21 ZE8",
+      "replicaID": "482583D90025D7EB",
+      "timeOnly": "14:53:21",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 14:53:21 ZE8"
+    },
+    "l_userdeptid": [
+      "D07183"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:意见管理:编号:修改基本信息:退回:撤办:正文管理"
+    ],
+    "unittodocunid": [
+      "F412D5F1B0D3B7FC482583D900263F91"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "290BE3E20F2E441B482583D90025D7EB"
+    ],
+    "unid": [
+      "F412D5F1B0D3B7FC482583D900263F91"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "李玫"
+    ],
+    "unitstarttime": [
+      "2019-04-11 14:57:46"
+    ],
+    "c_username": [
+      "陈超"
+    ],
+    "c_unitname": [
+      "办公室核稿"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 15:11:22"
+    ],
+    "l_unitindex": [
+      "6"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "3"
+    ],
+    "unitaction": [
+      "退回"
+    ],
+    "c_userid": [
+      "U59198/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "编号排版"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 06:57:46 GMT",
+      "localTime": "2019-04-11 14:57:46 ZE8",
+      "replicaID": "482583D900263F91",
+      "timeOnly": "14:57:46",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 14:57:46 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:修改基本信息:退回:撤办:作废:正文管理:核稿意见|Check:公开意见(核稿)|Public"
+    ],
+    "unithandler": [
+      "U59198/LISHUI"
+    ]
+  },
+  {
+    "unid": [
+      "61EC57ED5C8480CE482583D900277E2F"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "unitstarttime": [
+      "2019-04-11 15:11:22"
+    ],
+    "c_username": [
+      "王艳"
+    ],
+    "c_unitname": [
+      "拟稿人拟稿"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 15:21:04"
+    ],
+    "l_unitindex": [
+      "-1"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人顺序"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "fromunituserunid": [
+      "AF98466DC6F5CE32482583D900222A42"
+    ],
+    "c_unitindex": [
+      "1"
+    ],
+    "unitaction": [
+      "流程干预结束"
+    ],
+    "c_userid": [
+      "U59225/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "l_unitname": [
+      "开始"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 07:11:22 GMT",
+      "localTime": "2019-04-11 15:11:22 ZE8",
+      "replicaID": "482583D900277E2F",
+      "timeOnly": "15:11:22",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 15:11:22 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitbutton": [
+      "起草正文:查看正文:附件管理:查看附件:修改基本信息:作废:收回:公开意见(拟稿)|DraftPublic"
+    ],
+    "unittodocunid": [
+      "00071995F52C0443482583D90009805F"
+    ],
+    "unithandler": [
+      "U59225/LISHUI"
+    ]
+  },
+  {
+    "unid": [
+      "0DD27D36A6ADEE12482583D9002861C4"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "unitstarttime": [
+      {
+        "dST": false,
+        "dateOnly": "2019-04-11",
+        "gMTTime": "2019-04-11 07:21:04 GMT",
+        "localTime": "2019-04-11 15:21:04 ZE8",
+        "replicaID": "482583D900286180",
+        "timeOnly": "15:21:04",
+        "timeZone": -8,
+        "zoneTime": "2019-04-11 15:21:04 ZE8"
+      }
+    ],
+    "c_username": [
+      "王艳"
+    ],
+    "c_unitname": [
+      "流程干预"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      {
+        "dST": false,
+        "dateOnly": "2019-04-11",
+        "gMTTime": "2019-04-11 07:21:04 GMT",
+        "localTime": "2019-04-11 15:21:04 ZE8",
+        "replicaID": "482583D900286180",
+        "timeOnly": "15:21:04",
+        "timeZone": -8,
+        "zoneTime": "2019-04-11 15:21:04 ZE8"
+      }
+    ],
+    "l_unitindex": [
+      "-1"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "单个多人"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "-1"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59225/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "l_unitname": [
+      "开始"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 07:21:04 GMT",
+      "localTime": "2019-04-11 15:21:04 ZE8",
+      "replicaID": "482583D9002861C4",
+      "timeOnly": "15:21:04",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 15:21:04 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unithandler": [
+      "U59225/LISHUI"
+    ]
+  },
+  {
+    "unid": [
+      "613229A634100F1E482583D9002861C5"
+    ],
+    "l_unituserunid": [
+      "0DD27D36A6ADEE12482583D9002861C4"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "c_username": [
+      "李玫"
+    ],
+    "c_unitname": [
+      "编号排版"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 15:23:40"
+    ],
+    "l_unitindex": [
+      "-1"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "6"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "l_unitname": [
+      "流程干预"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 07:21:04 GMT",
+      "localTime": "2019-04-11 15:21:04 ZE8",
+      "replicaID": "482583D9002861C5",
+      "timeOnly": "15:21:04",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 15:21:04 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unittodocunid": [
+      "57D322839BE84F50482583D900289E84"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "613229A634100F1E482583D9002861C5"
+    ],
+    "unid": [
+      "57D322839BE84F50482583D900289E84"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "李玫"
+    ],
+    "unitstarttime": [
+      "2019-04-11 15:23:40"
+    ],
+    "c_username": [
+      "陈超"
+    ],
+    "c_unitname": [
+      "办公室核稿"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 16:05:36"
+    ],
+    "l_unitindex": [
+      "6"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "3"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59198/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "编号排版"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 07:23:40 GMT",
+      "localTime": "2019-04-11 15:23:40 ZE8",
+      "replicaID": "482583D900289E84",
+      "timeOnly": "15:23:40",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 15:23:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:附件管理:查看附件:修改基本信息:退回:撤办:作废:正文管理:核稿意见|Check:公开意见(核稿)|Public"
+    ],
+    "unittodocunid": [
+      "B3D0E49DCDA683E3482583D9002C7569"
+    ],
+    "unithandler": [
+      "U59198/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "57D322839BE84F50482583D900289E84"
+    ],
+    "unid": [
+      "B3D0E49DCDA683E3482583D9002C7569"
+    ],
+    "l_userid": [
+      "U59198/LISHUI"
+    ],
+    "l_username": [
+      "陈超"
+    ],
+    "unitstarttime": [
+      "2019-04-11 16:05:36"
+    ],
+    "c_username": [
+      "王艳"
+    ],
+    "c_unitname": [
+      "校对一（拟稿人）"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 16:13:32"
+    ],
+    "l_unitindex": [
+      "3"
+    ],
+    "l_userdeptname": [
+      "综合处"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "7"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U59225/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "办公室核稿"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 08:05:36 GMT",
+      "localTime": "2019-04-11 16:05:36 ZE8",
+      "replicaID": "482583D9002C7569",
+      "timeOnly": "16:05:36",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 16:05:36 ZE8"
+    },
+    "l_userdeptid": [
+      "D07356"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:附件管理:查看附件:退回:正文管理:第一校对"
+    ],
+    "unittodocunid": [
+      "61A33F7AAA892ED6482583D9002D2F77"
+    ],
+    "unithandler": [
+      "U59225/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "B3D0E49DCDA683E3482583D9002C7569"
+    ],
+    "unid": [
+      "61A33F7AAA892ED6482583D9002D2F77"
+    ],
+    "l_userid": [
+      "U59225/LISHUI"
+    ],
+    "l_username": [
+      "王艳"
+    ],
+    "unitstarttime": [
+      "2019-04-11 16:13:32"
+    ],
+    "c_username": [
+      "李玫"
+    ],
+    "c_unitname": [
+      "分发ceb分发归档"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-11 17:09:29"
+    ],
+    "l_unitindex": [
+      "7"
+    ],
+    "l_userdeptname": [
+      "应用开发处"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "12"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "F87111FC5E74057B482583D900095629"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "校对一（拟稿人）"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-11",
+      "gMTTime": "2019-04-11 08:13:32 GMT",
+      "localTime": "2019-04-11 16:13:32 ZE8",
+      "replicaID": "482583D9002D2F77",
+      "timeOnly": "16:13:32",
+      "timeZone": -8,
+      "zoneTime": "2019-04-11 16:13:32 ZE8"
+    },
+    "l_userdeptid": [
+      "D07358"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "批阅正文:查看正文:生成正式文件:附件管理:查看附件:意见管理:打印办理单:修改基本信息:内部分发:外部分发:归档:退回:撤办:作废:收回:正文管理:制版:盖章:选择办理单"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  }
+]

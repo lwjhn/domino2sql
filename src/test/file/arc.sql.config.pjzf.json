@@ -1,0 +1,51 @@
+{
+  "sql_url": "jdbc:mysql://192.168.210.153:3399?connectTimeout=3000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC",
+  "sql_username": "rjsoft",
+  "sql_password": "abcd1234",
+  "sql_driver": "com.mysql.cj.jdbc.Driver",
+  "driver_manager_log": false,
+  "options": [{
+    "enable": true,
+    "vesion": "1.1.1",
+    "domino_server": "hzjtxxserver/湖州交通学校/浙江交通",
+    "domino_dbpath": "ZLOA/FwBGS.nsf",
+    "domino_query": "Form=\"SendDocument\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2021-07-25]",
+    "domino_before_prepared_driver": null,
+    "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
+    "domino_prepared_sqlquery_driver" : "com.rjsoft.prepared.PrepareSqlQueryRJDoc",
+    "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDoc",
+    "extended_options": {
+      "sql_field_attachment": {
+        "sql_name": "JSONATT",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      }
+    },
+    "sql_table": "XC_DEMO.EGOV_DISPATCH_HISTORY",
+    "sql_field_others": [{
+      "sql_name": "ID",
+      "domino_name": "ArcXC_UUID_16",
+      "jdbc_type": "VARCHAR",
+      "scale_length": 0
+    },
+      {
+        "sql_name": "DOMINOID",
+        "domino_formula": "@Text(@DocumentUniqueID)",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      {
+        "sql_name": "Subject",
+        "domino_name": "TT",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      {
+        "sql_name": "OTHER",
+        "jdbc_type": "VARCHAR",
+        "domino_formula": "\"哈哈\"",
+        "scale_length": 0
+      }
+    ]
+  }]
+}

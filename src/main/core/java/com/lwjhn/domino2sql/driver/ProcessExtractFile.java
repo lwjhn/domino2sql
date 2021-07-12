@@ -38,7 +38,7 @@ public class ProcessExtractFile extends Message implements ProcessStatement {
     private boolean throws_error = true;
 
     @Override
-    public void action(PreparedStatement preparedStatement, Document srcdoc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) throws NotesException, Exception {
+    public void action(PreparedStatement preparedStatement, Document srcdoc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) throws Exception {
         initConfig(dbConfig);
         if (item_config_attachment == null) return;
         preparedStatement.setObject(index, arcMssDoc(srcdoc, databaseCollection.getSession()).toJSONString(), item_config_attachment.getJdbc_type().getVendorTypeNumber(), item_config_attachment.getScale_length());
@@ -58,7 +58,7 @@ public class ProcessExtractFile extends Message implements ProcessStatement {
 
         if ((extended_options = dbConfig.getExtended_options()) == null) return;
         item_config_attachment = extended_options.getObject(sql_field_attachment, ItemConfig.class);
-        this.setDebug(throws_error = extended_options.getBoolean(throws_error_field));
+        this.setDebug(throws_error = extended_options.containsKey(throws_error_field) ? extended_options.getBoolean(throws_error_field) : true);
     }
 
     public JSONArray arcMssDoc(Document mssdoc, Session session) throws Exception {

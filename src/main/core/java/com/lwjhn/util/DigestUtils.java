@@ -23,7 +23,7 @@ public class DigestUtils {
         }
     }
 
-    public static String digest(File file, String algorithm) throws IOException, NoSuchAlgorithmException {
+    public static String digest(File file, String algorithm) throws Exception {
         InputStream is = null;
         try {
             return digest(is = new FileInputStream(file), algorithm);

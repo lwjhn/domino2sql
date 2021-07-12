@@ -11,7 +11,9 @@ import com.alibaba.fastjson.JSONObject;
 public class DbConfig extends DominoQuery {
     private DominoQuery[] domino_queries = null;
     private String sql_table = null;
+    private ItemConfig sql_update_primary_key = null;
     private ItemConfig[] sql_field_others = null;
+
     private String domino_before_prepared_driver = null;
     private String domino_after_prepared_driver = null;
     private String domino_prepared_sqlquery_driver = null;
@@ -23,6 +25,14 @@ public class DbConfig extends DominoQuery {
     }
 
     public DbConfig() {
+    }
+
+    public ItemConfig getSql_update_primary_key() {
+        return sql_update_primary_key;
+    }
+
+    public void setSql_update_primary_key(ItemConfig sql_update_primary_key) {
+        this.sql_update_primary_key = sql_update_primary_key;
     }
 
     public DominoQuery[] getDomino_queries() {

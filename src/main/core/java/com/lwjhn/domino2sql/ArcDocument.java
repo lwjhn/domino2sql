@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,19 +23,20 @@ import java.util.List;
  */
 public class ArcDocument extends ArcBase {
     PreparedStatement preparedStatement = null;
+    PreparedStatement preparedStatementCheck = null;
+    PreparedStatement preparedStatementUpdate = null;
     ResultSet resultSet = null;
     private Session session = null;
     private Database db = null;
     private DocumentCollection dc = null;
     private Document doc = null, tdoc = null;
     private int succ_ct = 0, err_ct = 0;
-    private String query = null;
     private String error_flag_field = null, succ_flag_field = null, version = null;
 
     private PreparedDocument beforePreparedMethod = null;
     private PreparedDocument afterPreparedMethod = null;
     private ProcessStatement processStatement = null;
-    private PreparedSqlQuery preparedSqlQuery = null;
+    private List<String> sqlFieldNames = null;
 
     public ArcDocument processing(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
         try {
@@ -86,12 +88,12 @@ public class ArcDocument extends ArcBase {
         return this;
     }
 
-    private ArcDocument processLoop(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
+    private void processLoop(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
         String server = null, dbpath = null, query = null;
         try {
             this.setDebug(dbConfig.isDebugger());
             if ((server = dbConfig.getDomino_server()) == null || (dbpath = dbConfig.getDomino_dbpath()) == null || (query = dbConfig.getDomino_query()) == null)
-                return this;
+                return;
             dbgMsg("start to archive default database : " + server + " !! " + dbpath);
             searchDb(server, dbpath, query, databaseCollection);
             if (dc == null)
@@ -115,8 +117,8 @@ public class ArcDocument extends ArcBase {
                     succ_ct++;
                 } else {
                     err_ct++;
-                    if(!dbConfig.isError_continue())
-                        return this;
+                    if (!dbConfig.isError_continue())
+                        return;
                 }
                 doc = dc.getNextDocument(tdoc = doc);
                 recycle(tdoc);
@@ -140,7 +142,57 @@ public class ArcDocument extends ArcBase {
             doc = null;
             dc = null;
         }
-        return this;
+    }
+
+    private PreparedStatement getPreparedStatement(Document doc, DbConfig dbConfig) throws Exception {
+        String formula;
+        Object value = null;
+        Item item = null;
+        try {
+            if (preparedStatementCheck == null || preparedStatementUpdate == null)
+                return preparedStatement;
+            ItemConfig itemConfig = dbConfig.getSql_update_primary_key();
+            if ((formula = itemConfig.getDomino_name()) != null) {
+                value = Domino2SqlHelp.domino2JdbcType(item = doc.getFirstItem(formula), itemConfig);
+            } else if ((formula = itemConfig.getDomino_formula()) != null && !"".equals(formula)) {
+                value = Domino2SqlHelp.domino2JdbcType(session.evaluate(formula, doc), itemConfig);
+            }
+            if (value == null){
+                if(dbConfig.isUpdate_mode_no_insert()){
+                    this.dbgMsg("udpate mdoe: primary key " + itemConfig.getSql_name() + ", demonio value is null" + String.valueOf(value));
+                    return null;
+                }else{
+                    return preparedStatement;
+                }
+            }
+
+            preparedStatementCheck.setObject(1, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
+            ResultSet resultSet = preparedStatementCheck.executeQuery();
+            if(resultSet.next() && resultSet.getInt(1) > 0) {
+                if(resultSet.getInt(1)>1){
+                    this.dbgMsg("udpate mdoe: multiple record error , find count(" + resultSet.getInt(1) +") relative doc by primary key " + itemConfig.getSql_name() + " = " + value);
+                    return null;
+                }
+                preparedStatementUpdate.setObject(sqlFieldNames.size() + 1, value);
+                return preparedStatementUpdate;
+            }else if(dbConfig.isUpdate_mode_no_insert()){
+                this.dbgMsg("udpate mdoe: can't find relative doc by primary key " + itemConfig.getSql_name() + " = " + value);
+                return null;
+            }else{
+                doc.removeItem(dbConfig.getDomino_uuid_prefix() + "8");
+                doc.removeItem(dbConfig.getDomino_uuid_prefix() + "16");
+                doc.removeItem(dbConfig.getDomino_uuid_prefix() + "32");
+                return preparedStatement;
+            }
+        } finally {
+            if(!doc.hasItem(dbConfig.getDomino_uuid_prefix() + "8"))
+                doc.replaceItemValue(dbConfig.getDomino_uuid_prefix() + "8", ArcUtils.getUUID8());
+            if(!doc.hasItem(dbConfig.getDomino_uuid_prefix() + "16"))
+                doc.replaceItemValue(dbConfig.getDomino_uuid_prefix() + "16", ArcUtils.getUUID16());
+            if(!doc.hasItem(dbConfig.getDomino_uuid_prefix() + "32"))
+                doc.replaceItemValue(dbConfig.getDomino_uuid_prefix() + "32", ArcUtils.getUUID32());
+            recycle(item);
+        }
     }
 
     private boolean archive(Document doc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) {
@@ -149,9 +201,11 @@ public class ArcDocument extends ArcBase {
         Item item = null;
         int index = 0;
         try {
-            doc.replaceItemValue(DefaultConfig.Domino_UUID_Prefix + "8", ArcUtils.getUUID8());
-            doc.replaceItemValue(DefaultConfig.Domino_UUID_Prefix + "16", ArcUtils.getUUID16());
-            doc.replaceItemValue(DefaultConfig.Domino_UUID_Prefix + "32", ArcUtils.getUUID32());
+            doc.replaceItemValue(succ_flag_field + "_OR_Error_FLAG_Time", session.createDateTime(new Date()));
+            PreparedStatement preparedStatement = getPreparedStatement(doc, dbConfig);
+            if(preparedStatement==null && dbConfig.isUpdate_mode_no_insert()){
+                return true;
+            }
             for (ItemConfig itemConfig : dbConfig.getSql_field_others()) {
                 if ((formula = itemConfig.getDomino_name()) != null) {
                     recycle(item);
@@ -162,11 +216,11 @@ public class ArcDocument extends ArcBase {
                     value = null;
                 }
                 try {
-                    if (value != null && value instanceof String && itemConfig.getScale_length() > 0 && ((String) value).length() > itemConfig.getScale_length())
+                    if (value instanceof String && itemConfig.getScale_length() > 0 && ((String) value).length() > itemConfig.getScale_length())
                         throw new Exception("value too long . string length is " + ((String) value).length() + " , scale length is " + itemConfig.getScale_length() + ".");
                     preparedStatement.setObject(++index, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
                 } catch (Exception setError) {
-                    throw itemConfig != null && itemConfig.getSql_name() != null
+                    throw itemConfig.getSql_name() != null
                             ? new Exception("at sql_name of " + itemConfig.getSql_name() + System.lineSeparator() + " error: " + setError.getMessage(), setError.getCause())
                             : setError;
                 }
@@ -227,32 +281,38 @@ public class ArcDocument extends ArcBase {
                 throw new Exception("prepareSql:: itemConfig [domino_name] is non-standard ! " + (name));
         }
 
-        preparedSqlQuery = (name = dbConfig.getDomino_prepared_sqlquery_driver()) == null || "".equals(name) ?
+        PreparedSqlQuery preparedSqlQuery = (name = dbConfig.getDomino_prepared_sqlquery_driver()) == null || "".equals(name) ?
                 null : (PreparedSqlQuery) Class.forName(name).newInstance();
         if (preparedSqlQuery != null) {
             preparedSqlQuery.action(names, values, dbConfig, connection, databaseCollection, mssdbc);
             preparedSqlQuery.recycle();
         }
 
-        close(preparedStatement);
+        close(preparedStatement, preparedStatementCheck, preparedStatementUpdate);
+        preparedStatement = preparedStatementCheck = preparedStatementUpdate = null;
         preparedStatement = connection.prepareStatement(
                 name = "INSERT INTO " + dbConfig.getSql_table() + " (" + String.join(", ", names) + ") "
                         + "VALUES (" + String.join(", ", values) + ")"
         );
         dbgMsg(name);
-    }
 
-    private void searchDb(DbConfig dbConfig, DatabaseCollection databaseCollection) throws Exception {
-        db = databaseCollection.getDatabase(dbConfig.getDomino_server(), dbConfig.getDomino_dbpath());
-        if (db == null || !db.isOpen()) {
-            throw new Exception("can't open database ! " + dbConfig.getDomino_server() + " !! " + dbConfig.getDomino_dbpath());
+        ItemConfig primaryKey = dbConfig.getSql_update_primary_key();
+        if (primaryKey != null) {
+            if ((name = primaryKey.getSql_name()) == null || !DefaultConfig.PATTERN_NAME.matcher(name).matches())
+                throw new Exception("prepareSql:: the proce for update cmd, sql_update_primary_key [sql_name] is null or non-standard ! " + (name == null ? "" : name));
+
+            if (primaryKey.getJdbc_type() == null)
+                throw new Exception("prepareSql:: the proce for update cmd, sql_update_primary_key [jdbc_type] is null or non-standard ! " + (name));
+            if (primaryKey.getScale_length() < 1) primaryKey.setScale_length(0);
+            if ((name = primaryKey.getDomino_name()) != null && !DefaultConfig.PATTERN_NAME.matcher(name).matches())
+                throw new Exception("prepareSql:: the proce for update cmd, sql_update_primary_key [domino_name] is non-standard ! " + (name));
+
+            preparedStatementCheck = connection.prepareStatement(name = "select count(*) from dual where exists(select 0 from " + dbConfig.getSql_table() + " where " + primaryKey.getSql_name() + "=?)");
+            dbgMsg(name);
+            preparedStatementUpdate = connection.prepareStatement(name = "UPDATE " + dbConfig.getSql_table() + " SET " + String.join("=? , ", names) + "=? WHERE " + primaryKey.getSql_name() + "=?");
+            dbgMsg(name);
         }
-        if ((query = dbConfig.getDomino_query()) == null) {
-            throw new Exception("can not find Domino_query field at database config ! " + dbConfig.getDomino_server() + " !! " + dbConfig.getDomino_dbpath());
-        }
-        recycle(dc);
-        dc = null;
-        dc = db.search(query, null, 0);
+        sqlFieldNames = names;
     }
 
     private void searchDb(String server, String dbname, String query, DatabaseCollection databaseCollection) throws Exception {
@@ -273,22 +333,22 @@ public class ArcDocument extends ArcBase {
         try {
             doc.replaceItemValue(error_flag_field, msg);
             doc.save(true, false);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
     public void recycle() {
         try {
             if (beforePreparedMethod != null) beforePreparedMethod.recycle();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         try {
             if (afterPreparedMethod != null) afterPreparedMethod.recycle();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
-        close(resultSet, preparedStatement);
+        close(resultSet, preparedStatement, preparedStatementCheck, preparedStatementUpdate);
         resultSet = null;
-        preparedStatement = null;
+        preparedStatement = preparedStatementCheck = preparedStatementUpdate = null;
         recycle(tdoc, doc, dc);
         tdoc = null;
         doc = null;

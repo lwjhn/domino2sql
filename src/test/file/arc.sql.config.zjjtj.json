@@ -21,8 +21,8 @@
         "vesion": "1.1.1",
         "ftppath": "/FTP_XC/",
         "domino_server": "@ServerName",
-        "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/fj.nsf\"",
-        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\\\"\"+@Text(@DocumentUniqueID)+ \"\\\"\"",
+        "domino_dbpath": "MSSDATABASE",
+        "domino_query": "!@Contains(Form;\"DelForm\") & DOCUNID = \"+@Text(@DocumentUniqueID)+ \"",
         "domino_prepared_sqlquery_driver": "com.lwjhn.domino2sql.driver.PrepareSqlQueryForMss",
         "domino_process_statement_driver": "com.lwjhn.domino2sql.driver.ProcessExtractFile",
         "extended_options": {
@@ -62,55 +62,6 @@
           {
             "sql_name": "AttachFile",
             "domino_name": "NAME",
-            "jdbc_type": "VARCHAR",
-            "scale_length": 0
-          }
-        ]
-      },{
-        "enable": true,
-        "debugger" : true,
-        "vesion": "1.1.1",
-        "ftppath": "/FTP_XC/",
-        "domino_server": "@ServerName",
-        "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/yjs.nsf\"",
-        "domino_query": "\"NAME!=\\\"\\\" & LINKTO=\\\"\"+@Text(@DocumentUniqueID)+ \"\\\"\"",
-        "extended_options": {
-          "show_log": true,
-          "throws_error": true,
-          "sql_field_attachment": {
-            "sql_name": "JSONATT",
-            "jdbc_type": "VARCHAR",
-            "scale_length": 0
-          }
-        },
-        "sql_table": "XC_DEMO.EGOV_OPINION",
-        "sql_field_others": [{
-          "sql_name": "ID",
-          "domino_name": "ArcXC_UUID_16",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-          {
-            "sql_name": "DOMINOID",
-            "domino_formula": "@Text(@DocumentUniqueID)",
-            "jdbc_type": "VARCHAR",
-            "scale_length": 0
-          },
-          {
-            "sql_name": "PARENTID",
-            "domino_name": "PARENTID",
-            "jdbc_type": "VARCHAR",
-            "scale_length": 0
-          },
-          {
-            "sql_name": "FORM",
-            "domino_name": "FORM",
-            "jdbc_type": "VARCHAR",
-            "scale_length": 0
-          },
-          {
-            "sql_name": "AllSuggest",
-            "domino_name": "AllSuggest",
             "jdbc_type": "VARCHAR",
             "scale_length": 0
           }

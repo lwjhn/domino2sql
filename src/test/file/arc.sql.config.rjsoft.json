@@ -23,6 +23,12 @@
       }
     },
     "sql_table": "XC_DEMO.EGOV_DISPATCH_HISTORY",
+    "sql_update_primary_key":{
+      "sql_name": "ID",
+      "domino_name": "ArcXC_UUID_16",
+      "jdbc_type": "VARCHAR",
+      "scale_length": 0
+    },
     "sql_field_others": [{
       "sql_name": "ID",
       "domino_name": "ArcXC_UUID_16",

@@ -16,7 +16,6 @@ import java.sql.DriverManager;
  * @Version: 1.0
  */
 public class Action extends ArcBase {
-    private Session session = null;
     private Connection connection = null;
     private ArcConfig arcConfig = null;
     private DatabaseCollection databaseCollection = null, mssdbc = null;
@@ -31,7 +30,7 @@ public class Action extends ArcBase {
     }
 
     public Action(ArcConfig arcConfig, Session session, int dbPoolSize, int mssdbPoolSize) throws Exception {
-        if ((this.session = session) == null) throw new Exception("parameter session is null ! ");
+        if (session == null) throw new Exception("parameter session is null ! ");
         this.arcConfig = arcConfig;
         checkArcConfig();
         createConnection();

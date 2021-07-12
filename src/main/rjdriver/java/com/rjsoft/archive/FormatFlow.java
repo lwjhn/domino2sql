@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.*;
+import java.util.function.Predicate;
 
 import com.alibaba.fastjson.*;
 
@@ -92,16 +93,15 @@ public class FormatFlow {
     public static JSONArray formatFlowJson(JSONArray jArray) {
         JSONArray jsonSorted = FormatFlow.jsonArraySort(jArray, "unitendtime", false);
         JSONArray jsonRecordArray = new JSONArray();
-
         for (int i = 0; i < jsonSorted.size(); i++) {
             JSONObject jsonSingleRecord = jsonSorted.getJSONObject(i);
-            //If (docRecord.UnitEndTime(0)<>"") And (docRecord.UnitShow(0)<>"0") And (Ucase$(docRecord.C_UserId(0))=Ucase$(docRecord.UnitHandler(0)) Or (inName(docRecord.C_AgentUserId,docRecord.UnitHandler(0))>0)  Or docRecord.UnitAction(0)="收回" Or docRecord.UnitAction(0)="撤办" Or (Instr(docRecord.UnitAction(0),"干预")>0)) Then
             if (checkUnitShow(jsonSingleRecord)) {//判断记录是否有效
                 JSONObject jsonRecord = new JSONObject();
                 if (jsonSingleRecord.containsKey("c_userdeptname"))
                     jsonRecord.put("c_userdeptname", getItemFirstValue(jsonSingleRecord, "c_userdeptname"));
-                if (jsonSingleRecord.containsKey("unitstarttime"))
-                    jsonRecord.put("unitstarttime", getItemFirstValue(jsonSingleRecord, "unitstarttime"));
+                jsonRecord.put("unitstarttime", getItemFirstValue(jsonSingleRecord, jsonSingleRecord.containsKey("unitstarttime") ?  "unitstarttime" : "$createtime"));
+
+
                 String sUnitName = getItemFirstValue(jsonSingleRecord, "c_unitname");  //jsonSingleRecord.containsKey("c_unitname") ? jsonSingleRecord.getJSONArray("c_unitname").getString(0) : "";
                 String sUnitUser = getItemFirstValue(jsonSingleRecord, "c_username");  //jsonSingleRecord.containsKey("c_username") ? jsonSingleRecord.getJSONArray("c_username").getString(0) : "";
                 String sUnitTime = getItemFirstValue(jsonSingleRecord, "unitendtime");  //jsonSingleRecord.containsKey("unitendtime") ? jsonSingleRecord.getJSONArray("unitendtime").getString(0) : "";
@@ -147,20 +147,19 @@ public class FormatFlow {
         //处理多个环节汇聚到一个环节的情况，收回与撤办
         //System.out.println("FormatFlow>>>收回/撤办>>>>");
         JSONArray jsonFinallArray = new JSONArray();
-
         for (int i = 0; i < jsonRecordArray.size(); i++) {
             JSONObject jsonCur = jsonRecordArray.getJSONObject(i);
-            for (int j = 1; j < jsonRecordArray.size(); j++) {
+            for (int j = i + 1; j < jsonRecordArray.size(); j++) {
                 //相邻后续环节中，是否有收回，撤办的情况
-                if (i + 1 == jsonRecordArray.size()) break;
-                JSONObject jsonNext = jsonRecordArray.getJSONObject(i + 1);
+                //if (i+1 >= jsonRecordArray.size()) break;
+                JSONObject jsonNext = jsonRecordArray.getJSONObject(j);
                 if ("收回".equals(jsonCur.getString("unitaction")) || "撤办".equals(jsonCur.getString("unitaction"))) {
                     if (jsonCur.getString("unitname").equals(jsonNext.getString("unitname")) && jsonCur.getString("unitaction").equals(jsonNext.getString("unitaction")) && jsonCur.getString("unitnameto").equals(jsonNext.getString("unitnameto")) && jsonCur.getString("unituserto").equals(jsonNext.getString("unituserto"))) {
                         //当前环节，操作，后续环节，后续环节办理人一致，合并
                         String sUnitUser = jsonCur.getString("unituser");
                         sUnitUser = sUnitUser + "," + jsonNext.getString("unituser");
                         jsonCur.put("unituser", sUnitUser);
-                        i = i + j;
+                        i = j;
                     } else {
                         break;
                     }
@@ -168,7 +167,6 @@ public class FormatFlow {
             }
             jsonFinallArray.add(jsonCur);
         }
-
         return jsonFinallArray;
     }
 
@@ -220,9 +218,12 @@ public class FormatFlow {
 
     public static String getItemFirstValue(JSONObject jsonSingleRecord, String name) {
         Object item = jsonSingleRecord.get(name);
-        return item == null ? "" : String.valueOf(
+        item = item == null ? "" : (
                 item instanceof List ? (((List) item).size() > 0 ? ((List) item).get(0) : "") : item
         );
+        return String.valueOf(item instanceof JSONObject && ((JSONObject) item).containsKey("localTime")
+                ? ((String)((JSONObject) item).get("localTime"))    //.replaceAll("(?i)\\s*(ze|gmt)\\d*\\s*","")
+                : item);
     }
 
     private static boolean checkUnitShow(JSONObject jsonSingleRecord) {

@@ -10,12 +10,13 @@ public class DominoQuery implements Cloneable {
     private String vesion = DefaultConfig.VERSION;
     private String ftppath = DefaultConfig.FTPPATH;
     private String ftppath_regex = DefaultConfig.FTPPATH_REGEX;
+    private String domino_uuid_prefix = DefaultConfig.Domino_UUID_Prefix;
     private String domino_server = null;
     private String domino_dbpath = null;
     private String domino_query = null;
     private boolean enable = DefaultConfig.ENABLE;
     private boolean error_continue = DefaultConfig.PROCESS_ERROR_CONTINUNE;
-
+    private boolean update_mode_no_insert = DefaultConfig.UPDATE_MODE_NO_INSERT;
     private String domino_error_flag_field = DefaultConfig.Domino_Error_Flag_Field;
     private String domino_succ_flag_field = DefaultConfig.Domino_Succ_Flag_Field;
     private String action_error_log = null;
@@ -23,6 +24,14 @@ public class DominoQuery implements Cloneable {
     private int action_succ_count = 0;
     private int action_err_count = 0;
     private boolean debugger = DefaultConfig.DEBUGGER;
+
+    public String getDomino_uuid_prefix() {
+        return domino_uuid_prefix;
+    }
+
+    public void setDomino_uuid_prefix(String domino_uuid_prefix) {
+        this.domino_uuid_prefix = domino_uuid_prefix;
+    }
 
     public String getVesion() {
         return vesion;
@@ -142,6 +151,14 @@ public class DominoQuery implements Cloneable {
 
     public void setError_continue(boolean error_continue) {
         this.error_continue = error_continue;
+    }
+
+    public boolean isUpdate_mode_no_insert() {
+        return update_mode_no_insert;
+    }
+
+    public void setUpdate_mode_no_insert(boolean update_mode_no_insert) {
+        this.update_mode_no_insert = update_mode_no_insert;
     }
 
     public DominoQuery() {

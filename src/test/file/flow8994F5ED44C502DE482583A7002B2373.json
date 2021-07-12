@@ -1,0 +1,3905 @@
+[
+  {
+    "unid": [
+      "54B9F1C5BEB9FD62482583A7002BAD2C"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-20 15:57:04"
+    ],
+    "c_username": [
+      "市大数据局文书"
+    ],
+    "c_unitname": [
+      "收文登记"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-20 15:57:06"
+    ],
+    "l_unitindex": [
+      "-1"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人顺序"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "1"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "l_unitname": [
+      "开始"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-20",
+      "gMTTime": "2019-02-20 07:57:03 GMT",
+      "localTime": "2019-02-20 15:57:03 ZE8",
+      "replicaID": "482583A7002BAD2C",
+      "timeOnly": "15:57:03",
+      "timeZone": -8,
+      "zoneTime": "2019-02-20 15:57:03 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitbutton": [
+      "正文管理:查看正文:附件管理:修改基本信息:撤办:作废"
+    ],
+    "unittodocunid": [
+      "963A2D9CA4146644482583A7002BAE55"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "54B9F1C5BEB9FD62482583A7002BAD2C"
+    ],
+    "unid": [
+      "963A2D9CA4146644482583A7002BAE55"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-20 15:57:06"
+    ],
+    "c_username": [
+      "方昕"
+    ],
+    "c_unitname": [
+      "办公室拟办"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-20 15:57:44"
+    ],
+    "l_unitindex": [
+      "1"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "10"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57807/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "收文登记"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-20",
+      "gMTTime": "2019-02-20 07:57:06 GMT",
+      "localTime": "2019-02-20 15:57:06 ZE8",
+      "replicaID": "482583A7002BAE55",
+      "timeOnly": "15:57:06",
+      "timeZone": -8,
+      "zoneTime": "2019-02-20 15:57:06 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "正文管理:查看正文:查看附件:修改基本信息:退回:撤办:拟办意见|Read0"
+    ],
+    "unittodocunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unithandler": [
+      "U57807/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "963A2D9CA4146644482583A7002BAE55"
+    ],
+    "unid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "l_userid": [
+      "U57807/LISHUI"
+    ],
+    "l_username": [
+      "方昕"
+    ],
+    "unitstarttime": [
+      "2019-02-20 15:57:44"
+    ],
+    "c_username": [
+      "市大数据局文书"
+    ],
+    "c_unitname": [
+      "登记人送文"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 11:48:40"
+    ],
+    "l_unitindex": [
+      "10"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "9"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "办公室拟办"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-20",
+      "gMTTime": "2019-02-20 07:57:44 GMT",
+      "localTime": "2019-02-20 15:57:44 ZE8",
+      "replicaID": "482583A7002BBD28",
+      "timeOnly": "15:57:44",
+      "timeZone": -8,
+      "zoneTime": "2019-02-20 15:57:44 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "正文管理:查看正文:查看附件:打印阅办单:内部分发:退回:撤办:作废"
+    ],
+    "unittodocunid": [
+      "FF9922AD706B33DA482583A80014EF79",
+      "E22A88A7922C4B81482583A80014EF81",
+      "AC2F1A7286CD6BA5482583A80014EF89",
+      "58E0C2DE3FC18CCE482583A80014EF92",
+      "06434D473DA7E325482583A80014EF9C",
+      "612335BE3FD99629482583A80014EFA8",
+      "520A715654B28F89482583A80014EFB5",
+      "AB5D489D93A237FC482583A80014EFC3",
+      "F9420E0E74A8D4F5482583A80014EFCF",
+      "C551C3EBF410748A482583A80014EFE2",
+      "59FB6448CFF3D563482583A80014EFF3",
+      "48D726A1D902EC3E482583A80014F005",
+      "F89DFD3EE78D8C7D482583A80014F016",
+      "88B14B2D8CFFC74F482583A80014F028",
+      "288C8D0F76BEB1A7482583A80014F03B",
+      "D44282712087DAAF482583A80014F050",
+      "9B95A66342DBCCFE482583A80014F064",
+      "4664C6504781279F482583A80014F07A",
+      "E1FA9149A785336C482583A80014F090",
+      "3FCC05C23139F503482583A80014F0A9",
+      "606F2DE2B9148C97482583A80014F0BE",
+      "CD525FA5A0E020FA482583A80014F0D7",
+      "AD792C8A0360CB3E482583A80014F0F0",
+      "EFB1B3FD862BEBFF482583A80014F108",
+      "29AA18A6EFC38017482583A80014F121",
+      "1D974108136FFE70482583A80014F13A",
+      "7F307D2D952A32A0482583A80014F153",
+      "381856486C5B18A9482583A80014F16D",
+      "D6EC1FDA0FF51AC9482583A80014F18B",
+      "49AB4DFB13C8CFAE482583A80014F1A7",
+      "B31A0D380EE5BF3D482583A80014F1C5",
+      "68512B6AACAC4D92482583A80014F1E4",
+      "248258F612B5FDB7482583A80014F208",
+      "E3757EBD3CD1ACBD482583A80014F232",
+      "9A7FA00B660DBF65482583A80014F260",
+      "F21F47EDC49A0A1C482583A80014F282"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "FF9922AD706B33DA482583A80014EF79"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:40"
+    ],
+    "c_username": [
+      "陈建广"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:54:33"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07183"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U57738/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "局领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EF79",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57738/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "E22A88A7922C4B81482583A80014EF81"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:40"
+    ],
+    "c_username": [
+      "吴雄飞"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:29:47"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07183"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U57805/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "局领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EF81",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57805/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "AC2F1A7286CD6BA5482583A80014EF89"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:40"
+    ],
+    "c_username": [
+      "杜战"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:11:40"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59197/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EF89",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59197/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "58E0C2DE3FC18CCE482583A80014EF92"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:40"
+    ],
+    "c_username": [
+      "胡春辉"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-22 14:11:01"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59196/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EF92",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59196/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "06434D473DA7E325482583A80014EF9C"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:40"
+    ],
+    "c_username": [
+      "吴志林"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 17:21:20"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07363"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59195/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "中心领导"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EF9C",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59195/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "612335BE3FD99629482583A80014EFA8"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:40"
+    ],
+    "c_username": [
+      "陈超"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-22 08:43:44"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59198/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EFA8",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59198/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "520A715654B28F89482583A80014EFB5"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:41"
+    ],
+    "c_username": [
+      "陈海明"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59205/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EFB5",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "AB5D489D93A237FC482583A80014EFC3"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:41"
+    ],
+    "c_username": [
+      "何建美"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59204/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:40 GMT",
+      "localTime": "2019-02-21 11:48:40 ZE8",
+      "replicaID": "482583A80014EFC3",
+      "timeOnly": "11:48:40",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:40 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "F9420E0E74A8D4F5482583A80014EFCF"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:41"
+    ],
+    "c_username": [
+      "李放"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59207/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:41 GMT",
+      "localTime": "2019-02-21 11:48:41 ZE8",
+      "replicaID": "482583A80014EFCF",
+      "timeOnly": "11:48:41",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:41 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "C551C3EBF410748A482583A80014EFE2"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:41"
+    ],
+    "c_username": [
+      "刘晓峰"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:59:46"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59212/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:41 GMT",
+      "localTime": "2019-02-21 11:48:41 ZE8",
+      "replicaID": "482583A80014EFE2",
+      "timeOnly": "11:48:41",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:41 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59212/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "59FB6448CFF3D563482583A80014EFF3"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:41"
+    ],
+    "c_username": [
+      "彭海玲"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:38:50"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59200/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:41 GMT",
+      "localTime": "2019-02-21 11:48:41 ZE8",
+      "replicaID": "482583A80014EFF3",
+      "timeOnly": "11:48:41",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:41 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59200/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "48D726A1D902EC3E482583A80014F005"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:41"
+    ],
+    "c_username": [
+      "苏涛"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59208/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:41 GMT",
+      "localTime": "2019-02-21 11:48:41 ZE8",
+      "replicaID": "482583A80014F005",
+      "timeOnly": "11:48:41",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:41 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "F89DFD3EE78D8C7D482583A80014F016"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:42"
+    ],
+    "c_username": [
+      "翁骅"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-25 14:23:39"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59213/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:41 GMT",
+      "localTime": "2019-02-21 11:48:41 ZE8",
+      "replicaID": "482583A80014F016",
+      "timeOnly": "11:48:41",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:41 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59213/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "88B14B2D8CFFC74F482583A80014F028"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:42"
+    ],
+    "c_username": [
+      "周伟华"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59210/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:42 GMT",
+      "localTime": "2019-02-21 11:48:42 ZE8",
+      "replicaID": "482583A80014F028",
+      "timeOnly": "11:48:42",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:42 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "288C8D0F76BEB1A7482583A80014F03B"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:42"
+    ],
+    "c_username": [
+      "周旭初"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-22 16:47:59"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59202/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:42 GMT",
+      "localTime": "2019-02-21 11:48:42 ZE8",
+      "replicaID": "482583A80014F03B",
+      "timeOnly": "11:48:42",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:42 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59202/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "D44282712087DAAF482583A80014F050"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:42"
+    ],
+    "c_username": [
+      "朱本利"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-22 16:35:12"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07356"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59199/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "综合处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:42 GMT",
+      "localTime": "2019-02-21 11:48:42 ZE8",
+      "replicaID": "482583A80014F050",
+      "timeOnly": "11:48:42",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:42 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59199/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "9B95A66342DBCCFE482583A80014F064"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:42"
+    ],
+    "c_username": [
+      "王剑"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-26 14:17:46"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07357"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59219/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "标准规范处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:42 GMT",
+      "localTime": "2019-02-21 11:48:42 ZE8",
+      "replicaID": "482583A80014F064",
+      "timeOnly": "11:48:42",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:42 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59219/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "4664C6504781279F482583A80014F07A"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:43"
+    ],
+    "c_username": [
+      "王玲玲"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-22 16:36:52"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07357"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59217/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "标准规范处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:42 GMT",
+      "localTime": "2019-02-21 11:48:42 ZE8",
+      "replicaID": "482583A80014F07A",
+      "timeOnly": "11:48:42",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:42 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59217/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "E1FA9149A785336C482583A80014F090"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:43"
+    ],
+    "c_username": [
+      "刘宁"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59221/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:43 GMT",
+      "localTime": "2019-02-21 11:48:43 ZE8",
+      "replicaID": "482583A80014F090",
+      "timeOnly": "11:48:43",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:43 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "3FCC05C23139F503482583A80014F0A9"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:43"
+    ],
+    "c_username": [
+      "施伟谊"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-26 13:49:16"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59224/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:43 GMT",
+      "localTime": "2019-02-21 11:48:43 ZE8",
+      "replicaID": "482583A80014F0A9",
+      "timeOnly": "11:48:43",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:43 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59224/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "606F2DE2B9148C97482583A80014F0BE"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:43"
+    ],
+    "c_username": [
+      "王艳"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59225/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:43 GMT",
+      "localTime": "2019-02-21 11:48:43 ZE8",
+      "replicaID": "482583A80014F0BE",
+      "timeOnly": "11:48:43",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:43 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "CD525FA5A0E020FA482583A80014F0D7"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:44"
+    ],
+    "c_username": [
+      "韦炜"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 15:13:14"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59227/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:43 GMT",
+      "localTime": "2019-02-21 11:48:43 ZE8",
+      "replicaID": "482583A80014F0D7",
+      "timeOnly": "11:48:43",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:43 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59227/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "AD792C8A0360CB3E482583A80014F0F0"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:44"
+    ],
+    "c_username": [
+      "吴应超"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59222/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:44 GMT",
+      "localTime": "2019-02-21 11:48:44 ZE8",
+      "replicaID": "482583A80014F0F0",
+      "timeOnly": "11:48:44",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:44 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "EFB1B3FD862BEBFF482583A80014F108"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:44"
+    ],
+    "c_username": [
+      "朱坚"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:37:43"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07358"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59226/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "应用开发处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:44 GMT",
+      "localTime": "2019-02-21 11:48:44 ZE8",
+      "replicaID": "482583A80014F108",
+      "timeOnly": "11:48:44",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:44 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59226/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "29AA18A6EFC38017482583A80014F121"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:44"
+    ],
+    "c_username": [
+      "过振奕"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07359"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59228/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "运行维护处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:44 GMT",
+      "localTime": "2019-02-21 11:48:44 ZE8",
+      "replicaID": "482583A80014F121",
+      "timeOnly": "11:48:44",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:44 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "1D974108136FFE70482583A80014F13A"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:45"
+    ],
+    "c_username": [
+      "吴登峰"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07359"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59201/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "运行维护处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:44 GMT",
+      "localTime": "2019-02-21 11:48:44 ZE8",
+      "replicaID": "482583A80014F13A",
+      "timeOnly": "11:48:44",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:44 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "7F307D2D952A32A0482583A80014F153"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:45"
+    ],
+    "c_username": [
+      "陈马涛"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 11:49:42"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07359"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59203/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "运行维护处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:44 GMT",
+      "localTime": "2019-02-21 11:48:44 ZE8",
+      "replicaID": "482583A80014F153",
+      "timeOnly": "11:48:44",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:44 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59203/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "381856486C5B18A9482583A80014F16D"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:45"
+    ],
+    "c_username": [
+      "王豪"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07359"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59206/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "运行维护处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:45 GMT",
+      "localTime": "2019-02-21 11:48:45 ZE8",
+      "replicaID": "482583A80014F16D",
+      "timeOnly": "11:48:45",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:45 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "D6EC1FDA0FF51AC9482583A80014F18B"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:45"
+    ],
+    "c_username": [
+      "吴春明"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-03-25 22:22:55"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07360"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59209/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "数据管理处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:45 GMT",
+      "localTime": "2019-02-21 11:48:45 ZE8",
+      "replicaID": "482583A80014F18B",
+      "timeOnly": "11:48:45",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:45 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59209/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "49AB4DFB13C8CFAE482583A80014F1A7"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:46"
+    ],
+    "c_username": [
+      "项伟平"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07360"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59211/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "数据管理处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:45 GMT",
+      "localTime": "2019-02-21 11:48:45 ZE8",
+      "replicaID": "482583A80014F1A7",
+      "timeOnly": "11:48:45",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:45 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "B31A0D380EE5BF3D482583A80014F1C5"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:46"
+    ],
+    "c_username": [
+      "詹陈丽"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-03-15 11:25:51"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07360"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59214/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "数据管理处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:46 GMT",
+      "localTime": "2019-02-21 11:48:46 ZE8",
+      "replicaID": "482583A80014F1C5",
+      "timeOnly": "11:48:46",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:46 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59214/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "68512B6AACAC4D92482583A80014F1E4"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:46"
+    ],
+    "c_username": [
+      "孙蓓蓓"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-03-06 15:34:03"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07361"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59216/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "微博微信管理处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:46 GMT",
+      "localTime": "2019-02-21 11:48:46 ZE8",
+      "replicaID": "482583A80014F1E4",
+      "timeOnly": "11:48:46",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:46 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59216/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "248258F612B5FDB7482583A80014F208"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:47"
+    ],
+    "c_username": [
+      "施雯"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07361"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59218/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "微博微信管理处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:46 GMT",
+      "localTime": "2019-02-21 11:48:46 ZE8",
+      "replicaID": "482583A80014F208",
+      "timeOnly": "11:48:46",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:46 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "E3757EBD3CD1ACBD482583A80014F232"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:47"
+    ],
+    "c_username": [
+      "施会强"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:29"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07361"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "收回"
+    ],
+    "c_userid": [
+      "U59220/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "微博微信管理处"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:47 GMT",
+      "localTime": "2019-02-21 11:48:47 ZE8",
+      "replicaID": "482583A80014F232",
+      "timeOnly": "11:48:47",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:47 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "9A7FA00B660DBF65482583A80014F260"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:48"
+    ],
+    "c_username": [
+      "叶丽勇"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-28 14:03:09"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07362"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U59223/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "卫计分中心"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:47 GMT",
+      "localTime": "2019-02-21 11:48:47 ZE8",
+      "replicaID": "482583A80014F260",
+      "timeOnly": "11:48:47",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:47 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U59223/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "C492393D1633CAD6482583A7002BBD28"
+    ],
+    "unid": [
+      "F21F47EDC49A0A1C482583A80014F282"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "市大数据局文书"
+    ],
+    "unitstarttime": [
+      "2019-02-21 11:48:48"
+    ],
+    "c_username": [
+      "李义春"
+    ],
+    "c_unitname": [
+      "传阅"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-02-21 14:44:13"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "4"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U57808/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "登记人送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-02-21",
+      "gMTTime": "2019-02-21 03:48:48 GMT",
+      "localTime": "2019-02-21 11:48:48 ZE8",
+      "replicaID": "482583A80014F282",
+      "timeOnly": "11:48:48",
+      "timeZone": -8,
+      "zoneTime": "2019-02-21 11:48:48 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件"
+    ],
+    "unithandler": [
+      "U57808/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "963A2D9CA4146644482583A7002BAE55"
+    ],
+    "unid": [
+      "225584F71CBF72E1482583E000299C4A"
+    ],
+    "l_userid": [
+      "U57807/LISHUI"
+    ],
+    "l_username": [
+      "方昕"
+    ],
+    "unitstarttime": [
+      "2019-04-18 15:34:29"
+    ],
+    "c_username": [
+      "市大数据局文书"
+    ],
+    "c_unitname": [
+      "登记人送文"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:34:35"
+    ],
+    "l_unitindex": [
+      "10"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "fromunituserunid": [
+      "520A715654B28F89482583A80014EFB5",
+      "AB5D489D93A237FC482583A80014EFC3",
+      "F9420E0E74A8D4F5482583A80014EFCF",
+      "48D726A1D902EC3E482583A80014F005",
+      "88B14B2D8CFFC74F482583A80014F028",
+      "E1FA9149A785336C482583A80014F090",
+      "606F2DE2B9148C97482583A80014F0BE",
+      "AD792C8A0360CB3E482583A80014F0F0",
+      "29AA18A6EFC38017482583A80014F121",
+      "1D974108136FFE70482583A80014F13A",
+      "381856486C5B18A9482583A80014F16D",
+      "49AB4DFB13C8CFAE482583A80014F1A7",
+      "248258F612B5FDB7482583A80014F208",
+      "E3757EBD3CD1ACBD482583A80014F232"
+    ],
+    "c_unitindex": [
+      "9"
+    ],
+    "unitaction": [
+      "发送"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "办公室拟办"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-18",
+      "gMTTime": "2019-04-18 07:34:29 GMT",
+      "localTime": "2019-04-18 15:34:29 ZE8",
+      "replicaID": "482583E000299C4A",
+      "timeOnly": "15:34:29",
+      "timeZone": -8,
+      "zoneTime": "2019-04-18 15:34:29 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "正文管理:查看正文:查看附件:打印阅办单:内部分发:退回:撤办:作废"
+    ],
+    "unittodocunid": [
+      "FF9922AD706B33DA482583A80014EF79",
+      "E22A88A7922C4B81482583A80014EF81",
+      "AC2F1A7286CD6BA5482583A80014EF89",
+      "58E0C2DE3FC18CCE482583A80014EF92",
+      "06434D473DA7E325482583A80014EF9C",
+      "612335BE3FD99629482583A80014EFA8",
+      "520A715654B28F89482583A80014EFB5",
+      "AB5D489D93A237FC482583A80014EFC3",
+      "F9420E0E74A8D4F5482583A80014EFCF",
+      "C551C3EBF410748A482583A80014EFE2",
+      "59FB6448CFF3D563482583A80014EFF3",
+      "48D726A1D902EC3E482583A80014F005",
+      "F89DFD3EE78D8C7D482583A80014F016",
+      "88B14B2D8CFFC74F482583A80014F028",
+      "288C8D0F76BEB1A7482583A80014F03B",
+      "D44282712087DAAF482583A80014F050",
+      "9B95A66342DBCCFE482583A80014F064",
+      "4664C6504781279F482583A80014F07A",
+      "E1FA9149A785336C482583A80014F090",
+      "3FCC05C23139F503482583A80014F0A9",
+      "606F2DE2B9148C97482583A80014F0BE",
+      "CD525FA5A0E020FA482583A80014F0D7",
+      "AD792C8A0360CB3E482583A80014F0F0",
+      "EFB1B3FD862BEBFF482583A80014F108",
+      "29AA18A6EFC38017482583A80014F121",
+      "1D974108136FFE70482583A80014F13A",
+      "7F307D2D952A32A0482583A80014F153",
+      "381856486C5B18A9482583A80014F16D",
+      "D6EC1FDA0FF51AC9482583A80014F18B",
+      "49AB4DFB13C8CFAE482583A80014F1A7",
+      "B31A0D380EE5BF3D482583A80014F1C5",
+      "68512B6AACAC4D92482583A80014F1E4",
+      "248258F612B5FDB7482583A80014F208",
+      "E3757EBD3CD1ACBD482583A80014F232",
+      "9A7FA00B660DBF65482583A80014F260",
+      "F21F47EDC49A0A1C482583A80014F282",
+      "03A98228B19E1AA7482583E000299E8D"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  },
+  {
+    "l_unituserunid": [
+      "225584F71CBF72E1482583E000299C4A"
+    ],
+    "unid": [
+      "03A98228B19E1AA7482583E000299E8D"
+    ],
+    "l_userid": [
+      "U57856/LISHUI"
+    ],
+    "l_username": [
+      "李玫"
+    ],
+    "unitstarttime": [
+      "2019-04-18 15:34:35"
+    ],
+    "c_username": [
+      "李玫"
+    ],
+    "c_unitname": [
+      "归档"
+    ],
+    "unitreverted": [
+      "0"
+    ],
+    "unitendtime": [
+      "2019-04-18 15:47:52"
+    ],
+    "l_unitindex": [
+      "9"
+    ],
+    "l_userdeptname": [
+      "办公室"
+    ],
+    "c_userdeptid": [
+      "D07184"
+    ],
+    "unittype": [
+      "多人并行"
+    ],
+    "c_unitmode": [
+      "0"
+    ],
+    "c_unitindex": [
+      "7"
+    ],
+    "unitaction": [
+      "办理完毕"
+    ],
+    "c_userid": [
+      "U57856/LISHUI"
+    ],
+    "c_unitjoin": [
+      ":"
+    ],
+    "docunid": [
+      "8994F5ED44C502DE482583A7002B2373"
+    ],
+    "c_userdeptname": [
+      "办公室"
+    ],
+    "form": [
+      "FlowForm"
+    ],
+    "unitjoin": [
+      ":"
+    ],
+    "l_unitname": [
+      "文书送文"
+    ],
+    "$createtime": {
+      "dST": false,
+      "dateOnly": "2019-04-18",
+      "gMTTime": "2019-04-18 07:34:35 GMT",
+      "localTime": "2019-04-18 15:34:35 ZE8",
+      "replicaID": "482583E000299E8D",
+      "timeOnly": "15:34:35",
+      "timeZone": -8,
+      "zoneTime": "2019-04-18 15:34:35 ZE8"
+    },
+    "l_userdeptid": [
+      "D07184"
+    ],
+    "unitmode": [
+      "0"
+    ],
+    "unitbutton": [
+      "查看正文:查看附件:意见管理:归档:退回:撤办:作废:收回"
+    ],
+    "unithandler": [
+      "U57856/LISHUI"
+    ]
+  }
+]

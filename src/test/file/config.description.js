@@ -9,9 +9,22 @@ export default {
       "version": "1.1", //版本号，导出文件路径含版本号，及domino文件将保持版本号，当迁移中断后，可以排除错误文档后继续归档。
       "ftppath": "/FTP_XC/", //导出本地附件路径
       "ftppath_regex": "", //导出路径替换特定字符
-      "domino_server": "", //迁移数据库所属服务器
-      "domino_dbpath": "", //迁移数据库路径
-      "domino_query": "Form=\"Document\" & Published=\"1\"", //迁移文档dbsearch查询公式
+      "domino_server": "server1", //迁移数据库所属服务器
+      "domino_query": "Form=\"Document\" & Published=\"1\" ", //迁移文档dbsearch查询公式
+      "domino_queries": [{ //多模块使用相同配置，外层domino_server，domino_dbpath，domino_query三个参数不全的情况作为默认值
+        "domino_dbpath": "oa1/dispatch.nsf",
+      },{
+        "domino_dbpath": "oa2/dispatch.nsf",
+        "domino_query": "Form=\"Document\" & Published=\"0\""
+      },{
+        "domino_server": "server2",
+        "domino_dbpath": "oa2/dispatch.nsf",
+        "domino_query": "Form=\"Document\" & Published=\"1\""
+      } ,{
+          "enable": false,  //设置为false不执行
+          "domino_server": "server3",
+          "domino_dbpath": "oa4/dispatch.nsf"
+        }],
       "domino_error_flag_field": "ArcXC_Error_FLAG", //Domino归档错误标记字段名，用于获取当前归档中错误的文件。二次归档时，可以在domino_query增加此字段的条件
       "sql_table": "EX_NPXC.EGOV_EX_DOC_HISTORY", //归档对应的表名称
       "domino_before_prepared_driver": "com.rjsoft.prepared.BeforePreparedRJDoc", //1. 不配置：仅导出正文附件； 2. 配置com.rjsoft.prepared.BeforePreparedRJDoc,正文附件，流程，意见，办理单； 3. 配置com.rjsoft.prepared.BeforeArchive，正文附件，流程，意见。

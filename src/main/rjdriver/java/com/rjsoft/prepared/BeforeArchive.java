@@ -11,6 +11,7 @@ import com.lwjhn.util.FileOperator;
 import lotus.domino.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 
 /**
@@ -27,6 +28,7 @@ public class BeforeArchive implements PreparedDocument {
         String srv = null, dbpath = null, unid = null;
         Database mssdb = null;
         try {
+            System.out.println("com.lwjhn.archive.prepared.BeforeArchive.action:: unid->" + srcdoc.getUniversalID());
             if ((ftppath = dbConfig.getFtppath()) == null)
                 ftppath = DefaultConfig.FTPPATH;
             if ((version = dbConfig.getVesion()) == null)
@@ -52,6 +54,7 @@ public class BeforeArchive implements PreparedDocument {
                             "流程记录.json");
 
         } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         } finally {
 
@@ -64,7 +67,6 @@ public class BeforeArchive implements PreparedDocument {
         Database mssdb = null;
         DocumentCollection mssdc = null;
         Document mssdoc = null;
-        RichTextItem item = null;
         JSONObject res = new JSONObject();
         try {
             if (srv == null || dbpath == null || unid == null || "".equals(dbpath) || "".equals(unid))
@@ -97,6 +99,22 @@ public class BeforeArchive implements PreparedDocument {
             Document2Json.toJSONFile(mssdc, file = new File(file.getCanonicalPath() + "/" + form + unid + ".json"));
             if (!file.exists()) throw new Exception("Document2Json error : create file error ! " + file.getName());
             BaseUtils.recycle(mssdoc, mssdc);
+            mssdoc = this.createMssDoc(attachdb, form, file, unid, filename);
+            mssdoc.replaceItemValue("$before_archive_version", version);
+            mssdoc.save(true);
+            FileOperator.deleteDir(file);
+            return this;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            BaseUtils.recycle(mssdoc, mssdc);
+        }
+    }
+
+    protected Document createMssDoc(Database attachdb, String form, File file, String unid, String filename) throws NotesException, IOException {
+        Document mssdoc = null;
+        RichTextItem item = null;
+        try{
             mssdoc = attachdb.createDocument();
             mssdoc.replaceItemValue("form", form);
             mssdoc.replaceItemValue("AttachFile", file.getName());
@@ -105,15 +123,10 @@ public class BeforeArchive implements PreparedDocument {
             mssdoc.replaceItemValue("UNID", mssdoc.getUniversalID());
             (item = mssdoc.createRichTextItem("tempbody"))
                     .embedObject(EmbeddedObject.EMBED_ATTACHMENT, null, file.getCanonicalPath(), file.getName());
-            mssdoc.replaceItemValue("$before_archive_version", version);
-            mssdoc.save(true);
-            FileOperator.deleteDir(file);
-            return this;
-        } catch (Exception e) {
-            throw e;
         } finally {
-            BaseUtils.recycle(item, mssdoc, mssdc);
+            BaseUtils.recycle(item);
         }
+        return mssdoc;
     }
 
     public String getFtppath() {
