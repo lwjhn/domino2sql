@@ -140,24 +140,24 @@ public class DSProcessDispatch implements DSProcess {
                 item.setValue(""); // 如果公式没有返回值，那么返回空串
             else
                 item.setValue(getValueFromVector(v, item.getDelima())); // 否则处理公式返回值
-            // 判断是否有值的格式化定义，如果有，要格式化值
-            if (item.getFormat() != null) {
-                String formatClassName = item.getFormat();
-                if (formatClassName.length() > 0) {
-                    try {
-                        FormatBase format = (FormatBase) Class.forName(formatClassName).newInstance();
-                        item.setValue(format.format(item.getValue()));
-                    } catch (ClassNotFoundException cnfe) {
-                        System.out.println("Format Value Error:ClassNotFoundException:" + formatClassName);
-                    } catch (IllegalAccessException iae) {
-                        System.out.println("Format Value Error:IllegalAccessException:" + formatClassName);
-                    } catch (InstantiationException ie) {
-                        System.out.println("Format Value Error:InstantiationException:" + formatClassName);
-                    } catch (Exception e) {
-                        System.out.println("Format Value Error:" + e.getMessage() + "\nFormat Class Name:" + formatClassName);
-                    }
-                }
-            }
+//            // 判断是否有值的格式化定义，如果有，要格式化值
+//            if (item.getFormat() != null) {
+//                String formatClassName = item.getFormat();
+//                if (formatClassName.length() > 0) {
+//                    try {
+//                        FormatBase format = (FormatBase) Class.forName(formatClassName).newInstance();
+//                        item.setValue(format.format(item.getValue()));
+//                    } catch (ClassNotFoundException cnfe) {
+//                        System.out.println("Format Value Error:ClassNotFoundException:" + formatClassName);
+//                    } catch (IllegalAccessException iae) {
+//                        System.out.println("Format Value Error:IllegalAccessException:" + formatClassName);
+//                    } catch (InstantiationException ie) {
+//                        System.out.println("Format Value Error:InstantiationException:" + formatClassName);
+//                    } catch (Exception e) {
+//                        System.out.println("Format Value Error:" + e.getMessage() + "\nFormat Class Name:" + formatClassName);
+//                    }
+//                }
+//            }
         } catch (Exception e) {
             System.err.println("initValue() Error in DSProcessDispatch.java:" + e.getMessage());
             e.printStackTrace();

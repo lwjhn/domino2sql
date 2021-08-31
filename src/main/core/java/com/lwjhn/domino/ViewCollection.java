@@ -1,5 +1,6 @@
 package com.lwjhn.domino;
 
+import lotus.domino.Database;
 import lotus.domino.NotesException;
 import lotus.domino.Session;
 import lotus.domino.View;
@@ -12,7 +13,6 @@ import java.util.Vector;
 
 public class ViewCollection extends DatabaseCollection {
 	protected Map<String,View> views =new HashMap<String, View>();
-	protected View view=null;
 	protected String viewkey = null;	
 	protected int view_pool_size=10;
 	
@@ -38,46 +38,37 @@ public class ViewCollection extends DatabaseCollection {
 		return this.views;
 	}
 	
-	public View addView(View view,boolean recycleRepeat) throws NotesException{
+	public View addView(View view) throws NotesException{
 		if(view==null) return null;
-		this.view=views.get(this.viewkey=this.getKey(view));
-		if(this.view==null){
+		View tview=views.get(this.viewkey=this.getKey(view));
+		if(tview==null){
 			views.put(this.viewkey, view);
 			this.view_pool_size++;
-			this.add(view.getParent(), recycleRepeat);
-			return view;
-		}else{
-			if(recycleRepeat) { try { view.recycle(); view = null; } catch (Exception e) { } }
-			return this.view;
+			this.add(view.getParent());
 		}
+		return view;
 	}
 	
-	public ViewCollection addViews(Collection<View> views,boolean recycleRepeat) throws NotesException{
+	public ViewCollection addViews(Collection<View> views) throws NotesException{
 		for(View view : views){
-			addView(view,recycleRepeat);
+			addView(view);
 		}
 		return this;
 	}
 	
 	public View getView(String server,String filepath,String viewname) throws NotesException{
-		view=views.get(this.viewkey=this.getKey(server, filepath, viewname));
+		View view=views.get(this.viewkey=this.getKey(server, filepath, viewname));
 		if(view==null){
-			this.db=this.getDatabase(server, filepath);
-			if(this.db==null) return null;
-			view=this.db.getView(viewname);
+			Database db=this.getDatabase(server, filepath);
+			if(db==null) return null;
+			view=db.getView(viewname);
 			if(view == null){
 				if(debug) System.out.println(String.format("can't find view %s.  %s %s",viewname,server,filepath));
 				return null;
 			}else if(views.size()>this.view_pool_size){
 				Entry<String, View> entry=views.entrySet().iterator().next();
-				View view=null;
-				try {
-					if ((view=entry.getValue()) != null) { 
-						view.recycle();
-						view = null; 
-					}
-					views.remove(entry.getKey());
-				} catch (Exception e) { }
+				views.remove(entry.getKey());
+				BaseUtils.recycle(entry.getValue());
 			}
 			views.put(this.viewkey, view);
 		}
@@ -92,23 +83,18 @@ public class ViewCollection extends DatabaseCollection {
 	public String getKey(View view) throws NotesException{
 		return this.getKey(view.getParent().getServer(),view.getParent().getFilePath(),view.getName());
 	}
-	
-	public void recycle(String server,String filepath,String viewname) throws Exception{
-		this.db=dbs.get(this.viewkey=this.getKey(server, filepath));
-		if(this.db!=null){
-			if (this.db != null) { try { this.db.recycle(); this.db = null; } catch (Exception e) { } }
-			dbs.remove(this.viewkey);
+
+	public void recycle(String server,String filepath,String viewName) throws Exception{
+		View view=views.get(this.viewkey=this.getKey(server, filepath, viewName));
+		if(view!=null){
+			views.remove(this.viewkey);
 		}
-		if (db != null) { try { db.recycle(); db = null; } catch (Exception e) { } }
+		BaseUtils.recycle(view);
 	}
 	
 	public void recycle(View view) throws Exception{
-		this.view=views.get(this.viewkey=this.getKey(view));
-		if(this.view!=null){
-			if (this.view != null) { try { this.view.recycle(); this.view = null; } catch (Exception e) { } }
-			views.remove(this.viewkey);
-		}
-		if (view != null) { try { view.recycle(); view = null; } catch (Exception e) { } }
+		recycle(view.getParent().getServer(),view.getParent().getFilePath(),view.getName());
+		BaseUtils.recycle(view);
 	}
 
 	public void recycle() {

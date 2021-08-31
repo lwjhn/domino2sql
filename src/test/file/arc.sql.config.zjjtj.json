@@ -9,7 +9,8 @@
     "vesion": "1.1.1",
     "domino_server": "hzjtxxserver/湖州交通学校/浙江交通",
     "domino_dbpath": "ZLOA/FwBGS.nsf",
-    "domino_query": "Form=\"SendDocument\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2021-07-25]",
+    "domino_query": "Form=\"SendDocument\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2021-07-25] & ArcXC_Succ_FLAG!=\"1.1.1\"",
+    "update_mode_no_insert": true,
     "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
     "domino_process_statement_driver": "com.lwjhn.domino2sql.driver.ProcessExtensionDocuments",
     "extended_options": {

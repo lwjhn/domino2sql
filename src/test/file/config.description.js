@@ -11,6 +11,7 @@ export default {
       "ftppath_regex": "", //导出路径替换特定字符
       "domino_server": "server1", //迁移数据库所属服务器
       "domino_query": "Form=\"Document\" & Published=\"1\" ", //迁移文档dbsearch查询公式
+      "domino_dbpath": "oa1/dispatch.nsf",
       "domino_queries": [{ //多模块使用相同配置，外层domino_server，domino_dbpath，domino_query三个参数不全的情况作为默认值
         "domino_dbpath": "oa1/dispatch.nsf",
       },{
@@ -25,6 +26,14 @@ export default {
           "domino_server": "server3",
           "domino_dbpath": "oa4/dispatch.nsf"
         }],
+      /*"sql_update_primary_key": {   //有配置，按Update模式处理。
+        "sql_name": "ID",
+        "domino_name": "ArcXC_UUID_16",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      "update_mode_no_insert": true, //true - 只更新， false - 更新,无关联文档则插入
+      */
       "domino_error_flag_field": "ArcXC_Error_FLAG", //Domino归档错误标记字段名，用于获取当前归档中错误的文件。二次归档时，可以在domino_query增加此字段的条件
       "sql_table": "EX_NPXC.EGOV_EX_DOC_HISTORY", //归档对应的表名称
       "domino_before_prepared_driver": "com.rjsoft.prepared.BeforePreparedRJDoc", //1. 不配置：仅导出正文附件； 2. 配置com.rjsoft.prepared.BeforePreparedRJDoc,正文附件，流程，意见，办理单； 3. 配置com.rjsoft.prepared.BeforeArchive，正文附件，流程，意见。
@@ -57,9 +66,19 @@ export default {
         },
         {
           "sql_name": "SYSTEMNUMBER",
-          "domino_formula": "1",  //domino_formula使用公式賦值。如@UserName、"1"、1.1，分別返回用戶名，字符串1，數值1.1
+          "domino_formula": "@LeftBack(@Subset(@DbName;-1);\"\\\\\")",  //domino_formula使用公式賦值。如@UserName、"1"、1.1，分別返回用戶名，字符串1，數值1.1
           "jdbc_type": "String"
-        }
+        },
+        {
+          "sql_name": "test",
+          "domino_formula": "@Left(testField;32)",
+          "jdbc_type": "String"
+        },
+        {
+          "sql_name": "checkField",
+          "domino_formula": "ret:=@Implode(checkField;\"; \");@If(@Length(ret)>32;@Error; ret);",
+          "jdbc_type": "String"
+        },
       ]
     }
   ]
