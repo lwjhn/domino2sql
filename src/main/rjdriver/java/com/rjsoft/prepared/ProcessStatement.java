@@ -23,12 +23,12 @@ import java.util.regex.Matcher;
  * @Version: 1.0
  */
 public class ProcessStatement implements com.lwjhn.domino2sql.ProcessStatement {
-    private Session session = null;
-    private String ftppath = null;
-    private DbConfig dbConfig = null;
-    private JSONObject extended_options = null;
-    private ItemConfig item_config_attachment = null;
-    private int index = -1;
+    protected Session session = null;
+    protected String ftppath = null;
+    protected DbConfig dbConfig = null;
+    protected JSONObject extended_options = null;
+    protected ItemConfig item_config_attachment = null;
+    protected int index = -1;
 
     @Override
     public void action(PreparedStatement preparedStatement, Document srcdoc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) throws NotesException, Exception {
@@ -37,7 +37,7 @@ public class ProcessStatement implements com.lwjhn.domino2sql.ProcessStatement {
         preparedStatement.setObject(index, arcMssFiles(srcdoc, mssdbc).toJSONString(), item_config_attachment.getJdbc_type().getVendorTypeNumber(), item_config_attachment.getScale_length());
     }
 
-    private void initConfig(DbConfig dbConfig, DatabaseCollection databaseCollection) throws Exception {
+    protected void initConfig(DbConfig dbConfig, DatabaseCollection databaseCollection) throws Exception {
         if (dbConfig == this.dbConfig) return;
         session = databaseCollection.getSession();
         index = dbConfig.getSql_field_others().length + 1;
@@ -52,7 +52,14 @@ public class ProcessStatement implements com.lwjhn.domino2sql.ProcessStatement {
 
     }
 
-    private JSONObject arcMssFiles(Document doc, DatabaseCollection databaseCollection) throws Exception {
+    protected String getQuery(Document doc) throws NotesException {
+        String key, query = "!@Contains(Form;\"DelForm\") & Form != \"processing\" & DOCUNID = \"" + doc.getUniversalID() + "\"";
+        if (!((key = doc.getItemValueString("UniAppUnid")) == null || "".equals(key)))
+            query += " & DOCUNID = \"" + key + "\"";
+        return query;
+    }
+
+    protected JSONObject arcMssFiles(Document doc, DatabaseCollection databaseCollection) throws Exception {
         String srv = null, dbpath = null, key = null, query = "";
         Database mssdb = null;
         DocumentCollection mssdc = null;
@@ -63,9 +70,7 @@ public class ProcessStatement implements com.lwjhn.domino2sql.ProcessStatement {
                 srv = doc.getParentDatabase().getServer();
             if (srv == null || (dbpath = doc.getItemValueString("MSSDATABASE")) == null)
                 return res;
-            query = "!@Contains(Form;\"DelForm\") & Form != \"processing\" & DOCUNID = \"" + doc.getUniversalID() + "\"";
-            if (!((key = doc.getItemValueString("UniAppUnid")) == null || "".equals(key)))
-                query += " & DOCUNID = \"" + key + "\"";
+            query = getQuery(doc);
 
             mssdb = databaseCollection.getDatabase(srv, dbpath);
             if (mssdb == null || !mssdb.isOpen())
@@ -86,7 +91,7 @@ public class ProcessStatement implements com.lwjhn.domino2sql.ProcessStatement {
         }
     }
 
-    public void arcMssDoc(Document mssdoc, JSONObject resObject) throws Exception {
+    protected void arcMssDoc(Document mssdoc, JSONObject resObject) throws Exception {
         String key = null, dir = null, form = null;
         int i;
         EmbeddedObject eo = null;

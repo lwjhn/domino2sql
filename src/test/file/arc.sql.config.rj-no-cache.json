@@ -1,0 +1,227 @@
+﻿{
+  "sql_url": "jdbc:mysql://192.168.210.153:3399?connectTimeout=3000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC",
+  "sql_username": "****",
+  "sql_password": "****",
+  "sql_driver": "com.mysql.cj.jdbc.Driver",
+  "driver_manager_log": false,
+  "options": [
+    {
+      "enable": true,
+      "vesion": "1.6.7",
+      "ftppath": "/FTP_XC/",
+      "domino_server": "PUBLIC/SRV/RJSOFT",
+      "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2020-07-25]",
+      "domino_queries": [
+        {
+          "enable": true,
+          "error_continue": true,
+          "domino_query": "(Form=\"FlowForm\" | Form=\"FlowFormDelete\") & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2020-07-25]",
+          "domino_dbpath": "egov/dispatch.nsf"
+        },
+        {
+          "enable": true,
+          "error_continue": false,
+          "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & DraftDate > [2000-07-20] & DraftDate < [2020-07-25]",
+          "domino_dbpath": "jtoa/dispatch.nsf"
+        }
+      ],
+      "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
+      "domino_prepared_sqlquery_driver": "com.rjsoft.prepared.PrepareSqlQueryRJDoc",
+      "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDocNoCache",
+      "extended_options": {
+        "export_flow": true,
+        "export_processing": true,
+        "export_opinion": true,
+        "sql_field_attachment": {
+          "sql_name": "JSONATT",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      },
+      "sql_table": "XC_DEMO.EGOV_DISPATCH_HISTORY",
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINOID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "Subject",
+          "domino_name": "Subject",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DocWord",
+          "domino_name": "DocWord",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DocType",
+          "domino_name": "DocType",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "UrgentLevel",
+          "domino_name": "UrgentLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DraftDept",
+          "domino_name": "DraftDept",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SecLevel",
+          "domino_name": "SecLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "FileType",
+          "domino_name": "FileType",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "IsPublic",
+          "domino_name": "IsPublic",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MainSend",
+          "domino_name": "MainSend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "CopySend",
+          "domino_name": "CopySend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "PrintTerm",
+          "domino_name": "PrintTerm",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "Remark",
+          "domino_name": "Remark",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SignDateTime",
+          "domino_formula": "temp:=SignDate;temp:=@If(@IsTime(temp);temp;@TextToTime(@ReplaceSubstring(temp;\"年\":\"月\":\"日\";\"-\":\"-\":\"\")));@if(@IsError(temp) | @IsNull(temp);@Nothing;temp);",
+          //"domino_name": "SignDateTime",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DraftDate",
+          "domino_name": "DraftDate",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "PrintNum",
+          "jdbc_type": "INTEGER",
+          "domino_formula": "1",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "OTHER",
+          "jdbc_type": "VARCHAR",
+          "domino_formula": "@Nothing", //"\"測試公式\"",
+          "scale_length": 0
+        }
+      ]
+    },
+    {
+      "enable": true,
+      "vesion": "1.1.3",
+      "ftppath": "/FTP_XC/",
+      "domino_error_flag_field": "ArcXC_Error_Log_FLAG",
+      "domino_succ_flag_field": "ArcXC_Succ_Log_FLAG",
+      "domino_uuid_prefix": "ArcXC_LOG_UUID_",
+      "domino_server": "PUBLIC/SRV/RJSOFT",
+      "domino_query": "@IsAvailable(ArcXC_Error_FLAG) & ArcXC_Succ_Log_FLAG!=\"1.1.2\"",
+      "domino_queries": [
+        {
+          "enable": true,
+          "domino_dbpath": "egov/dispatch.nsf"
+        },
+        {
+          "enable": true,
+          "domino_dbpath": "jtoa/dispatch.nsf"
+        }
+      ],
+      "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
+      "sql_table": "XC_DEMO.D2S_ERROR_LOG",
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINOID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SUBJECT",
+          "domino_name": "Subject",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "ERROR_TIME",
+          "domino_formula": "@If(@IsAvailable(ArcXC_Succ_FLAG_OR_Error_FLAG_Time) & @IsTime(ArcXC_Succ_FLAG_OR_Error_FLAG_Time); ArcXC_Succ_FLAG_OR_Error_FLAG_Time; @Modified)",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "ERROR_BODY",
+          "domino_name": "ArcXC_Error_FLAG",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MOUDEL_TITLE",
+          "domino_formula": "@DbTitle",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MOUDEL_PATH",
+          "domino_formula": "@DbName",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MOUDEL_FORM",
+          "domino_formula": "Form",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      ]
+    }
+  ]
+}
