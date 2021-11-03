@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @Version: 1.0
  */
 public class StringTemplate {
-    private static Pattern pattern = Pattern.compile("\\$\\{\\w+}");
+    private static final Pattern pattern = Pattern.compile("\\$\\{\\w+}");
 
     public static StringBuffer process(CharSequence input, Replicator replicator) throws Exception {
         StringBuffer res = new StringBuffer();

@@ -74,9 +74,8 @@ public class ProcessExtractFile extends Message implements ProcessStatement {
                         mssdoc.getParentDatabase().getServer().replaceAll("(/[^/]*)|([^/]*=)", ""),
                         mssdoc.getParentDatabase().getFilePath().replaceAll("[/\\\\.]", "-"),
                         (key = mssdoc.getItemValueString("DOCUNID")) != null && key.length() > 0 ? key : mssdoc.getUniversalID(), mssdoc.getItemValueString("form")
-                ).toLowerCase()).mkdirs();
-            System.out.println("unid->"+mssdoc.getUniversalID());
-            System.out.println(dir);
+                ).toLowerCase(), mssdoc.getUniversalID()).mkdirs();
+
             Vector<String> all = session.evaluate("@AttachmentNames", mssdoc);
             if (all == null || all.size() < 1) return res;
             for (String file : all) {
@@ -91,8 +90,6 @@ public class ProcessExtractFile extends Message implements ProcessStatement {
                 res.add(obj);
             }
             return res;
-        } catch (Exception e) {
-            throw e;
         } finally {
             BaseUtils.recycle(eo);
         }

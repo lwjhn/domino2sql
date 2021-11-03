@@ -18,7 +18,7 @@ public class Common {
             pw.println("content-type:text/xml; charset=UTF-8");
             pw.println("<?xml version='1.0' encoding='UTF-8'?>");
             pw.println("<center><![CDATA[" + strXML + "]]></center>");
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -32,8 +32,7 @@ public class Common {
         }
         start = start + para_name.length();
 
-        String para_value = query.substring(start, query.indexOf("&", start));
-        return para_value;
+        return query.substring(start, query.indexOf("&", start));
     }
 
     public static String getTimeStamp() {
@@ -57,7 +56,7 @@ public class Common {
         if (charset.equals("")) {
             charset = "GBK";
         }
-        byte bt[] = null;
+        byte[] bt = null;
         try {
             bt = src.getBytes(charset);
         } catch (Exception e) {
@@ -80,7 +79,7 @@ public class Common {
         if (charset.equals("")) {
             charset = "GBK";
         }
-        StringBuffer buff = new StringBuffer();
+        StringBuilder buff = new StringBuilder();
         int s_len = src.length();
         for (int i = 0; i < s_len; i++) {
             try {
@@ -103,7 +102,7 @@ public class Common {
         if (src.length < 1) {
             return "";
         }
-        StringBuffer buff = new StringBuffer();
+        StringBuilder buff = new StringBuilder();
         buff.append(src[0]);
         for (int i = 1; i < src.length; i++) {
             buff.append(deli);
@@ -129,7 +128,7 @@ public class Common {
     public static String escape(String src) {
         int i;
         char j;
-        StringBuffer tmp = new StringBuffer();
+        StringBuilder tmp = new StringBuilder();
         tmp.ensureCapacity(src.length() * 6);
         for (i = 0; i < src.length(); i++) {
             j = src.charAt(i);
@@ -150,7 +149,7 @@ public class Common {
     }
 
     public static String unescape(String src) {
-        StringBuffer tmp = new StringBuffer();
+        StringBuilder tmp = new StringBuilder();
         tmp.ensureCapacity(src.length());
         int lastPos = 0, pos = 0;
         char ch;
@@ -185,7 +184,7 @@ public class Common {
         String strRet = null;
         try {
             strRet = new String(src.getBytes("ISO_8859_1"), "GB2312");
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         return strRet;
@@ -195,7 +194,7 @@ public class Common {
         String strRet = null;
         try {
             strRet = new String(src.getBytes("ISO_8859_1"), "UTF-8");
-        } catch (Exception e) {
+        } catch (Exception ignored) {
 
         }
         return strRet;

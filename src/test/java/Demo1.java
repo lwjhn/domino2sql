@@ -18,8 +18,7 @@ import java.util.Date;
 public class Demo1 {
     @Test
     public void test12(){
-        String a = null;
-        System.out.println(a instanceof String);
+        System.out.println("CN=OAAPP/OU=SRV/O=NANPING".replaceAll("(/[^/]*)|([^/]*=)",""));
     }
 
     @Test

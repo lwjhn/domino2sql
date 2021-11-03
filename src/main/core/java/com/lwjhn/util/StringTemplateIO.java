@@ -2,6 +2,7 @@ package com.lwjhn.util;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @Author: lwjhn
@@ -9,6 +10,7 @@ import java.nio.charset.Charset;
  * @Description: com.lwjhn.util
  * @Version: 1.0
  */
+@SuppressWarnings("all")
 public class StringTemplateIO {
     protected Replicator replicator = null;
 
@@ -37,8 +39,6 @@ public class StringTemplateIO {
             outputStreamWriter = new OutputStreamWriter(output, charset);
             writer = new BufferedWriter(outputStreamWriter);
             transform(reader, writer);
-        } catch (Exception e) {
-            throw e;
         } finally {
             AutoCloseableBase.close(reader, inputStreamReader);
             AutoCloseableBase.close(writer, outputStreamWriter);
@@ -54,8 +54,6 @@ public class StringTemplateIO {
             writer = new BufferedWriter(outputStreamWriter);
             transform(input, writer);
             output.flush();
-        } catch (Exception e) {
-            throw e;
         } finally {
             AutoCloseableBase.close(writer, outputStreamWriter);
         }
@@ -70,8 +68,6 @@ public class StringTemplateIO {
             reader = new BufferedReader(inputStreamReader);
             transform(reader, output);
             output.flush();
-        } catch (Exception e) {
-            throw e;
         } finally {
             AutoCloseableBase.close(reader, inputStreamReader);
         }
@@ -85,8 +81,6 @@ public class StringTemplateIO {
             transform(fileInputStream = new FileInputStream(input),
                     fileOutputStream = new FileOutputStream(output),
                     charset);
-        } catch (Exception e) {
-            throw e;
         } finally {
             AutoCloseableBase.close(fileInputStream, fileOutputStream);
         }
@@ -94,7 +88,7 @@ public class StringTemplateIO {
     }
 
     public StringTemplateIO transform(File input, File output) throws Exception {
-        return transform(input, output, Charset.forName("UTF-8"));
+        return transform(input, output, StandardCharsets.UTF_8);
     }
 
 }

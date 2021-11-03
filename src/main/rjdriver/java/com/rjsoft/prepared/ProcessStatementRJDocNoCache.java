@@ -8,6 +8,7 @@ import com.lwjhn.domino2json.Document2Json;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.util.FileOperator;
+import com.rjsoft.archive.ExportOldFlow;
 import com.rjsoft.archive.RJUitilDSXml;
 import lotus.domino.Database;
 import lotus.domino.Document;
@@ -51,18 +52,34 @@ public class ProcessStatementRJDocNoCache extends ProcessStatementRJDoc {
             if (srv == null || (dbpath = srcdoc.getItemValueString("MSSDATABASE")) == null || "".equals(dbpath))
                 throw new Exception("can not find item of mssdatabase from document . " + srcdoc.getUniversalID());
 
-            if (this.extended_options.containsKey("export_opinion"))
+            String mssOpinion;
+            if (this.extended_options.containsKey("export_opinion")){
+                mssOpinion = srcdoc.getItemValueString("MSSOpinion");
+                if (mssOpinion==null || "".equals(mssOpinion)){
+                    mssOpinion = srcdoc.getItemValueString("OpinionlogDatabase");
+                }
+                if (mssOpinion==null || "".equals(mssOpinion)){
+                    mssOpinion = srcdoc.getParentDatabase().getFilePath();
+                }
                 doc2json(mssdbc, srv,
-                        srcdoc.getItemValueString("MssOpinion"),
+                        mssOpinion,
                         unid = srcdoc.getUniversalID(),
                         "opinion", "Form=\"Opinion\" & PARENTUNID = \"" + unid + "\"",
                         "意见表.json", response);
-            if (this.extended_options.containsKey("export_flow"))
-                doc2json(mssdbc, srv,
-                        srcdoc.getItemValueString("MssFlow"),
-                        unid,
-                        "flow", "Form=\"FlowForm\" & DOCUNID = \"" + unid + "\"",
-                        "流程记录.json", response);
+            }
+
+            if (this.extended_options.containsKey("export_flow")){
+                mssOpinion = srcdoc.getItemValueString("MssFlow");
+                if (mssOpinion==null || "".equals(mssOpinion)){
+                    oldFlow(srcdoc, response);
+                }else{
+                    doc2json(mssdbc, srv,
+                            srcdoc.getItemValueString("MssFlow"),
+                            unid,
+                            "flow", "Form=\"FlowForm\" & DOCUNID = \"" + unid + "\"",
+                            "流程记录.json", response);
+                }
+            }
 
             if(this.extended_options.containsKey("export_processing")){
                 final String form = "processing", filename = "阅办单.html";
@@ -82,6 +99,32 @@ public class ProcessStatementRJDocNoCache extends ProcessStatementRJDoc {
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
+        }
+    }
+
+    protected void oldFlow(Document srcdoc, JSONObject response) throws Exception {
+        File file;
+        JSONObject res = new JSONObject();
+        String local;
+        String form="flow";
+        String filename="流程记录.html";
+        try {
+            String unid = srcdoc.getUniversalID();
+            (file = new File(local = FileOperator.getAvailablePath(
+                    ftppath,
+                    srcdoc.getParentDatabase().getServer().replaceAll("(/[^/]*)|([^/]*=)", ""),
+                    srcdoc.getParentDatabase().getFilePath().replaceAll("[/\\\\.]", "-"),
+                    unid, form
+            ).toLowerCase())).mkdirs();
+
+            ExportOldFlow.toHtmlFile(srcdoc, file = new File(file.getCanonicalPath() + "/" + form + unid + ".html"));
+            if (!file.exists()) throw new Exception("oldFlow error : create file error ! " + file.getName());
+
+            putFile(file, response, filename, local, form);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+
         }
     }
 

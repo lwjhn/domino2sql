@@ -1,5 +1,6 @@
 package com.rjsoft.prepared;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
@@ -8,6 +9,7 @@ import com.lwjhn.domino2sql.PreparedDocument;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.util.FileOperator;
+import com.rjsoft.archive.ExportOldFlow;
 import lotus.domino.*;
 
 import java.io.File;
@@ -42,16 +44,30 @@ public class BeforeArchive implements PreparedDocument {
             if (mssdb == null || !mssdb.isOpen())
                 throw new Exception("can't open attachment database ! " + srv + " !! " + dbpath);
 
+
+            String mssOpinion = srcdoc.getItemValueString("MSSOpinion");
+            if (mssOpinion==null || "".equals(mssOpinion)){
+                mssOpinion = srcdoc.getItemValueString("OpinionlogDatabase");
+            }
+            if (mssOpinion==null || "".equals(mssOpinion)){
+                mssOpinion = srcdoc.getParentDatabase().getFilePath();
+            }
             doc2json(mssdbc, mssdb, srv,
-                    srcdoc.getItemValueString("MssOpinion"),
+                    mssOpinion,
                     unid = srcdoc.getUniversalID(),
                     "opinion", "Form=\"Opinion\" & PARENTUNID = \"" + unid + "\"",
-                    "意见表.json")
-                    .doc2json(mssdbc, mssdb, srv,
-                            srcdoc.getItemValueString("MssFlow"),
-                            unid,
-                            "flow", "Form=\"FlowForm\" & DOCUNID = \"" + unid + "\"",
-                            "流程记录.json");
+                    "意见表.json");
+
+            mssOpinion = srcdoc.getItemValueString("MssFlow");
+            if (mssOpinion==null || "".equals(mssOpinion)){
+                oldFlow(mssdb, srcdoc);
+                return;
+            }
+            doc2json(mssdbc, mssdb, srv,
+                    srcdoc.getItemValueString("MssFlow"),
+                    unid,
+                    "flow", "Form=\"FlowForm\" & DOCUNID = \"" + unid + "\"",
+                    "流程记录.json");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,13 +77,54 @@ public class BeforeArchive implements PreparedDocument {
         }
     }
 
+    private BeforeArchive oldFlow(Database attachdb, Document srcdoc) throws Exception {
+        File file;
+        DocumentCollection mssdc = null;
+        Document mssdoc = null;
+        String form="flow";
+        String filename="流程记录.html";
+        try {
+            String unid = srcdoc.getUniversalID();
+            mssdc = attachdb.search("Form=\"" + form + "\" & DOCUNID = \"" + unid + "\"", null, 1);
+            if (mssdc.getCount() == 1) {
+                mssdoc = mssdc.getFirstDocument();
+                if (!version.equals(mssdoc.getItemValueString("$before_archive_version"))) {
+                    mssdoc.remove(true);
+                    BaseUtils.recycle(mssdoc, mssdc);
+                    mssdoc = null;
+                    mssdc = null;
+                }
+            }
+            if (mssdoc != null) return this;
+            (file = new File(FileOperator.getAvailablePath(
+                    ftppath,
+                    srcdoc.getParentDatabase().getServer().replaceAll("(/[^/]*)|([^/]*=)", ""),
+                    attachdb.getFilePath().replaceAll("[/\\\\.]", "-"),
+                    unid, form
+            ).toLowerCase())).mkdirs();
+            BaseUtils.recycle(mssdoc, mssdc);
+
+            ExportOldFlow.toHtmlFile(srcdoc, file = new File(file.getCanonicalPath() + "/" + form + unid + ".html"));
+            if (!file.exists()) throw new Exception("oldFlow error : create file error ! " + file.getName());
+            BaseUtils.recycle(mssdoc, mssdc);
+            mssdoc = this.createMssDoc(attachdb, form, file, unid, filename);
+            mssdoc.replaceItemValue("$before_archive_version", version);
+            mssdoc.save(true);
+            FileOperator.deleteDir(file);
+            return this;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            BaseUtils.recycle(mssdoc, mssdc);
+        }
+    }
+
     private BeforeArchive doc2json(DatabaseCollection mssdbc, Database attachdb, String srv, String dbpath, String unid, String form, String srcQuery, String filename) throws Exception {
         String query = "";
         File file;
         Database mssdb = null;
         DocumentCollection mssdc = null;
         Document mssdoc = null;
-        JSONObject res = new JSONObject();
         try {
             if (srv == null || dbpath == null || unid == null || "".equals(dbpath) || "".equals(unid))
                 return this;
@@ -114,7 +171,7 @@ public class BeforeArchive implements PreparedDocument {
     protected Document createMssDoc(Database attachdb, String form, File file, String unid, String filename) throws NotesException, IOException {
         Document mssdoc = null;
         RichTextItem item = null;
-        try{
+        try {
             mssdoc = attachdb.createDocument();
             mssdoc.replaceItemValue("form", form);
             mssdoc.replaceItemValue("AttachFile", file.getName());
