@@ -56,21 +56,21 @@ public class ProcessExtensionDocuments extends Message implements ProcessStateme
             }
 
             for(int i = 0; i < Math.max(Math.max(servers.size(), dbpaths.size()), queries.size()); i++){
-                dbcfg.setDomino_server(formula = evaluate(servers.get(i).toString(), srcdoc, databaseCollection.getSession()));
+                dbcfg.setDomino_server(formula = servers.get(i).toString());
                 if (formula == null) {
                     throwsError("processing children : parameter server is null !");
                     continue;
                 }
                 this.dbgMsg("processing children : parameter server . " + formula);
 
-                dbcfg.setDomino_dbpath(formula = evaluate(dbpaths.get(i).toString(), srcdoc, databaseCollection.getSession()));
+                dbcfg.setDomino_dbpath(formula = dbpaths.get(i).toString());
                 if (formula == null) {
                     throwsError("processing children : parameter dbpath is null !");
                     continue;
                 }
                 this.dbgMsg("processing children : parameter dbpath . " + formula);
 
-                dbcfg.setDomino_query(formula = evaluate(queries.get(i).toString(), srcdoc, databaseCollection.getSession()));
+                dbcfg.setDomino_query(formula = queries.get(i).toString());
                 if (formula == null) {
                     throwsError("processing children : parameter dbpath is null !");
                     continue;
