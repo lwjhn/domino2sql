@@ -7,6 +7,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 /**
@@ -16,13 +17,13 @@ import java.util.Properties;
  * @Version: 1.0
  */
 public class UtilXML {
-    private static TransformerFactory factory = TransformerFactory.newInstance();
-    public final static Charset DefultEncoding = Charset.forName("UTF-8");
+    private static final TransformerFactory factory = TransformerFactory.newInstance();
+    public final static Charset DefaultEncoding = StandardCharsets.UTF_8;
 
     public static void transformer(InputStream xslSource, InputStream xmlSource, OutputStream htmlResult) throws Exception {
         Transformer transformer = factory.newTransformer(new StreamSource(xslSource));
         Properties properties = transformer.getOutputProperties();
-        properties.setProperty(OutputKeys.ENCODING, DefultEncoding.displayName());
+        properties.setProperty(OutputKeys.ENCODING, DefaultEncoding.displayName());
         transformer.transform(new StreamSource(xmlSource), new StreamResult(htmlResult));
     }
 
@@ -34,7 +35,7 @@ public class UtilXML {
     }
 
     public static void transformer(InputStream xslSource, String xmlSource, OutputStream htmlResult) throws Exception {
-        transformer(xslSource, xmlSource, htmlResult, Charset.forName("UTF-8"));
+        transformer(xslSource, xmlSource, htmlResult, StandardCharsets.UTF_8);
     }
 
     public static void transformer(InputStream xslSource, String xmlSource, OutputStream htmlResult, Charset charset) throws Exception {
@@ -46,7 +47,7 @@ public class UtilXML {
         } finally {
             try {
                 if (binput != null) binput.reset();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }
@@ -60,7 +61,7 @@ public class UtilXML {
         } finally {
             try {
                 if (htmlResult != null) htmlResult.close();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }
@@ -83,15 +84,15 @@ public class UtilXML {
         } finally {
             try {
                 if (htmlResult != null) htmlResult.close();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             try {
                 if (xslSource != null) xslSource.close();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
             try {
                 if (xmlSource != null) xmlSource.close();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }

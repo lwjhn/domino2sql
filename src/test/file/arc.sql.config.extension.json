@@ -37,7 +37,8 @@
           }
         },
         "sql_table": "XC_DEMO.EGOV_ATTACHMENT",
-        "sql_field_others": [{
+        "sql_field_others": [
+          {
           "sql_name": "ID",
           "domino_name": "ArcXC_UUID_16",
           "jdbc_type": "VARCHAR",

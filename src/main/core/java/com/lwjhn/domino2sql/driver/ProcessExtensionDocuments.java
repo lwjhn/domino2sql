@@ -9,9 +9,11 @@ import com.lwjhn.domino2sql.Domino2SqlHelp;
 import com.lwjhn.domino2sql.ProcessStatement;
 import com.lwjhn.domino2sql.config.DbConfig;
 import lotus.domino.*;
+import sun.nio.cs.ext.MacHebrew;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Vector;
 
 /**
  * @Author: lwjhn
@@ -34,30 +36,49 @@ public class ProcessExtensionDocuments extends Message implements ProcessStateme
     public void action(PreparedStatement preparedStatement, Document srcdoc, DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection, DatabaseCollection mssdbc) throws NotesException, Exception {
         initConfig(dbConfig);
         if (childDbConfig == null) return;
+        Vector<?> servers, dbpaths, queries;
         for (DbConfig dbcfg : childDbConfig) {
             if(!dbcfg.isEnable()) continue;
-            dbcfg.setDomino_server(formula = evaluate(dbcfg.getDomino_server(), srcdoc, databaseCollection.getSession()));
-            if (formula == null) {
+            servers=databaseCollection.getSession().evaluate(dbcfg.getDomino_server(), srcdoc);
+            if (servers == null || servers.size()<1) {
                 throwsError("processing children : parameter server is null !");
                 continue;
             }
-            this.dbgMsg("processing children : parameter server . " + formula);
-
-            dbcfg.setDomino_dbpath(formula = evaluate(dbcfg.getDomino_dbpath(), srcdoc, databaseCollection.getSession()));
-            if (formula == null) {
+            dbpaths=databaseCollection.getSession().evaluate(dbcfg.getDomino_dbpath(), srcdoc);
+            if (dbpaths == null || dbpaths.size()<1) {
                 throwsError("processing children : parameter dbpath is null !");
                 continue;
             }
-            this.dbgMsg("processing children : parameter dbpath . " + formula);
-
-            dbcfg.setDomino_query(formula = evaluate(dbcfg.getDomino_query(), srcdoc, databaseCollection.getSession()));
-            if (formula == null) {
-                throwsError("processing children : parameter dbpath is null !");
+            queries=databaseCollection.getSession().evaluate(dbcfg.getDomino_query(), srcdoc);
+            if (queries == null || queries.size()<1) {
+                throwsError("processing children : parameter query is null !");
                 continue;
             }
-            this.dbgMsg("processing children : parameter dbpath . " + formula);
 
-            if (dbcfg.isEnable()) arcdoc.processing(dbcfg, connection, databaseCollection, mssdbc).recycle();
+            for(int i = 0; i < Math.max(Math.max(servers.size(), dbpaths.size()), queries.size()); i++){
+                dbcfg.setDomino_server(formula = evaluate(servers.get(i).toString(), srcdoc, databaseCollection.getSession()));
+                if (formula == null) {
+                    throwsError("processing children : parameter server is null !");
+                    continue;
+                }
+                this.dbgMsg("processing children : parameter server . " + formula);
+
+                dbcfg.setDomino_dbpath(formula = evaluate(dbpaths.get(i).toString(), srcdoc, databaseCollection.getSession()));
+                if (formula == null) {
+                    throwsError("processing children : parameter dbpath is null !");
+                    continue;
+                }
+                this.dbgMsg("processing children : parameter dbpath . " + formula);
+
+                dbcfg.setDomino_query(formula = evaluate(queries.get(i).toString(), srcdoc, databaseCollection.getSession()));
+                if (formula == null) {
+                    throwsError("processing children : parameter dbpath is null !");
+                    continue;
+                }
+                this.dbgMsg("processing children : parameter dbpath . " + formula);
+
+                if (dbcfg.isEnable()) arcdoc.processing(dbcfg, connection, databaseCollection, mssdbc).recycle();
+            }
         }
     }
 

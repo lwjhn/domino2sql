@@ -1,0 +1,294 @@
+{
+  "sql_url": "jdbc:dm://10.249.137.72:5241",
+  "sql_username": "ZJSJTTDA",
+  "sql_password": "Jttda2021",
+  "sql_driver": "dm.jdbc.driver.DmDriver",
+  "driver_manager_log": false,
+  "options": [
+    {
+      "enable": true,
+      "vesion": "1.1.1",
+      "domino_server": "ZJJTServer/浙江省交通厅/浙江交通",
+      "domino_dbpath": "inrunkoa/Achive.nsf",
+      "domino_query": " GDGDZT=\"归档\" & WJRQ=[2020-12-30] ",
+      "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
+      "domino_process_statement_driver": "com.lwjhn.domino2sql.driver.ProcessExtensionDocuments",
+      "extended_options": {
+        "show_log": true,
+        "throws_error": true,
+        "children": [
+          {
+            "enable": true,
+            "debugger": true,
+            "vesion": "1.1.1",
+            "ftppath": "/FTP_XC/",
+            "domino_server": "@ServerName",
+            "domino_dbpath": "@LeftBack(@Subset(@DbName;-1);\"\\\\\") + \"/\" + FJDBS",
+            "domino_query": "\" (@Text(@DocumentUniqueID)=\\\"\"+@Implode(@Trim(@Unique(FJLINKS));\"\\\" | @Text(@DocumentUniqueID)=\\\"\")+\"\\\")\"",
+            "extended_options": {
+              "show_log": true,
+              "throws_error": true,
+              "sql_field_attachment": {
+                "sql_name": "JSONATT",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              }
+            },
+            "sql_table": "JTTOA.EGOV_ARCHIVE_HISATT",
+            "sql_field_others": [
+              {
+                "sql_name": "ID",
+                "domino_name": "ArcXC_UUID_16",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "DOMINOID",
+                "domino_formula": "@Text(@DocumentUniqueID)",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "DOCUNID",
+                "domino_name": "LINKTO",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "FORM",
+                "domino_name": "FORM",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "FILENAME",
+                "domino_name": "NAME",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "SERVER",
+                "domino_formula": "@Text(@ServerName)",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "DBNAME",
+                "domino_formula": "@Text(@Subset(@DbName;-1))",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "ATTNAME",
+                "domino_formula": "@Text(@AttachmentNames)",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "MIG_TIME",
+                "domino_formula": "@now",
+                "jdbc_type": "TIMESTAMP",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "FILESIZE",
+                "domino_formula": "@Text(@AttachmentLengths)",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "SYS_QZH",
+                "domino_formula": "\"J114\"",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              }
+            ]
+          }
+        ]
+      },
+      "sql_table": "JTTOA.EGOV_ARCHIVE_HISTORY",
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINOID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "Subject",
+          "domino_name": "GDTM",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "QZH",
+          "domino_name": "QZH",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "YEAR",
+          "domino_name": "ND",
+          "jdbc_type": "INTEGER",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "GDJH",
+          "domino_name": "GDJH",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "GDWJLB",
+          "domino_name": "GDWJLB",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "GDBGQX",
+          "domino_name": "GDBGQX",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "GDZRZ",
+          "domino_name": "GDZRZ",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_MARK",
+          "domino_name": "GDWH",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "CREATE_DATE",
+          "domino_name": "WJRQ",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "GDYS",
+          "domino_name": "GDYS",
+          "jdbc_type": "INTEGER",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "ARCHIVE_DATE",
+          "domino_name": "GDRQ",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "RECIVE_DATE",
+          "domino_name": "item11",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_NUM",
+          "domino_name": "item10",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MAIN_SEND",
+          "domino_name": "item1",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "CONTRACTOR",
+          "domino_name": "item2",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "KEY_WORD",
+          "domino_name": "item3",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "OPINION",
+          "domino_name": "AllSuggest",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "ARCHIV_STATE",
+          "domino_name": "GDGDZT",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "FLOW_RECORD",
+          "domino_name": "FlowRecord",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "JGMC",
+          "domino_name": "JGMC",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "FJ_ID",
+          "domino_formula": "@Trim(@Unique(FJLINKS))",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "BOXNO",
+          "domino_name": "HEHAO",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SECLEVEL",
+          "domino_name": "SecLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "CATLOG",
+          "domino_name": "Catlog",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "ISCURRENTY",
+          "domino_name": "IsCurrentY",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "XXLX",
+          "domino_name": "XXLX",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "JNBH",
+          "domino_name": "JNBH",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SYS_QZH",
+          "domino_formula": "\"J114\"",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      ]
+    }
+  ]
+}
