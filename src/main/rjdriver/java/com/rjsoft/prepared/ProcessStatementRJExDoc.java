@@ -9,12 +9,14 @@ import lotus.domino.NotesException;
  * @Description: com.rjsoft.prepared
  * @Version: 1.0
  */
-public class ProcessStatementRJDoc extends ProcessStatement {
+public class ProcessStatementRJExDoc extends ProcessStatement {
     @Override
     protected String getQuery(Document doc) throws NotesException {
-        String key, query = "!@Contains(Form;\"DelForm\") & (DOCUNID = \"" + doc.getUniversalID() + "\"";
+        String key = doc.getItemValueString("INITUNID"),
+                query = "(Form=\"MSS\" | Form = \"Attachment\") & (INITUNID = \""
+                        + (key==null || "".equals(key) ? doc.getUniversalID() : key) + "\"";
         if (!((key = doc.getItemValueString("UniAppUnid")) == null || "".equals(key)))
-            query += " | DOCUNID = \"" + key + "\"";
+            query += " | INITUNID = \"" + key + "\"";
         if (!((key = doc.getItemValueString("MSSUNID")) == null || "".equals(key)))
             query += " | @Text(@DocumentUniqueID) = \"" + key + "\"";
         return query + ")";
