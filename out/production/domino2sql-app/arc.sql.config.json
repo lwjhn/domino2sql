@@ -1,0 +1,56 @@
+﻿{
+  "sql_url": "jdbc:dm://192.168.210.77:5236/SFTOA?connectTimeout=3000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC",
+  "sql_username": "SFTOA",
+  "sql_password": "123456789",
+  "sql_driver": "dm.jdbc.driver.DmDriver",
+  "driver_manager_log": false,
+  "options": [
+    {
+      "enable": true,
+      "version": "1.6.7",
+      "ftppath": "/FTP_XC/",
+      "domino_server": "OAAPP/SRV/NANPING",
+      "domino_queries": [
+        {
+          "enable": true,
+          "error_continue": true,
+          "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & @Text(@DocumentUniqueID)=\"0B419EE3863AC2FB482582A4002E7BA9\"",
+          "domino_dbpath": "egov/dispatch.nsf"
+        }
+      ],
+      "on_action_driver": "com.rjsoft.driver.OnActionDriverMongoDb",
+      "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+      "extended_options": {
+        "export_flow": true,
+        "export_processing": true,
+        "export_opinion": true,
+        "mongo_url": "mongodb://192.168.210.186:27017",
+        "mongo_db": "sftoamongo",
+        "mongo_bucket": "fs",
+        "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
+        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(FileType=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\""
+      },
+      "sql_table": "EGOV_DISPATCH",
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_name": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SUBJECT",
+          "domino_formula": "Subject + @Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_WORD",
+          "domino_name": "DocWord",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      ]
+    }
+  ]
+}

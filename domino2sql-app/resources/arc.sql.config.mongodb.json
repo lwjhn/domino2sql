@@ -1,0 +1,46 @@
+﻿{
+  "sql_url": "jdbc:dm://192.168.210.77:5236/SFTOA?connectTimeout=3000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC",
+  "sql_username": "SFTOA",
+  "sql_password": "123456789",
+  "sql_driver": "dm.jdbc.driver.DmDriver",
+  "driver_manager_log": false,
+  "options": [
+    {
+      "enable": true,
+      "error_continue": false,
+      "after_action_driver": "com.rjsoft.sql2domino.action.AfterActionDriverXC",
+      "extended_options": {
+        "attachment_server": "OAAPP/SRV/NANPING",
+        "attachment_dbpath": "test/testMss2.nsf",
+        "attachment_field": "\"SELECT FILE_PATH, CONCAT(FILE_NAME, '.',FILE_SUFFIX) AS EGOV_FILE_NAME FROM EGOV_ATT AS A \nLEFT JOIN EGOV_FILE AS F ON A.EGOV_FILE_ID = F.ID \nWHERE DOC_ID='\"+ ID +\"' AND STATUS='正常' \nORDER BY SORT_TIME ASC\"",
+        "mongo_url": "mongodb://192.168.210.186:27017",
+        "mongo_db": "sftoamongo",
+        "mongo_bucket": "fs"
+      },
+      "domino_server": "OAAPP/SRV/NANPING",
+      "queries": [
+        {
+          "enable": true,
+          "sql_query": "SELECT D.ID, D.SUBJECT FROM EGOV_RECEIVAL AS D\nINNER JOIN EGOV_ATT AS A ON A.DOC_ID = D.ID AND A.STATUS = '正常'\nWHERE SUBJECT LIKE '%关于%'\nGROUP BY D.ID, D.SUBJECT\nLIMIT 0, 10",
+          "domino_dbpath": "test/testunit.nsf"
+        }
+      ],
+      "sql_field_others": [
+        {
+          "domino_formula": "@SetField(\"Form\";\"Document\")"
+        },
+        {
+          "domino_formula": "@SetField(\"Published\";\"1\")"
+        },
+        {
+          "sql_name": "ID",
+          "domino_name": "ID"
+        },
+        {
+          "sql_name": "SUBJECT",
+          "domino_name": "Subject"
+        }
+      ]
+    }
+  ]
+}
