@@ -25,5 +25,5 @@ public class DefaultConfig {
     public static final boolean DEBUGGER = true;
     public static final boolean ENABLE = true;
     public static final boolean PROCESS_ERROR_CONTINUNE = true;
-    public static final boolean UPDATE_MODE_NO_INSERT = true;
+    public static final boolean UPDATE_MODE_NO_INSERT = false;
 }

@@ -1,6 +1,6 @@
 package com.lwjhn.domino2sql.driver;
 
-import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSON;
 import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino.FormulaUtils;
@@ -9,9 +9,8 @@ import com.lwjhn.domino2sql.Task;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.util.BeanFieldsIterator;
 import com.lwjhn.util.Common;
-import lotus.domino.*;
+import lotus.domino.Document;
 
-import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.*;
@@ -76,16 +75,18 @@ public class OnActionExtensionDocuments extends Message implements OnActionDrive
                     size[0] = Math.min(objects.size(), size[0]);
                     response.put(s, objects);
                 });
-            } catch (Exception e) {
-                throwsError(e.getMessage());
-            }
-            DbConfig setting = config.clone();
-            for (int i = 0; i < size[0]; i++) {
-                int finalI = i;
-                DbSetFields.forEach(dbSetField -> BeanFieldsIterator.setField(dbSetField.toString(), setting, response.get(dbSetField).get(finalI)));
-                if (config.isEnable()){
-                    task.processing(setting, connection, databaseCollection).recycle();
+
+                DbConfig setting = config.clone();
+                for (int i = 0; i < size[0]; i++) {
+                    int finalI = i;
+                    DbSetFields.forEach(dbSetField -> BeanFieldsIterator.setField(dbSetField.toString(), setting, response.get(dbSetField).get(finalI)));
+                    if (config.isEnable()){
+                        task.processing(setting, connection, databaseCollection).recycle();
+                    }
                 }
+            } catch (Exception e) {
+                this.dbgMsg("OnActionExtensionDocuments.action Error : " + JSON.toJSONString(config));
+                throwsError(e.getMessage());
             }
         }
     }

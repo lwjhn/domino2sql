@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 
 @SuppressWarnings("all")
 public class ExtendedOptions implements Cloneable{
-    protected String attachment_server = "MSSSERVER";
+    protected String attachment_server = "@If(MSSSERVER=\"\";@ServerName;MSSSERVER)";
     protected String attachment_dbpath = "MSSDATABASE";
     /**
      * OA: "!@Contains(Form;\"DelForm\") & (DOCUNID = \"" + @Text(@DocumentUniqueID) + "\"" + @If(UniAppUnid="";"";" | DOCUNID = \"" + UniAppUnid + "\"") + @If(MSSUNID="";"";" | @Text(@DocumentUniqueID) = \"" + MSSUNID + "\"") + ")"

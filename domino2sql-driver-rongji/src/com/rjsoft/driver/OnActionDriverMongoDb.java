@@ -1,8 +1,11 @@
 package com.rjsoft.driver;
 
+import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.driver.DefaultDriverConfig;
+import com.lwjhn.domino2sql.driver.OnActionDriver;
+import com.lwjhn.domino2sql.driver.OnActionExtensionDocuments;
 import com.lwjhn.util.AutoCloseableBase;
 import com.lwjhn.util.BeanFieldsIterator;
 import com.lwjhn.util.Common;
@@ -29,16 +32,18 @@ import java.util.Vector;
  * @Description: com.rjsoft.driver
  * @Version: 1.0
  */
-public class OnActionDriverMongoDb extends AbstractOnActionDriver implements com.lwjhn.domino2sql.driver.OnActionDriver {
+public class OnActionDriverMongoDb extends AbstractOnActionDriver {
     protected ExtendedOptions4MongoDb extendedOptions = null;
 
     Connection connection = null;
     private MongoClient mongoClient = null;
     private GridFSBucket bucket = null;
     private Statement statement = null;
+    private OnActionDriver actionExtensionDocuments = null;
 
     @Override
     public void action(PreparedStatement preparedStatement, Document doc) throws Exception {
+        actionExtensionDocuments.action(preparedStatement, doc);
         if(extendedOptions.mongo_url!=null){
             handle(doc);
         }
@@ -75,11 +80,13 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver implements com
         this.connection = connection;
         this.setDebug(dbConfig.isDebugger());
         session = databaseCollection.getSession();
+        actionExtensionDocuments = new OnActionExtensionDocuments();
+        actionExtensionDocuments.init(dbConfig, connection, databaseCollection);
     }
 
     @Override
     public void initDbConfig(DbConfig dbConfig) {
-        this.dbConfig = dbConfig;
+        actionExtensionDocuments.initDbConfig(this.dbConfig = dbConfig);
         extendedOptions = DefaultDriverConfig.parseExtendedOptions(dbConfig.getExtended_options(), ExtendedOptions4MongoDb.class);
 
         BeanFieldsIterator.iterator(ExtendedOptions4MongoDb.class, field -> {
@@ -113,5 +120,7 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver implements com
     public void recycle() {
         AutoCloseableBase.close(mongoClient, statement);
         statement = null; bucket = null;
+        BaseUtils.recycle(actionExtensionDocuments);
+        actionExtensionDocuments = null;
     }
 }

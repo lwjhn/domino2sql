@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.domino2sql.driver.DefaultDriverConfig;
-import com.lwjhn.domino2sql.driver.OnActionDriver;
 import com.lwjhn.util.FileOperator;
 import lotus.domino.Document;
 
@@ -18,7 +17,7 @@ import java.sql.PreparedStatement;
  * @Description: com.rjsoft.driver
  * @Version: 1.0
  */
-public class OnActionDriverLocalFile extends AbstractOnActionDriver implements OnActionDriver {
+public class OnActionDriverLocalFile extends AbstractOnActionDriver {
     protected String ftppath = null;
     protected ExtendedOptions4LocalFile extended_options = null;
     protected int index = -1;
