@@ -7,6 +7,7 @@ import com.lwjhn.domino2json.Document2Json;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.config.DefaultConfig;
 import com.lwjhn.domino2sql.driver.OnActionDriver;
+import com.lwjhn.domino2sql.driver.OnActionExtensionDocuments;
 import com.lwjhn.util.AutoCloseableBase;
 import com.lwjhn.util.Common;
 import com.rjsoft.archive.ExportOldFlow;
@@ -18,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.Vector;
 import java.util.regex.Matcher;
 
@@ -31,10 +33,16 @@ public abstract class AbstractOnActionDriver extends Message implements OnAction
     protected Session session = null;
     protected DatabaseCollection databaseCollection;
     protected DbConfig dbConfig = null;
+    private OnActionDriver actionExtensionDocuments = null;
 
     protected abstract ExtendedOptions getExtended_options();
 
     public abstract void upload(InputStream input, String name, String alias, String type, Document doc);
+
+    @Override
+    public void action(PreparedStatement preparedStatement, Document doc) throws Exception {
+        actionExtensionDocuments.action(preparedStatement, doc);
+    }
 
     public void upload(String input, String name, String alias, String type, Document doc) {
         upload(input.getBytes(StandardCharsets.UTF_8), name, alias, type, doc);
@@ -145,16 +153,20 @@ public abstract class AbstractOnActionDriver extends Message implements OnAction
     public void init(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection) throws Exception {
         this.databaseCollection = databaseCollection;
         session = databaseCollection.getSession();
+
+        actionExtensionDocuments = new OnActionExtensionDocuments();
+        actionExtensionDocuments.init(dbConfig, connection, databaseCollection);
     }
 
     @Override
     public void initDbConfig(DbConfig dbConfig) {
-        this.dbConfig = dbConfig;
+        actionExtensionDocuments.initDbConfig(this.dbConfig = dbConfig);
         this.setDebug(dbConfig.isDebugger());
     }
 
     @Override
     public void recycle() {
-
+        BaseUtils.recycle(actionExtensionDocuments);
+        actionExtensionDocuments = null;
     }
 }

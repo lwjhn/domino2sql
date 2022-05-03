@@ -1,11 +1,8 @@
 package com.rjsoft.driver;
 
-import com.lwjhn.domino.BaseUtils;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino2sql.config.DbConfig;
 import com.lwjhn.domino2sql.driver.DefaultDriverConfig;
-import com.lwjhn.domino2sql.driver.OnActionDriver;
-import com.lwjhn.domino2sql.driver.OnActionExtensionDocuments;
 import com.lwjhn.util.AutoCloseableBase;
 import com.lwjhn.util.BeanFieldsIterator;
 import com.lwjhn.util.Common;
@@ -39,11 +36,10 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver {
     private MongoClient mongoClient = null;
     private GridFSBucket bucket = null;
     private Statement statement = null;
-    private OnActionDriver actionExtensionDocuments = null;
 
     @Override
     public void action(PreparedStatement preparedStatement, Document doc) throws Exception {
-        actionExtensionDocuments.action(preparedStatement, doc);
+        super.action(preparedStatement, doc);
         if(extendedOptions.mongo_url!=null){
             handle(doc);
         }
@@ -76,17 +72,21 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver {
 
     @Override
     public void init(DbConfig dbConfig, Connection connection, DatabaseCollection databaseCollection) throws Exception {
-        this.databaseCollection = databaseCollection;
-        this.connection = connection;
+        super.init(dbConfig, this.connection = connection, this.databaseCollection = databaseCollection);
         this.setDebug(dbConfig.isDebugger());
         session = databaseCollection.getSession();
-        actionExtensionDocuments = new OnActionExtensionDocuments();
-        actionExtensionDocuments.init(dbConfig, connection, databaseCollection);
+
+        AutoCloseableBase.close(statement);
+        try {
+            statement = connection.createStatement();
+        } catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void initDbConfig(DbConfig dbConfig) {
-        actionExtensionDocuments.initDbConfig(this.dbConfig = dbConfig);
+        super.initDbConfig(dbConfig);
         extendedOptions = DefaultDriverConfig.parseExtendedOptions(dbConfig.getExtended_options(), ExtendedOptions4MongoDb.class);
 
         BeanFieldsIterator.iterator(ExtendedOptions4MongoDb.class, field -> {
@@ -107,20 +107,12 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver {
         mongoClient = MongoClients.create(settings);
         MongoDatabase database = mongoClient.getDatabase(extendedOptions.mongo_db);
         bucket = GridFSBuckets.create(database, extendedOptions.mongo_bucket);
-
-        AutoCloseableBase.close(statement);
-        try {
-            statement = connection.createStatement();
-        } catch (Exception e){
-            throw new RuntimeException(e);
-        }
     }
 
     @Override
     public void recycle() {
+        super.recycle();
         AutoCloseableBase.close(mongoClient, statement);
         statement = null; bucket = null;
-        BaseUtils.recycle(actionExtensionDocuments);
-        actionExtensionDocuments = null;
     }
 }

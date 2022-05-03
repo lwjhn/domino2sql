@@ -26,6 +26,7 @@ public class OnActionDriverLocalFile extends AbstractOnActionDriver {
 
     @Override
     public void action(PreparedStatement preparedStatement, Document doc) throws Exception {
+        super.action(preparedStatement, doc);
         if (extended_options.sql_field_attachment == null) return;
         response = new JSONObject();
         exportPath = FileOperator.getAvailablePath(ftppath,
@@ -67,6 +68,6 @@ public class OnActionDriverLocalFile extends AbstractOnActionDriver {
 
     @Override
     public void recycle() {
-
+        super.recycle();
     }
 }
