@@ -231,17 +231,19 @@ java -DDominoHost="192.168.210.153:9898" -DDominoUser="Admin" -DDominoPassword="
 linux 导出附件中文乱码，运行参数宜加上  `-Dsun.jnu.encoding=UTF-8`
 
 #### 驱动依赖
->> 依赖可以到domino2sql-app.jar当前路径的子文件夹`lib`下，或者放到jvm lib下。
+
+> > 依赖可以到domino2sql-app.jar当前路径的子文件夹`lib`下，或者放到jvm lib下。
 
 ##### 查看jvm lib路径
+
 执行 `java -verbose`，查看jvm lib 路径
+
 ```shell
 C:\Users\Administrator>java -verbose
 [Opened C:\Program Files\Java\jdk1.8.0_112\jre\lib\rt.jar]
 ```
 
 依赖拷贝到lib的`ext`文件夹中
-
 
 ## 信创数据迁移
 
@@ -269,11 +271,59 @@ SET (O.DOC_ID) = (
 WHERE O.DOMINO_PID IS NOT NULL
 ```
 
-### 驱动说明
+## 驱动事件类型
 
-#### com.lwjhn.domino2sql.driver.OnActionExtractFile
+### prepared_sql_driver
 
-> > 导出文档配置项执行文档中的所有附件到本地，需配置附件路径SQL存储字段`extended_options`，以及`prepared_sql_driver: com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`
+`prepared_sql_driver`事件，预处理sql时触发。常用驱动，如`com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`
+
+### before_action_driver
+
+`before_action_driver`事件，执行当前文档前执行。常用驱动，如：
+
++ `com.lwjhn.domino2sql.driver.ActionShowLog`，打印UNID
++ `com.lwjhn.domino2sql.driver.BeforeActionDriverFormula`，执行前，执行相关domino公式，如有返回sql语句，执行sql，如用于删除重复迁移记录
+
+### on_action_driver
+
+`on_action_driver`事件，插入记录过程中触发。常用驱动，如：
+
++ `com.lwjhn.domino2sql.driver.OnActionExtensionDocuments`，递归执行`extended_options`字段配置`children`子迁移项
++ `com.lwjhn.domino2sql.driver.OnActionExtractFile`，导出当前文档附件至本地，配合`com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`
+  使用
++ `com.rjsoft.driver.OnActionDriverLocalFile`
+  ，RJ相关驱动，当前文档关联附件、办理单、意见、及流程记录以附件形式导出本地，配合`com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`使用
++ `com.rjsoft.driver.OnActionDriverMongoDb`，RJ相关驱动，当前文档关联附件、办理单、意见、及流程记录以附件形式上传MongoDb
+
+### after_action_driver
+
+`after_action_driver`事件，迁移完成后触发。常用驱动，如：
+
++ `com.lwjhn.domino2sql.driver.ActionShowLog`，打印UNID
++ `com.lwjhn.domino2sql.driver.AfterActionDriverFormula`，执行后，执行相关domino公式，如有返回sql语句，执行sql，如通过DominoID，重新关联
+
+
+## 驱动说明
+
+### com.lwjhn.domino2sql.driver.BeforeActionDriverFormula
+
+执行前，执行相关domino公式，如有返回sql语句，执行sql，如用于删除重复迁移记录。须配置`extended_options`的"before_sql_formula"项，例子见`AfterActionDriverFormula`
+
+### com.lwjhn.domino2sql.driver.AfterActionDriverFormula
+
+执行前，执行相关domino公式，如有返回sql语句，执行sql，如用于删除重复迁移记录。须配置`extended_options`的"after_sql_formula"项
+
+```js
+// before_sql_formula：删除已迁移的附件。after_sql_formula：重新关联意见文档，修改意见文档DOC_ID，当然也可以迁移后手动处理
+setting = {
+    "before_sql_formula": "FileId:= ArcXC_UUID_16; @If(FileId=\"\";@Nothing; \"UPDATE EGOV_ATT SET STATUS = '删除' WHERE DOC_ID = '\"+FileId+\"'\");",
+    "after_sql_formula": "docId:= ArcXC_UUID_16; DOMINO_PID := @Text(@DocumentUniqueID);\n@if(docId=\"\";@Nothing; \"UPDATE EGOV_OPINION SET DOC_ID = '\"+ArcXC_UUID_16+\"' WHERE DOMINO_PID ='\"+DOMINO_PID+\"'\");",
+}
+```
+
+### com.lwjhn.domino2sql.driver.OnActionExtractFile
+
+导出文档配置项执行文档中的所有附件到本地，需配置附件路径SQL存储字段`extended_options`，以及`prepared_sql_driver: com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`
 
 ```js
 setting = {
@@ -290,17 +340,17 @@ setting = {
 }
 ```
 
-#### com.lwjhn.domino2sql.driver.OnActionExtensionDocuments
+### com.lwjhn.domino2sql.driver.OnActionExtensionDocuments
 
-> > 支持通过`extended_options`字段配置`children`子迁移项，迁移关联子文档。
-> 注意：迁移配置项中`domino_server`、`domino_dbpath`、`domino_query`，此处使用domino formula,关联父文档。
-> 此三个字段，返回多值，则按顺序执行多个数据库查询。
++ 支持通过`extended_options`字段配置`children`子迁移项，迁移关联子文档。
++ 注意：迁移配置项中`domino_server`、`domino_dbpath`、`domino_query`，此处使用domino formula,关联父文档。
++ 此三个字段，返回多值，则按顺序执行多个数据库查询。
 
 ```js
 setting = {
     "children": [
         {
-            "domino_server": "@If(MSSSERVER=\"\";@ServerName;MSSSERVER)", 
+            "domino_server": "@If(MSSSERVER=\"\";@ServerName;MSSSERVER)",
             "domino_dbpath": "@If(MSSOpinion=!\"\";MSSOpinion;OpinionlogDatabase!=\"\";OpinionlogDatabase;@ServerName)",
             "domino_query": "\"Form=\\\"Opinion\\\" & PARENTUNID=\\\"\"+@Text(@DocumentUniqueID)+\"\\\"\"",
             "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog"
@@ -309,13 +359,14 @@ setting = {
 }
 ```
 
-#### com.rjsoft.driver.OnActionDriverLocalFile
+### com.rjsoft.driver.OnActionDriverLocalFile
++ 此接口实例了`com.lwjhn.domino2sql.driver.OnActionExtensionDocuments`驱动
++ 导出文档配置项执行文档中的所有附件到本地，需配置附件路径SQL存储字段`extended_options`，以及`prepared_sql_driver: com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`
++ 默认关联附件查询选项，其它特殊情况可以自己修改
++ `attachment_server: "@If(MSSSERVER=\"\";@ServerName;MSSSERVER)"`
++ `attachment_dbpath: "MSSDATABASE"`
++ `attachment_query: "\"!@Contains(Form;\\\"DelForm\\\") & (DOCUNID = \\\"\" + @Text(@DocumentUniqueID) + \"\\\"\" + @If(UniAppUnid=\"\";\"\";\" | DOCUNID = \\\"\" + UniAppUnid + \"\\\"\") + @If(MSSUNID=\"\";\"\";\" | @Text(@DocumentUniqueID) = \\\"\" + MSSUNID + \"\\\"\") + \")\""`
 
-> > 导出文档配置项执行文档中的所有附件到本地，需配置附件路径SQL存储字段`extended_options`，以及`prepared_sql_driver: com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile`
-> > 默认关联附件查询选项，其它特殊情况可以自己修改
->        `attachment_server: "@If(MSSSERVER=\"\";@ServerName;MSSSERVER)"`
->        `attachment_dbpath: "MSSDATABASE"`
->        `attachment_query: "\"!@Contains(Form;\\\"DelForm\\\") & (DOCUNID = \\\"\" + @Text(@DocumentUniqueID) + \"\\\"\" + @If(UniAppUnid=\"\";\"\";\" | DOCUNID = \\\"\" + UniAppUnid + \"\\\"\") + @If(MSSUNID=\"\";\"\";\" | @Text(@DocumentUniqueID) = \\\"\" + MSSUNID + \"\\\"\") + \")\""`
 ```js
 setting = {
     "prepared_sql_driver": "com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile",   //预处理SQL语句事件，处理扩展附件字段
@@ -334,18 +385,19 @@ setting = {
 }
 ```
 
-#### com.rjsoft.driver.OnActionDriverMongoDb
+### com.rjsoft.driver.OnActionDriverMongoDb
 
-> > 此接口实例了`com.lwjhn.domino2sql.driver.OnActionExtensionDocuments`驱动
-> > 使用实现了`com.rjsoft.driver.OnActionDriverLocalFile`接口，可以附件方式导出意见，办理单，及流程记录
-> > 附件上传MongoDb，`extended_options`需配置`mongo_url`、`mongo_db`、`mongo_bucket`
-> > `mongo_file_id_formula`及`mongo_map_sql_formula`支持扩展公式`@UUID16`、`@UUID32`（32位随机UUID）、`@FileName`（附件别名）、`@FileSuffix`（扩展名）。
-> > `mongo_file_id_formula`上传附件ID，`mongo_map_sql_formula`处理关联附件表语句
++ 此接口实例了`com.lwjhn.domino2sql.driver.OnActionExtensionDocuments`驱动
++ 使用实现了`com.rjsoft.driver.OnActionDriverLocalFile`接口，可以附件方式导出意见，办理单，及流程记录
++ 附件上传MongoDb，`extended_options`需配置`mongo_url`、`mongo_db`、`mongo_bucket`
++ `mongo_file_id_formula`及`mongo_map_sql_formula`支持扩展公式`@UUID16`、`@UUID32`（32位随机UUID）、`@FileName`（附件别名）、`@FileSuffix`（扩展名）。
++ `mongo_file_id_formula`上传附件ID，`mongo_map_sql_formula`处理关联附件表语句
 
 ```js
 setting = {
     "enable": true,
     "version": "1.6.7",
+    "ftppath": "/FTP_XC/",
     "domino_server": "OAAPP/SRV/NANPING",
     "domino_queries": [ //未配置，则取外层执行，否则外层作为默认值，循环迁移此项配置的所有数据
         {
@@ -356,14 +408,17 @@ setting = {
             "update_mode_no_insert": false  //配合sql_update_primary_key使用，未找到关联数据，是否插入数据
         }
     ],
+    "before_action_driver": "com.lwjhn.domino2sql.driver.BeforeActionDriverFormula",
     "on_action_driver": "com.rjsoft.driver.OnActionDriverMongoDb",
-    "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+    "after_action_driver": "com.lwjhn.domino2sql.driver.AfterActionDriverFormula",
     "extended_options": {
+        "before_sql_formula": "FileId:= ArcXC_UUID_16; @If(FileId=\"\";@Nothing; \"UPDATE EGOV_ATT SET STATUS = '删除' WHERE DOC_ID = '\"+FileId+\"'\");",
+        "after_sql_formula": "docId:= ArcXC_UUID_16; DOMINO_PID := @Text(@DocumentUniqueID);\n@if(docId=\"\";@Nothing; \"UPDATE EGOV_OPINION SET DOC_ID = '\"+ArcXC_UUID_16+\"' WHERE DOMINO_PID ='\"+DOMINO_PID+\"'\");",
         "export_flow": true,
         "export_processing": false,
         "export_opinion": false,
-        "mongo_url": "mongodb://192.168.210.*:27017",
-        "mongo_db": "*",
+        "mongo_url": "mongodb://192.168.*.*:27017",
+        "mongo_db": "sftoamongo",
         "mongo_bucket": "fs",
         "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
         "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(FileType=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
@@ -371,15 +426,35 @@ setting = {
             {
                 "enable": true,
                 "vesion": "1.6.4",
+                "ftppath": "/FTP_XC/",
                 "domino_server": "@If(MSSSERVER=\"\";@ServerName;MSSSERVER)",
                 "domino_dbpath": "@If(MSSOpinion=!\"\";MSSOpinion;OpinionlogDatabase!=\"\";OpinionlogDatabase;@ServerName)",
                 "domino_query": "\"Form=\\\"Opinion\\\" & PARENTUNID=\\\"\"+@Text(@DocumentUniqueID)+\"\\\"\"",
                 "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+                "update_mode_no_insert": false,
+                "sql_update_primary_key": {
+                    "sql_name": "DOMINO_ID",
+                    "domino_formula": "@Text(@DocumentUniqueID)",
+                    "jdbc_type": "VARCHAR",
+                    "scale_length": 0
+                },
                 "sql_table": "EGOV_OPINION",
                 "sql_field_others": [
                     {
                         "sql_name": "ID",
                         "domino_name": "ArcXC_UUID_16",
+                        "jdbc_type": "VARCHAR",
+                        "scale_length": 0
+                    },
+                    {
+                        "sql_name": "DOMINO_ID",
+                        "domino_formula": "@Text(@DocumentUniqueID)",
+                        "jdbc_type": "VARCHAR",
+                        "scale_length": 0
+                    },
+                    {
+                        "sql_name": "DOC_ID",
+                        "domino_formula": "@Nothing",
                         "jdbc_type": "VARCHAR",
                         "scale_length": 0
                     },

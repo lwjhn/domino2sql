@@ -58,7 +58,7 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver {
                 throw new Exception("evaluate the field of extended_options.mongo_file_id_formula, and return null !! " + extendedOptions.mongo_file_id_formula);
             }
             BsonString fileId = new BsonString(vector.get(0).toString());
-            vector = session.evaluate(extendedOptions.sqlFormula(alias), doc);
+            vector = session.evaluate(extendedOptions.sqlFormula(alias, type), doc);
             for(Object v : vector){
                 this.dbgMsg(v.toString());
                 statement.execute(v.toString());

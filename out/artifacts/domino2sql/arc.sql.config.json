@@ -19,9 +19,12 @@
           "update_mode_no_insert": false
         }
       ],
+      "before_action_driver": "com.lwjhn.domino2sql.driver.BeforeActionDriverFormula",
       "on_action_driver": "com.rjsoft.driver.OnActionDriverMongoDb",
-      "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+      "after_action_driver": "com.lwjhn.domino2sql.driver.AfterActionDriverFormula",
       "extended_options": {
+        "before_sql_formula": "FileId:= ArcXC_UUID_16; @If(FileId=\"\";@Nothing; \"UPDATE EGOV_ATT SET STATUS = '删除' WHERE DOC_ID = '\"+FileId+\"'\");",
+        "after_sql_formula": "docId:= ArcXC_UUID_16; DOMINO_PID := @Text(@DocumentUniqueID);\n@if(docId=\"\";@Nothing; \"UPDATE EGOV_OPINION SET DOC_ID = '\"+ArcXC_UUID_16+\"' WHERE DOMINO_PID ='\"+DOMINO_PID+\"'\");",
         "export_flow": true,
         "export_processing": false,
         "export_opinion": false,

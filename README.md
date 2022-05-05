@@ -390,7 +390,7 @@ setting = {
 + 此接口实例了`com.lwjhn.domino2sql.driver.OnActionExtensionDocuments`驱动
 + 使用实现了`com.rjsoft.driver.OnActionDriverLocalFile`接口，可以附件方式导出意见，办理单，及流程记录
 + 附件上传MongoDb，`extended_options`需配置`mongo_url`、`mongo_db`、`mongo_bucket`
-+ `mongo_file_id_formula`及`mongo_map_sql_formula`支持扩展公式`@UUID16`、`@UUID32`（32位随机UUID）、`@FileName`（附件别名）、`@FileSuffix`（扩展名）。
++ `mongo_file_id_formula`及`mongo_map_sql_formula`支持扩展公式`@UUID16`、`@UUID32`（32位随机UUID）、`@FileName`（附件别名）、`@FileSuffix`（扩展名）、`@FileType`（文件类别，如MSS、Attachment、flow、processing、opinion）。
 + `mongo_file_id_formula`上传附件ID，`mongo_map_sql_formula`处理关联附件表语句
 
 ```js
@@ -421,7 +421,7 @@ setting = {
         "mongo_db": "sftoamongo",
         "mongo_bucket": "fs",
         "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
-        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(FileType=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
+        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(@LowerCase(\"@FileType\")=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
         "children": [
             {
                 "enable": true,

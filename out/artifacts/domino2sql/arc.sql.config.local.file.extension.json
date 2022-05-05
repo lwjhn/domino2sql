@@ -18,7 +18,7 @@
         "children": [
           {
             "enable": true,
-            "vesion": "1.6.4",
+            "version": "1.6.4",
             "ftppath": "/FTP_XC/",
             "domino_server": "MSSServer",
             "domino_dbpath": "MSSDatabase",
