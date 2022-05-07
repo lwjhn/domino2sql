@@ -27,189 +27,10 @@
 ```
 
 ### 迁移配置文件
-
-#### 例1
-
-##### 表
-
-```sql
-    -- xc_demo.egov_dispatch_history definition
-CREATE TABLE `egov_dispatch_history`
-(
-    `ID`           varchar(32)                                            NOT NULL,
-    `DOMINOID`     varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-    `Subject`      varchar(512)  DEFAULT NULL,
-    `DocWord`      varchar(128)  DEFAULT NULL,
-    `DocType`      varchar(128)  DEFAULT NULL,
-    `UrgentLevel`  varchar(128)  DEFAULT NULL,
-    `DraftDept`    varchar(128)  DEFAULT NULL,
-    `SecLevel`     varchar(128)  DEFAULT NULL,
-    `FileType`     varchar(128)  DEFAULT NULL,
-    `IsPublic`     varchar(128)  DEFAULT NULL,
-    `MainSend`     varchar(128)  DEFAULT NULL,
-    `CopySend`     varchar(128)  DEFAULT NULL,
-    `PrintTerm`    varchar(128)  DEFAULT NULL,
-    `Remark`       varchar(128)  DEFAULT NULL,
-    `SignDateTime` timestamp NULL DEFAULT NULL,
-    `DraftDate`    timestamp NULL DEFAULT NULL,
-    `PrintNum`     int           DEFAULT NULL,
-    `JSONATT`      text CHARACTER SET utf8 COLLATE utf8_general_ci,
-    `OTHER`        varchar(2048) DEFAULT NULL,
-    PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
-
-##### 配置
-
-```json
-{
-  "sql_url": "jdbc:mysql://192.168.210.153:3399?connectTimeout=3000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC",
-  "sql_username": "*****",
-  "sql_password": "*****",
-  "sql_driver": "com.mysql.cj.jdbc.Driver",
-  "driver_manager_log": false,
-  "options": [
-    {
-      "enable": true,
-      "vesion": "1.6.7",
-      "ftppath": "/FTP_XC/",
-      "domino_server": "OA/SRV/FJSF",
-      "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & DraftDate > [2020-07-20] & DraftDate < [2020-07-25]",
-      "domino_queries": [
-        {
-          "enable": true,
-          "error_continue": true,
-          "domino_dbpath": "egov/dispatch.nsf"
-        }
-      ],
-      "domino_after_prepared_driver": "com.lwjhn.domino2sql.driver.AfterPrepareDocument",
-      "domino_prepared_sqlquery_driver": "com.rjsoft.prepared.PrepareSqlQueryRJDoc",
-      "domino_process_statement_driver": "com.rjsoft.prepared.ProcessStatementRJDocNoCache",
-      "extended_options": {
-        "export_flow": true,
-        "export_opinion": true,
-        "export_processing": true,
-        "sql_field_attachment": {
-          "sql_name": "JSONATT",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        }
-      },
-      "sql_table": "EGOV_DISPATCH_HISTORY",
-      "sql_field_others": [
-        {
-          "sql_name": "ID",
-          "domino_name": "ArcXC_UUID_16",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "DOMINOID",
-          "domino_formula": "@Text(@DocumentUniqueID)",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "Subject",
-          "domino_name": "Subject",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "DocWord",
-          "domino_name": "DocWord",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "DocType",
-          "domino_name": "DocType",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "UrgentLevel",
-          "domino_name": "UrgentLevel",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "DraftDept",
-          "domino_name": "DraftDept",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "SecLevel",
-          "domino_name": "SecLevel",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "FileType",
-          "domino_name": "FileType",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "IsPublic",
-          "domino_name": "IsPublic",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "MainSend",
-          "domino_name": "MainSend",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "CopySend",
-          "domino_name": "CopySend",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "PrintTerm",
-          "domino_name": "PrintTerm",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "Remark",
-          "domino_name": "Remark",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "SignDateTime",
-          "domino_formula": "temp:=SignDate;temp:=@If(@IsTime(temp);temp;@TextToTime(@ReplaceSubstring(temp;\"年\":\"月\":\"日\";\"-\":\"-\":\"\")));@if(@IsError(temp) | @IsNull(temp);@Nothing;temp);",
-          "jdbc_type": "TIMESTAMP",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "DraftDate",
-          "domino_name": "DraftDate",
-          "jdbc_type": "TIMESTAMP",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "PrintNum",
-          "jdbc_type": "INTEGER",
-          "domino_formula": "1",
-          "scale_length": 0
-        },
-        {
-          "sql_name": "OTHER",
-          "jdbc_type": "VARCHAR",
-          "domino_formula": "@Nothing",
-          "scale_length": 0
-        }
-      ]
-    }
-  ]
-}
-```
+迁移驱动，参看驱动说明。参见配置案例：
++ 附件上传mongodb：[mongodb.rongji案例](./domino2sql-app/resources/arc.sql.config.mongodb.rongji.json)
++ 附件上传本地磁盘：[local.file案例](./domino2sql-app/resources/arc.sql.config.local.file.json)
++ 迁移关联子文档模式：[file.extension案例](./domino2sql-app/resources/arc.sql.config.local.file.extension.json)
 
 ### 启动迁移服务
 
@@ -390,7 +211,7 @@ setting = {
 + 此接口实例了`com.lwjhn.domino2sql.driver.OnActionExtensionDocuments`驱动
 + 使用实现了`com.rjsoft.driver.OnActionDriverLocalFile`接口，可以附件方式导出意见，办理单，及流程记录
 + 附件上传MongoDb，`extended_options`需配置`mongo_url`、`mongo_db`、`mongo_bucket`
-+ `mongo_file_id_formula`及`mongo_map_sql_formula`支持扩展公式`@UUID16`、`@UUID32`（32位随机UUID）、`@FileName`（附件别名）、`@FileSuffix`（扩展名）。
++ `mongo_file_id_formula`及`mongo_map_sql_formula`支持扩展公式`@UUID16`、`@UUID32`（32位随机UUID）、`@FileName`（附件别名）、`@FileSuffix`（扩展名）、`@FileType`（文件类别，如MSS、Attachment、flow、processing、opinion）。
 + `mongo_file_id_formula`上传附件ID，`mongo_map_sql_formula`处理关联附件表语句
 
 ```js
@@ -421,7 +242,7 @@ setting = {
         "mongo_db": "sftoamongo",
         "mongo_bucket": "fs",
         "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
-        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(FileType=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
+        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(@LowerCase(\"@FileType\")=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
         "children": [
             {
                 "enable": true,

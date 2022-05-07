@@ -128,6 +128,12 @@
                 "domino_formula": "OPINIONTIME",
                 "jdbc_type": "TIMESTAMP",
                 "scale_length": 0
+              },
+              {
+                "sql_name": "OPINION_SHOW",
+                "domino_formula": "\"1\"",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
               }
             ]
           }

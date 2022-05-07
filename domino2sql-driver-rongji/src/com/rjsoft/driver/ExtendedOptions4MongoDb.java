@@ -34,7 +34,7 @@ INSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('"+ FileId +"', '"+ Fi
     protected static final Pattern FILENAME = Pattern.compile("^" + FILE_NAME + "$", Pattern.CASE_INSENSITIVE);
 
     public String sqlFormula(String filename) {
-        String alias = filename.replaceAll("\\.[0-9a-z]+$", "");
+        String alias = filename.replaceAll("(?i)\\.[0-9a-z]+$", "");
         return ArcUtils.formula(mongo_map_sql_formula, PATTERN, s ->
                 (ArcUtils.PATTERN_UUID.matcher(s).matches()
                         ? ArcUtils.UUID(Integer.parseInt(s.substring(5)))
@@ -43,7 +43,7 @@ INSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('"+ FileId +"', '"+ Fi
 
     public String sqlFormula(String filename, String type) {
         return sqlFormula(new HashMap<String, String>() {{
-            String alias = filename.replaceAll("\\.[0-9a-z]+$", "");
+            String alias = filename.replaceAll("(?i)\\.[0-9a-z]+$", "");
             String ext = filename.length() == alias.length() ? "" : filename.substring(alias.length() + 1);
             put(FILE_NAME, alias);
             put(FILE_SUFFIX, ext);

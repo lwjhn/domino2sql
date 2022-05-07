@@ -9,19 +9,22 @@
       "enable": true,
       "version": "1.6.7",
       "ftppath": "/FTP_XC/",
-      "domino_server": "OAAPP/SRV/NANPING",
+      "domino_server": "OA/SRV/FJSF",
       "domino_queries": [
         {
           "enable": true,
           "error_continue": true,
-          "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & @Text(@DocumentUniqueID)=\"256C00C83CBF5064482582A40024C167\"",
-          "domino_dbpath": "egov/dispatch.nsf",
+          "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\"",
+          "domino_dbpath": "egov/approval.nsf",
           "update_mode_no_insert": false
         }
       ],
+      "before_action_driver": "com.lwjhn.domino2sql.driver.BeforeActionDriverFormula",
       "on_action_driver": "com.rjsoft.driver.OnActionDriverMongoDb",
-      "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+      "after_action_driver": "com.lwjhn.domino2sql.driver.AfterActionDriverFormula",
       "extended_options": {
+        "before_sql_formula": "FileId:= ArcXC_UUID_16; @If(FileId=\"\";@Nothing; \"UPDATE EGOV_ATT SET STATUS = '删除' WHERE DOC_ID = '\"+FileId+\"'\");",
+        "after_sql_formula": "docId:= ArcXC_UUID_16; DOMINO_PID := @Text(@DocumentUniqueID);\n@if(docId=\"\";@Nothing; \"UPDATE EGOV_OPINION SET DOC_ID = '\"+ArcXC_UUID_16+\"' WHERE DOMINO_PID ='\"+DOMINO_PID+\"'\");",
         "export_flow": true,
         "export_processing": false,
         "export_opinion": false,
@@ -29,7 +32,7 @@
         "mongo_db": "sftoamongo",
         "mongo_bucket": "fs",
         "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
-        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@If(FileType=\"mss\";\"main_doc\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
+        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@LowerCase(\"@FileType\");FileType:=@If(FileType=\"mss\";\"main_doc\";FileType=\"flow\";\"flow\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
         "children": [
           {
             "enable": true,
@@ -125,12 +128,18 @@
                 "domino_formula": "OPINIONTIME",
                 "jdbc_type": "TIMESTAMP",
                 "scale_length": 0
+              },
+              {
+                "sql_name": "OPINION_SHOW",
+                "domino_formula": "\"1\"",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
               }
             ]
           }
         ]
       },
-      "sql_table": "EGOV_DISPATCH",
+      "sql_table": "EGOV_INFORMAL",
       "sql_update_primary_key": {
         "sql_name": "DOMINO_ID",
         "domino_formula": "@Text(@DocumentUniqueID)",
@@ -151,20 +160,82 @@
           "scale_length": 0
         },
         {
-          "sql_name": "IS_HISTORY_FILE",
-          "domino_formula": "\"01\"",
-          "jdbc_type": "VARCHAR",
-          "scale_length": 0
-        },
-        {
           "sql_name": "SUBJECT",
-          "domino_formula": "Subject + @Text(@DocumentUniqueID)",
+          "domino_formula": "Subject",
           "jdbc_type": "VARCHAR",
           "scale_length": 0
         },
         {
           "sql_name": "DOC_WORD",
           "domino_name": "DocWord",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DEAL_UNIT_NO",
+          "domino_name": "DraftDept",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DEAL_UNIT",
+          "domino_name": "DraftDeptTitle",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "SEAL_NAME",
+          "domino_name": "SealName",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "MAIN_SEND",
+          "domino_formula": "\"[\"+@If(SendUnit!=\"\"; \"\\\"\"+@Implode(SendUnit;\"\\\", \\\"\")+\"\\\"\"; \"\")+\"]\"",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "PRINT_NUM",
+          "domino_formula": "@If(@IsNumber(PrintNum);PrintNum;PrintNum=\"\";0;@ToNumber(PrintNum))",
+          "jdbc_type": "INTEGER",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "FLOW_STATUS",
+          "domino_formula": "\"finish\""
+        },
+        {
+          "sql_name": "DRAFT_DATE",
+          "domino_formula": "DraftDate",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_USER_NAME",
+          "domino_name": "DrafterTitle",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DRAFT_USER_NO",
+          "domino_formula": "@Name([CN];Drafter);@Nothing",
+          "jdbc_type": "INTEGER",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DEADLINE",
+          "domino_formula": "deadline",
+          "jdbc_type": "TIMESTAMP"
+        },
+        {
+          "sql_name": "SYSTEM_NO",
+          "domino_formula": "\"XCOA\"",
+          "jdbc_type": "VARCHAR"
+        },
+        {
+          "sql_name": "EXTENSION_READER",
+          "domino_formula": "ret:=@Name([CN];@Trim(@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_AdminReader)));\n@If(ret=\"\";\"[]\";\"[{\\\"readerNo\\\":\\\"\"+@Implode(ret;\"\\\"},{\\\"readerNo\\\":\\\"\")+\"\\\"}]\")\n",
           "jdbc_type": "VARCHAR",
           "scale_length": 0
         }
