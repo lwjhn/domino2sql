@@ -386,10 +386,10 @@ setting = {
 ```
 
 
-## 新创公文交换启用
+## 信创公文交换数据迁移
 ### 配置
 参考配置文件`arc.sql.config.mongodb.ex-doc.json`。第一项配置，迁移主文档，及已签收记录；第二项，迁移各库待收记录
-### 迁移后，子表数据处理
+### 数据处理
 执行SQL语句，关联主表与记录表数据，并更新相关字段数据
 ```sql
 UPDATE EGOV_EX_RECEIVE_TRACK AS t
