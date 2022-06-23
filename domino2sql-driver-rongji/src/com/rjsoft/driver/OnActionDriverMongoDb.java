@@ -104,6 +104,7 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver {
                 .applyConnectionString(connString)
                 .retryWrites(true)
                 .build();
+        AutoCloseableBase.close(mongoClient);
         mongoClient = MongoClients.create(settings);
         MongoDatabase database = mongoClient.getDatabase(extendedOptions.mongo_db);
         bucket = GridFSBuckets.create(database, extendedOptions.mongo_bucket);

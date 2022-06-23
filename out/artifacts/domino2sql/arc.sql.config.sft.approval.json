@@ -235,7 +235,7 @@
         },
         {
           "sql_name": "EXTENSION_READER",
-          "domino_formula": "ret:=@Name([CN];@Trim(@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_AdminReader)));\n@If(ret=\"\";\"[]\";\"[{\\\"readerNo\\\":\\\"\"+@Implode(ret;\"\\\"},{\\\"readerNo\\\":\\\"\")+\"\\\"}]\")\n",
+          "domino_formula": "ret:=@Name([CN];@Trim(@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_AdminReader)));ret:=@DbLookup(\"\":\"NoCache\"; @ServerName:\"uumsUser.nsf\";\"UserMapper\"; ret; \"userNo\");\n@If(@IsError(ret);@Text(ret);ret)\n@If(ret=\"\";\"[]\";\"[{\\\"readerNo\\\":\\\"\"+@Implode(ret;\"\\\"},{\\\"readerNo\\\":\\\"\")+\"\\\"}]\")\n",
           "jdbc_type": "VARCHAR",
           "scale_length": 0
         }

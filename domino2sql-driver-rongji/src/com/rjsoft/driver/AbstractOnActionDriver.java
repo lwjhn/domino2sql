@@ -154,6 +154,7 @@ public abstract class AbstractOnActionDriver extends Message implements OnAction
         this.databaseCollection = databaseCollection;
         session = databaseCollection.getSession();
 
+        BaseUtils.recycle(actionExtensionDocuments);
         actionExtensionDocuments = new OnActionExtensionDocuments();
         actionExtensionDocuments.init(dbConfig, connection, databaseCollection);
     }

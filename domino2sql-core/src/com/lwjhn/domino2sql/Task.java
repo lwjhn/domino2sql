@@ -80,6 +80,7 @@ public class Task extends ArcBase {
         } catch (Exception e) {
             dbConfig.setAction_error_log(dbgMsg(getStackMsg(e)));
         } finally {
+            BaseUtils.recycle(events.values());
             recycle(tdoc, doc, dc);
             tdoc = null;
             doc = null;
@@ -144,7 +145,6 @@ public class Task extends ArcBase {
             tdoc = null;
             doc = null;
             dc = null;
-            BaseUtils.recycle(events.values());
         }
     }
 

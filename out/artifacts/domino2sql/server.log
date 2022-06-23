@@ -1,0 +1,28 @@
+C:\Workspaces\XinChuang\公共组件\domino2sql\out\artifacts\domino2sql
+java -DDominoHost="192.168.210.153:9898" -DDominoUser="Admin" -DDominoPassword="Fjsft_123" -DDominoPath="./arc.sql.config.sft.approval.json" -DDominoOutput="./arc.sql.config.output.json" -jar ./domino2sql-app.jar
+ArchXC Agent Start . 
+config file path : C:\Workspaces\XinChuang\公共组件\domino2sql\out\artifacts\domino2sql\arc.sql.config.sft.approval.json
+connect to host(192.168.210.153:9898) , user(Admin), password(Fjsft_123) 
+ArchXC Agent ShutDown . 
+Exception in thread "main" java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.lwjhn.domino2sql.Application.main(Application.java:29)
+Caused by: java.lang.RuntimeException: NotesException: Invalid user name/password
+	at com.lwjhn.domino2sql.Executor.run(Executor.java:39)
+	... 5 more
+Caused by: NotesException: Invalid user name/password
+	at lotus.domino.NotesExceptionHelper.read(Unknown Source)
+	at lotus.domino.NotesExceptionHolder._read(Unknown Source)
+	at lotus.priv.CORBA.iiop.RepImpl.invoke(Unknown Source)
+	at lotus.priv.CORBA.portable.ObjectImpl._invoke(Unknown Source)
+	at lotus.domino.corba._IObjectServerStub.createSession(Unknown Source)
+	at lotus.domino.cso.Session.initSession(Unknown Source)
+	at lotus.domino.cso.Session.<init>(Unknown Source)
+	at lotus.domino.cso.Session.createSession(Unknown Source)
+	at lotus.domino.NotesFactory.createSessionUP(Unknown Source)
+	at lotus.domino.NotesFactory.createSession(Unknown Source)
+	at com.lwjhn.domino2sql.Executor.run(Executor.java:31)
+	... 5 more

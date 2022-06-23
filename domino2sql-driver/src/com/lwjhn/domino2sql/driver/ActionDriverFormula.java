@@ -3,6 +3,7 @@ package com.lwjhn.domino2sql.driver;
 import com.lwjhn.domino.DatabaseCollection;
 import com.lwjhn.domino.Message;
 import com.lwjhn.domino2sql.config.DbConfig;
+import com.lwjhn.util.ArcUtils;
 import com.lwjhn.util.AutoCloseableBase;
 import lotus.domino.Document;
 import lotus.domino.NotesException;
@@ -24,7 +25,7 @@ public abstract class ActionDriverFormula extends Message implements ActionDrive
         if (StringUtils.isNoneBlank(sqlFormula())) {
             try {
                 String Formula;
-                Vector<?> vector = session.evaluate(sqlFormula(), doc);
+                Vector<?> vector = session.evaluate(ArcUtils.formula(sqlFormula()), doc);
                 for (Object v : vector) {
                     if (StringUtils.isBlank(Formula = (String) v))
                         continue;

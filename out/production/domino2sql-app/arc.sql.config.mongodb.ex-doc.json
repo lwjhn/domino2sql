@@ -1,0 +1,238 @@
+﻿{
+  "sql_url": "jdbc:dm://192.168.210.77:5236/SFTPUB?connectTimeout=3000&socketTimeout=60000&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC",
+  "sql_username": "SFTPUB",
+  "sql_password": "123456789",
+  "sql_driver": "dm.jdbc.driver.DmDriver",
+  "driver_manager_log": false,
+  "options": [
+    {
+      "enable": true,
+      "version": "1.6.7",
+      "ftppath": "/FTP_XC/",
+      "domino_query": "Form=\"Document\" & Published=\"1\" ",
+      "domino_server": "PUBLIC/SRV/FJSF",
+      "domino_queries": [{
+          "enable": true,
+          "error_continue": true,
+          "domino_dbpath": "docs/10005.nsf",
+          "update_mode_no_insert": false
+        },{
+          "enable": true,
+          "error_continue": true,
+          "domino_dbpath": "docs/10001.nsf",
+          "update_mode_no_insert": false
+        }
+      ],
+      "before_action_driver": "com.lwjhn.domino2sql.driver.BeforeActionDriverFormula",
+      "on_action_driver": "com.rjsoft.driver.OnActionDriverMongoDb",
+      "after_action_driver": "com.lwjhn.domino2sql.driver.AfterActionDriverFormula",
+      "extended_options": {
+        "attachment_query": "\"!@Contains(Form;\\\"DelForm\\\") & (DOCUNID = \\\"\" + @Text(@DocumentUniqueID) + \"\\\"\" + @If(INITUNID=\"\";\"\";\" | DOCUNID = \\\"\" + INITUNID + \"\\\"\") + @If(MSSUNID=\"\";\"\";\" | @Text(@DocumentUniqueID) = \\\"\" + MSSUNID + \"\\\"\") + \")\"",
+        "before_sql_formula": "FileId:= ArcXC_UUID_16; @If(FileId=\"\";@Nothing; \"UPDATE EGOV_ATT SET STATUS = '删除' WHERE DOC_ID = '\"+FileId+\"'\");",
+        "after_sql_formula": "docId:= ArcXC_UUID_16; DOMINO_PID := INITUNID;\n@if(docId=\"\";@Nothing; \"UPDATE EGOV_OPINION SET DOC_ID = '\"+docId+\"' WHERE DOMINO_PID ='\"+DOMINO_PID+\"'\");",
+        "export_flow": false,
+        "export_processing": false,
+        "export_opinion": false,
+        "mongo_url": "mongodb://192.168.210.186:27017",
+        "mongo_db": "sftoamongo",
+        "mongo_bucket": "fs",
+        "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
+        "mongo_map_sql_formula": "DocId:= ArcXC_UUID_16;\nFileId:= _mongodb_file_id_;\nFileType:=@LowerCase(\"@FileType\");FileType:=@If(FileType=\"mss\";\"main_doc\";FileType=\"flow\";\"flow\";\"attach\");\n\"INSERT INTO EGOV_ATT (ID, MODULE_ID, DOC_ID, EGOV_FILE_ID, FILE_NAME, FILE_SUFFIX, \\\"TYPE\\\", STATUS, SORT_TIME, CREATE_TIME) \n\tVALUES('\"+ FileId +\"', '\"+@Right(@ReplaceSubstring(@Left(@UpperCase(@Subset(@DbName;-1));\".\");\"\\\\\";\"/\");\"/\")+\"', '\" + DocId + \"', '\"+ FileId + \"', '@FileName',  '@FileSuffix', '\"+FileType+\"','正常', 0, NOW);\nINSERT INTO EGOV_FILE (ID, FILE_PATH, CREATE_TIME) VALUES('\"+ FileId +\"', '\"+ FileId +\"', NOW);\"",
+        "children": [
+          {
+            "enable": true,
+            "vesion": "1.6.4",
+            "ftppath": "/FTP_XC/",
+            "domino_server": "@ServerName",
+            "domino_dbpath": "\"doclog/DocSignLog\" + @Text(@Year(@If(@IsAvailable(PublishTime) | @IsTime(PublishTime); PublishTime; @Created))) +  \".nsf\"",
+            "domino_query": "\"Form=\\\"DocSignLog\\\" & InitUNID=\\\"\"+ @If(INITUNID=\"\";@Text(@DocumentUniqueID); INITUNID)  +\"\\\"\"",
+            "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+            "update_mode_no_insert": false,
+            "sql_update_primary_key": {
+              "sql_name": "DOMINO_ID",
+              "domino_formula": "@Text(@DocumentUniqueID)",
+              "jdbc_type": "VARCHAR",
+              "scale_length": 0
+            },
+            "sql_table": "EGOV_EX_RECEIVE_TRACK",
+            "sql_field_others": [
+              {
+                "sql_name": "ID",
+                "domino_formula": "ArcXC_UUID_16",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "DOMINO_ID",
+                "domino_formula": "@Text(@DocumentUniqueID)",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "DOC_ID",
+                "domino_formula": "@Nothing",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "DOMINO_PID",
+                "domino_formula": "INITUNID",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              },
+              {
+                "sql_name": "RECEIVE_UNIT_NO",
+                "domino_formula": "SIGNUNITID",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              }, {
+                "sql_name": "RECEIVE_UNIT_NAME",
+                "domino_formula": "SIGNUNIT",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              }, {
+                "sql_name": "RECEIVE_USER_NAME",
+                "domino_formula": "SIGNUSER",
+                "jdbc_type": "VARCHAR",
+                "scale_length": 0
+              }, {
+                "sql_name": "RECEIVE_TIME",
+                "domino_formula": "SIGNTIME",
+                "jdbc_type": "TIMESTAMP",
+                "scale_length": 0
+              }
+            ]
+          }
+        ]
+      },
+      "sql_table": "EGOV_EX_DOC",
+      "sql_update_primary_key": {
+        "sql_name": "DOMINO_ID",
+        "domino_formula": "@Text(@DocumentUniqueID)",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_formula": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINO_ID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "INITUNID",
+          "domino_formula": "@If(INITUNID=\"\";@Text(@DocumentUniqueID); INITUNID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_TYPE",
+          "domino_formula": "Category",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "DOC_MARK",
+          "domino_formula": "DocMark",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "SECURE_TERM",
+          "domino_formula": "SecrecyTerm",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "SIGN_USER",
+          "domino_formula": "DispatchSigner",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "CREATE_UNIT_NAME",
+          "domino_formula": "FromUnit",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "CREATE_UNIT_NO",
+          "domino_formula": "FromUnitID",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "SEND_UNIT",
+          "domino_formula": "DispatchUnit",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "SEND_TIME",
+          "domino_formula": "PUBLISHTIME",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        }, {
+          "sql_name": "PUBLISH_USER",
+          "domino_formula": "Publisher",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "CREATE_TIME",
+          "domino_formula": "PUBLISHTIME",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        }, {
+          "sql_name": "ISSUED_NUM",
+          "domino_formula": "PrintCount",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "ISSUED_TIME",
+          "domino_formula": "PrintDate",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        }, {
+          "sql_name": "CONTENT",
+          "domino_name": "Memo",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "SUBJECT",
+          "domino_formula": "Subject",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "SEC_LEVEL",
+          "domino_formula": "SecretLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "URGENCY",
+          "domino_formula": "UrgencyLevel",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "MAIN_SEND_DEPT_NAMES",
+          "domino_formula": "MainSend",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "COPY_SEND_DEPT_NAMES",
+          "domino_formula": "CopySendDown",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "REC_UNIT_NAME",
+          "domino_formula": "DispatchUnits",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "REC_UNIT_NO",
+          "domino_formula": "DispatchUnitIDs",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }
+      ]
+    }
+  ]
+}
