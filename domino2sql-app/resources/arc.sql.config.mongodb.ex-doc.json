@@ -233,6 +233,81 @@
           "scale_length": 0
         }
       ]
+    },
+    {
+      "enable": true,
+      "version": "1.6.7",
+      "ftppath": "/FTP_XC/",
+      "domino_query": "Form=\"DocToReceive\" & Published=\"1\" ",
+      "domino_server": "PUBLIC/SRV/FJSF",
+      "domino_queries": [
+        {
+        "enable": true,
+        "error_continue": true,
+        "domino_dbpath": "docs/10005.nsf",
+        "update_mode_no_insert": false
+      },{
+        "enable": true,
+        "error_continue": true,
+        "domino_dbpath": "docs/10001.nsf",
+        "update_mode_no_insert": false
+      }
+      ],
+      "after_action_driver": "com.lwjhn.domino2sql.driver.ActionShowLog",
+      "sql_table": "EGOV_EX_RECEIVE_TRACK",
+      "sql_update_primary_key": {
+        "sql_name": "DOMINO_ID",
+        "domino_formula": "@Text(@DocumentUniqueID)",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
+      "sql_field_others": [
+        {
+          "sql_name": "ID",
+          "domino_formula": "ArcXC_UUID_16",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINO_ID",
+          "domino_formula": "@Text(@DocumentUniqueID)",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOC_ID",
+          "domino_formula": "@Nothing",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "DOMINO_PID",
+          "domino_formula": "INITUNID",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        },
+        {
+          "sql_name": "RECEIVE_UNIT_NO",
+          "domino_formula": "SIGNUNITID",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "RECEIVE_UNIT_NAME",
+          "domino_formula": "SIGNUNIT",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "RECEIVE_USER_NAME",
+          "domino_formula": "SIGNUSER",
+          "jdbc_type": "VARCHAR",
+          "scale_length": 0
+        }, {
+          "sql_name": "RECEIVE_TIME",
+          "domino_formula": "@Nothing",
+          "jdbc_type": "TIMESTAMP",
+          "scale_length": 0
+        }
+      ]
     }
   ]
 }
