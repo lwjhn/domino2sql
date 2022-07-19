@@ -98,8 +98,11 @@ public class Task extends ArcBase {
             }
 
             this.setDebug(dbConfig.isDebugger());
-            if ((server = dbConfig.getDomino_server()) == null || (dbpath = dbConfig.getDomino_dbpath()) == null || (query = dbConfig.getDomino_query()) == null)
+            if (StringUtils.isBlank(server = dbConfig.getDomino_server())
+                    || StringUtils.isBlank(dbpath = dbConfig.getDomino_dbpath())
+                    || StringUtils.isBlank(query = dbConfig.getDomino_query()))
                 return;
+            
             dbgMsg("start to archive default database : " + server + " !! " + dbpath);
             searchDb(server, dbpath, query, databaseCollection);
             if (dc == null)
