@@ -57,6 +57,8 @@ public abstract class AbstractOnActionDriver extends Message implements OnAction
         if (StringUtils.isBlank(srv = doc.getItemValueString("MSSSERVER")))
             srv = doc.getParentDatabase().getServer();
         if (getExtended_options().export_opinion) {
+            dbConfig.printTimestamp(unid + " :: 意见表 : begin - ");
+
             mssOpinion = doc.getItemValueString("MSSOpinion");
             if (StringUtils.isBlank(mssOpinion)) {
                 mssOpinion = doc.getItemValueString("OpinionlogDatabase");
@@ -67,9 +69,13 @@ public abstract class AbstractOnActionDriver extends Message implements OnAction
             doc2json(srv, mssOpinion,
                     "opinion", "Form=\"Opinion\" & PARENTUNID = \"" + unid + "\"",
                     "意见表.json", doc);
+
+            dbConfig.printTimestamp(unid + " :: 意见表 : end - ");
         }
 
         if (this.getExtended_options().export_flow) {
+            dbConfig.printTimestamp(unid + " :: 流程记录 : begin - ");
+
             mssOpinion = doc.getItemValueString("MssFlow");
             if (StringUtils.isBlank(mssOpinion)) {
                 oldFlow(doc);
@@ -78,14 +84,23 @@ public abstract class AbstractOnActionDriver extends Message implements OnAction
                         "flow", "Form=\"FlowForm\" & DOCUNID = \"" + unid + "\"",
                         "流程记录.json", doc);
             }
+
+            dbConfig.printTimestamp(unid + " :: 流程记录 : end - ");
         }
 
         if (this.getExtended_options().export_processing) {
+            dbConfig.printTimestamp(unid + " :: 阅办单 : begin - ");
+
             final String form = "processing", filename = "阅办单.html";
             ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
             RJUtilDSXml.debug = getExtended_options().debug;
             RJUtilDSXml.parseDSHtml(doc, databaseCollection.getSession(), swapStream, StandardCharsets.UTF_8);
+
+            dbConfig.printTimestamp(unid + " :: 阅办单 : parseDSHtml complete - ");
+
             upload(swapStream.toByteArray(), filename, filename, form, doc);
+
+            dbConfig.printTimestamp(unid + " :: 阅办单 : end - ");
         }
 
         extractFiles(doc);

@@ -198,7 +198,9 @@ public class Task extends ArcBase {
         Object value;
         Item item = null;
         int index = 0;
+        String unid = "null";
         try {
+            dbConfig.printTimestamp((unid = doc.getUniversalID()) + " :: archive document : begin - ");
             doc.replaceItemValue(succ_flag_field + "_OR_Error_FLAG_Time", session.createDateTime(new Date()));
             PreparedStatement preparedStatement = getPreparedStatement(doc, dbConfig);
             if (preparedStatement == null && dbConfig.isUpdate_mode_no_insert()) {
@@ -214,15 +216,15 @@ public class Task extends ArcBase {
                 doc.replaceItemValue(dbConfig.getDomino_uuid_prefix() + "32", ArcUtils.UUID32());
 
             for (ItemConfig itemConfig : dbConfig.getSql_field_others()) {
-                if ((formula = itemConfig.getDomino_name()) != null) {
-                    recycle(item);
-                    value = Domino2SqlHelp.domino2JdbcType(item = doc.getFirstItem(formula), itemConfig);
-                } else if ((formula = itemConfig.getDomino_formula()) != null && !"".equals(formula)) {
-                    value = Domino2SqlHelp.domino2JdbcType(session.evaluate(formula, doc), itemConfig);
-                } else {
-                    value = null;
-                }
                 try {
+                    if ((formula = itemConfig.getDomino_name()) != null) {
+                        recycle(item);
+                        value = Domino2SqlHelp.domino2JdbcType(item = doc.getFirstItem(formula), itemConfig);
+                    } else if ((formula = itemConfig.getDomino_formula()) != null && !"".equals(formula)) {
+                        value = Domino2SqlHelp.domino2JdbcType(session.evaluate(formula, doc), itemConfig);
+                    } else {
+                        value = null;
+                    }
                     if (value instanceof String && itemConfig.getScale_length() > 0 && ((String) value).length() > itemConfig.getScale_length())
                         throw new Exception("value too long . string length is " + ((String) value).length() + " , scale length is " + itemConfig.getScale_length() + ".");
                     preparedStatement.setObject(++index, value, itemConfig.getJdbc_type().getVendorTypeNumber(), itemConfig.getScale_length());
@@ -234,7 +236,9 @@ public class Task extends ArcBase {
             }
 
             if (events.get(TaskEvent.on_action_driver) != null) {
+                dbConfig.printTimestamp(unid + " :: archive document : driver begin - ");
                 ((OnActionDriver) events.get(TaskEvent.on_action_driver)).action(preparedStatement, doc);
+                dbConfig.printTimestamp(unid + " :: archive document : driver end - ");
             }
 
             if (preparedStatement.executeUpdate() < 1)
@@ -249,6 +253,7 @@ public class Task extends ArcBase {
             return false;
         } finally {
             recycle(item);
+            dbConfig.printTimestamp(unid + " :: archive document : end - ");
         }
     }
 

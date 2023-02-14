@@ -14,9 +14,9 @@ public class Message {
 
     public String getStackMsg(Throwable e) {
         StringBuilder res = new StringBuilder();
-        res.append(e.toString() + "\n");
+        res.append(e.toString()).append("\n");
         for (StackTraceElement traceElement : e.getStackTrace())
-            res.append("\tat " + traceElement.toString() + "\n");
+            res.append("\tat ").append(traceElement.toString()).append("\n");
         return res.toString();
     }
 

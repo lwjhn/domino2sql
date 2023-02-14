@@ -8,8 +8,9 @@
     {
       "enable": true,
       "version": "1.6.7",
-      "domino_query": "Form=\"Document\" & Published=\"1\" ",
+      "domino_query": "Form=\"Document\" & Published=\"1\" & PublishTime>=[2019/11/27 15:11:00] & PublishTime<=[2020/07/13 10:00:00]",
       "domino_server": "PUBLIC/SRV/FJSF",
+      "print_Timestamp": true,
       "domino_queries": [{
           "enable": true,
           "error_continue": true,
@@ -30,7 +31,7 @@
         "export_flow": false,
         "export_processing": false,
         "export_opinion": false,
-        "mongo_url": "mongodb://192.168.210.186:27017",
+        "mongo_url": "mongodb://192.168.210.186:27017/?keepAlive=true&keepAliveInitialDelay=5000",
         "mongo_db": "sftoamongo",
         "mongo_bucket": "fs",
         "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
@@ -234,7 +235,7 @@
     {
       "enable": true,
       "version": "1.6.7",
-      "domino_query": "Form=\"DocToReceive\" & Published=\"1\" ",
+      "domino_query": "Form=\"DocToReceive\" & Published=\"1\" & PublishTime>=[2019/11/27 15:11:00] & PublishTime<=[2020/07/13 10:00:00]",
       "domino_server": "PUBLIC/SRV/FJSF",
       "domino_queries": [
         {

@@ -15,7 +15,8 @@
           "enable": true,
           "error_continue": true,
           "domino_query": "Form=\"FlowForm\" & MSSDATABASE!=\"\" & @Text(@DocumentUniqueID)=\"0B419EE3863AC2FB482582A4002E7BA9\"",
-          "domino_dbpath": "egov/dispatch.nsf"
+          "domino_dbpath": "egov/dispatch.nsf",
+          "update_mode_no_insert": false
         }
       ],
       "prepared_sql_driver": "com.lwjhn.domino2sql.driver.PreparedSql4ExtractFile",
@@ -25,6 +26,7 @@
         "export_flow": true,
         "export_processing": true,
         "export_opinion": true,
+        "debug": true,
         "sql_field_attachment": {
           "sql_name": "JSONATT",
           "jdbc_type": "VARCHAR",
@@ -32,6 +34,12 @@
         }
       },
       "sql_table": "XC_DEMO.EGOV_DISPATCH_HISTORY",
+      "sql_update_primary_key": {
+        "sql_name": "DOMINO_ID",
+        "domino_formula": "@Text(@DocumentUniqueID)",
+        "jdbc_type": "VARCHAR",
+        "scale_length": 0
+      },
       "sql_field_others": [
         {
           "sql_name": "ID",
@@ -40,7 +48,7 @@
           "scale_length": 0
         },
         {
-          "sql_name": "DOMINOID",
+          "sql_name": "DOMINO_ID",
           "domino_formula": "@Text(@DocumentUniqueID)",
           "jdbc_type": "VARCHAR",
           "scale_length": 0

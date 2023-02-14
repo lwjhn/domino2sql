@@ -15,6 +15,7 @@ import com.mongodb.client.gridfs.GridFSBucket;
 import com.mongodb.client.gridfs.GridFSBuckets;
 import lotus.domino.Document;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.bson.BsonString;
 
 import java.io.InputStream;
@@ -65,7 +66,7 @@ public class OnActionDriverMongoDb extends AbstractOnActionDriver {
             }
             bucket.uploadFromStream(fileId, name, input);
         }catch (Exception e){
-            this.dbgMsg(e.getMessage());
+            this.dbgMsg(ExceptionUtils.getStackTrace(e));
             throw new RuntimeException(e);
         }
     }

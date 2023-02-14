@@ -192,7 +192,7 @@
         },
         {
           "sql_name": "PASS_READER",
-		  "domino_formula": "ret:=@Name([CN];@Trim(@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_AdminReader)));\nret:=@DbLookup(\"\":\"NoCache\"; @ServerName:\"uumsUser.nsf\";\"UserMapper\"; ret; \"userNo\");\n@If(@IsError(ret)|ret=\"\";\"[]\";\"[{\\\"readerNo\\\":\\\"\"+@Implode(ret;\"\\\"},{\\\"readerNo\\\":\\\"\")+\"\\\"}]\");",
+		  "domino_formula": "ret:=@Name([CN];@Trim(@Unique(C_UsedReader:C_UserReader:C_UserAgentReader:C_AdminReader:C_AdminReader)));\nret:=@DbLookup(\"\":\"NoCache\"; @ServerName:\"uumsUser.nsf\";\"UserMapper\"; ret; \"userNo\"; [FAILSILENT]);\n@If(@IsError(ret)|ret=\"\";\"[]\";\"[{\\\"readerNo\\\":\\\"\"+@Implode(ret;\"\\\"},{\\\"readerNo\\\":\\\"\")+\"\\\"}]\");",
 		  "jdbc_type": "VARCHAR",
           "scale_length": 0
         }

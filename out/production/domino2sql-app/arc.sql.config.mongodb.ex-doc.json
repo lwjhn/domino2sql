@@ -8,8 +8,9 @@
     {
       "enable": true,
       "version": "1.6.7",
-      "domino_query": "Form=\"Document\" & Published=\"1\" ",
+      "domino_query": "Form=\"Document\" & Published=\"1\" & PublishTime>=[2019/11/27 15:11:00] & PublishTime<=[2020/07/13 10:00:00]",
       "domino_server": "PUBLIC/SRV/FJSF",
+      "print_Timestamp": true,
       "domino_queries": [{
           "enable": true,
           "error_continue": true,
@@ -234,7 +235,7 @@
     {
       "enable": true,
       "version": "1.6.7",
-      "domino_query": "Form=\"DocToReceive\" & Published=\"1\" ",
+      "domino_query": "Form=\"DocToReceive\" & Published=\"1\" & PublishTime>=[2019/11/27 15:11:00] & PublishTime<=[2020/07/13 10:00:00]",
       "domino_server": "PUBLIC/SRV/FJSF",
       "domino_queries": [
         {

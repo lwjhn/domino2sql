@@ -27,6 +27,8 @@ public class DominoQuery implements Cloneable, Serializable {
     private int action_err_count = 0;
     private boolean debugger = DefaultConfig.DEBUGGER;
 
+    private boolean print_timestamp = DefaultConfig.PRINT_TIMESTAMP;
+
     public String getDomino_uuid_prefix() {
         return domino_uuid_prefix;
     }
@@ -162,6 +164,21 @@ public class DominoQuery implements Cloneable, Serializable {
     public void setUpdate_mode_no_insert(boolean update_mode_no_insert) {
         this.update_mode_no_insert = update_mode_no_insert;
     }
+
+    public boolean isPrint_timestamp() {
+        return print_timestamp;
+    }
+
+    public void setPrint_timestamp(boolean print_timestamp) {
+        this.print_timestamp = print_timestamp;
+    }
+
+    public void printTimestamp(String prefix){
+        if(this.print_timestamp){
+            System.out.printf("%s : %d \n", prefix!=null ? prefix : "timestamp", System.currentTimeMillis());
+        }
+    }
+
 
     public DominoQuery() {
     }

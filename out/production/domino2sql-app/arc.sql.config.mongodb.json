@@ -9,6 +9,7 @@
       "enable": true,
       "version": "1.6.7",
       "ftppath": "/FTP_XC/",
+      "print_Timestamp": true,
       "domino_server": "OA/SRV/FJSF",
       "domino_queries": [
         {

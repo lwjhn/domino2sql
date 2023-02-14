@@ -9,6 +9,7 @@
       "enable": true,
       "version": "1.6.7",
       "ftppath": "/FTP_XC/",
+      "print_Timestamp": true,
       "domino_server": "OA/SRV/FJSF",
       "domino_queries": [
         {
@@ -28,7 +29,7 @@
         "export_flow": true,
         "export_processing": false,
         "export_opinion": false,
-        "mongo_url": "mongodb://192.168.210.186:27017",
+        "mongo_url": "mongodb://192.168.210.186:27017/?keepAlive=true&keepAliveInitialDelay=5000",
         "mongo_db": "sftoamongo",
         "mongo_bucket": "fs",
         "mongo_file_id_formula": "@SetField(\"_mongodb_file_id_\";\"@UUID16\");_mongodb_file_id_",
